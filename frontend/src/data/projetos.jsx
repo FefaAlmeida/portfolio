@@ -2,38 +2,39 @@ export const PROJETOS = [
   {
     id: "luminar",
     titulo: "Luminar",
-    subtitulo: "Plataforma de Gestão de Energia Solar",
-    pitch: "Uma plataforma centralizada que acelera a transição de indústrias e residências para energias renováveis, simplificando o monitoramento e a gestão de painéis solares.",
+    subtitulo: "Plataforma de Gestão e Acessibilidade a Energia Solar",
+    pitch: "Plataforma centralizada que viabiliza a transição energética ao baratear o acesso a painéis solares e simplificar o monitoramento em tempo real do parque solar.",
     imagemUrl: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=1200",
     tagEsquerda: "02 · Projeto Integrador",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#1f2937]",
     textCor: "text-white",
     tecnologias: ["Next.js", "Node.js", "SQL"],
-    problema: "Indústrias e consumidores têm dificuldade em acompanhar o retorno sobre o investimento (ROI), a saúde operacional dos painéis solares e a eficiência energética real.",
-    solucao: "Dashboard em tempo real com métricas de consumo, geração energética, gestão técnica de chamados e análise de economia financeira.",
-    papel: "Desenvolvedor Front-end Principal",
+    problema: "O altíssimo custo de aquisição inicial das placas solares impede o acesso à energia limpa, além da falta de visibilidade sobre a saúde dos equipamentos e a economia real.",
+    solucao: "Modelo de adesão acessível (pagamento inicial focado na instalação + parcelas contínuas para aquisição das placas) integrado a um painel inteligente de monitoramento.",
+    papel: "Desenvolvedora Full-Stack",
     linkGithub: "https://github.com/seu-usuario/luminar",
-    linkDeploy: "https://luminar-app.com",
     
-    // INFORMAÇÕES DETALHADAS PARA O CARD DE "SAIBA MAIS" (MODAL/DETALHES)
+    // INFORMAÇÕES DETALHADAS (EXIBIDAS AO CLICAR EM "SAIBA MAIS")
     detalhes: {
       periodo: "1º Semestre de 2025",
       tipo: "Projeto Integrador SENAI",
+      modeloNegocio: "Acessibilidade Financeira: O cliente paga apenas a taxa de instalação inicial, enquanto o custo das placas é dividido em parcelas acessíveis ao longo do tempo.",
+      tiposUsuarios: ["Administrador (Gestão / Empresa)", "Usuário Comum (Cliente / Proprietário)"],
       funcionalidadesAdmin: [
-        "Dashboards e tabelas analíticas para gestão do parque solar",
-        "Sistema de alertas para manutenção preventiva e preditiva",
-        "Gestão completa de usuários e permissões do sistema",
-        "Gestão de técnicos, atribuição e acompanhamento de chamados",
-        "Módulo de gestão de mensagens e 'Fale Conosco'",
-        "Monitoramento da saúde e ciclo de vida das placas solares",
-        "Acompanhamento de pedidos e solicitações de novas placas"
+        "Dashboards e tabelas analíticas para monitoramento completo do parque solar",
+        "Alertas automáticos para necessidade de manutenção e diagnóstico de saúde das placas",
+        "Gestão completa de usuários, controle de permissões e cadastro de clientes",
+        "Gestão de técnicos, distribuição de tarefas e acompanhamento de chamados",
+        "Central de atendimento para gestão de mensagens ('Fale Conosco')",
+        "Gestão de pedidos de novas placas solares e estoque"
       ],
       funcionalidadesUsuario: [
-        "Visualização do desempenho e geração em tempo real das suas placas",
-        "Métricas financeiras de economia e análise se o sistema está sendo benéfico",
-        "Central de alertas e avisos sobre necessidade de manutenção ou falhas",
-        "Histórico de consumo e relatórios de eficiência energética"
+        "Painel de desempenho com geração energética em tempo real",
+        "Análise de rentabilidade e cálculo de quanto está economizando na conta de luz",
+        "Indicadores visuais para checar se o sistema está sendo benéfico e eficiente",
+        "Notificações de alertas importantes (ex: necessidade de manutenção)",
+        "Abertura e acompanhamento de chamados de suporte"
       ]
     }
   },
@@ -41,66 +42,62 @@ export const PROJETOS = [
     id: "lector-hub",
     titulo: "Lector Hub",
     subtitulo: "Sistema Inteligente de Gestão de Bibliotecas",
-    pitch: "Plataforma completa para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa.",
+    pitch: "Plataforma para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa.",
     imagemUrl: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200",
     tagEsquerda: "01 · Projeto Acadêmico",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#18181b]",
     textCor: "text-white",
     tecnologias: ["Next.js", "Node.js", "SQL", "Chakra UI"],
-    problema: "Gargalos no controle manual de acervos, dificuldade de engajamento de leitores e processos burocráticos para solicitação e renovação de empréstimos.",
-    solucao: "Ecossistema digital com painel administrativo para controle total do acervo e portal interativo para os leitores descobrirem e reservarem livros.",
-    papel: "Desenvolvedor Full Stack",
+    problema: "Controle manual e burocrático de acervos, dificuldades na aprovação de empréstimos e falta de engajamento dos leitores com a biblioteca.",
+    solucao: "Ecossistema digital com painel administrativo para controle do acervo e portal interativo para leitores reservarem e avaliarem obras.",
+    papel: "Desenvolvedora Full-Stack (Foco em Back-end) & Gestora do Projeto",
     linkGithub: "https://github.com/seu-usuario/lector-hub",
-    linkDeploy: "https://lectorhub-demo.com",
 
-    // INFORMAÇÕES DETALHADAS PARA O CARD DE "SAIBA MAIS" (MODAL/DETALHES)
     detalhes: {
       periodo: "2º Semestre de 2024",
       tipo: "Projeto Acadêmico SENAI",
+      tiposUsuarios: ["Administrador (Bibliotecário)", "Usuário Comum (Leitor)"],
       funcionalidadesAdmin: [
-        "Administração e cadastro completo do acervo de livros e categorias",
-        "Gerenciamento e aprovação/recusa de solicitações de empréstimo",
-        "Controle de prazos de devolução e histórico de renovações",
-        "Gestão de usuários (bloqueio, liberação e controle de acessos)"
+        "Cadastro, edição e organização do acervo de livros e categorias",
+        "Gerenciamento de empréstimos (aceitar ou recusar solicitações)",
+        "Controle de devoluções, prazos e aplicação de bloqueios a usuários",
+        "Gestão completa de usuários e histórico da biblioteca"
       ],
       funcionalidadesUsuario: [
-        "Exploração do catálogo completo de livros disponíveis",
-        "Solicitação online de empréstimos e reservas de títulos",
-        "Avaliação, notas e comentários comunitários sobre as obras",
-        "Painel do leitor para acompanhamento de empréstimos ativos",
-        "Algoritmo de recomendação com base nas preferências de leitura"
+        "Exploração do catálogo digital completo de livros",
+        "Solicitação de empréstimos e reservas diretamente pelo sistema",
+        "Espaço interativo para avaliações, notas e comentários em cada obra",
+        "Painel do leitor com histórico e recomendações personalizadas"
       ]
     }
   },
   {
-    id: "tcc-plataforma-adaptativa",
-    titulo: "Plataforma Adaptativa de Conhecimento",
-    subtitulo: "Aprendizagem Personalizada Baseada em Eventos Reais",
-    pitch: "Plataforma de aprendizagem que utiliza notícias do mundo real como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao repertório individual do usuário.",
+    id: "wisen",
+    titulo: "Wisen",
+    subtitulo: "Plataforma Adaptativa de Conhecimento Baseada em Eventos",
+    pitch: "Plataforma que utiliza notícias reais como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao nível individual de cada leitor.",
     imagemUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200",
     tagEsquerda: "03 · TCC SENAI",
     tagDireita: "EM DESENVOLVIMENTO",
     bgCor: "bg-[#0f172a]",
     textCor: "text-white",
     tecnologias: ["Next.js", "Node.js", "SQL", "Grafo de Conhecimento"],
-    problema: "Notícias atuais frequentemente exigem pré-requisitos não explicados (ex: COPOM, Selic, Juros), dificultando o entendimento do leitor e criando lacunas de conhecimento.",
-    solucao: "Mapeamento automático de conceitos via Grafo de Conhecimento para cruzar o nível do usuário e entregar explicações personalizadas sem repetições redundantes.",
-    papel: "Pesquisador & Desenvolvedor Principal (TCC)",
-    linkGithub: "https://github.com/seu-usuario/tcc-adaptativo",
-    linkDeploy: "",
+    problema: "Notícias frequentemente utilizam termos e conceitos complexos sem explicá-los, gerando lacunas de compreensão para o leitor.",
+    solucao: "Mapeamento em Grafo de Conhecimento que cruza o histórico do usuário para entregar explicações sob medida, sem repetições redundantes.",
+    papel: "Pesquisadora & Desenvolvedora Principal (TCC)",
+    linkGithub: "https://github.com/seu-usuario/wisen",
 
-    // INFORMAÇÕES DETALHADAS PARA O CARD DE "SAIBA MAIS" (MODAL/DETALHES)
     detalhes: {
       periodo: "2025 — TCC",
       tipo: "Trabalho de Conclusão de Curso (SENAI)",
       cicloAprendizado: "Notícias → Eventos → Conceitos → Histórico do Usuário → Conteúdo Personalizado → Aprendizado",
-      diferencial: "A mesma notícia gera explicações diferentes para cada pessoa. Se o usuário já domina conceitos básicos (ex: inflação e juros), o sistema foca diretamente nas lacunas de conhecimento ainda não aprendidas.",
+      diferencial: "A mesma notícia gera explicações diferentes para cada pessoa. Se o usuário já domina conceitos básicos, o WiseN foca diretamente nas suas lacunas de aprendizado.",
       aplicacoes: [
-        "Educação Contextual: Ensino de conceitos a partir de acontecimentos do mundo real",
-        "Compreensão de Atualidades: Auxílio na leitura de notícias complexas",
-        "Aprendizado Adaptativo: Respeita o ritmo e histórico prévio individual",
-        "Mapeamento de Lacunas: Identificação e recomendação ativa de revisões necessárias",
+        "Educação Contextual: Ensino de conceitos a partir de acontecimentos reais",
+        "Compreensão de Atualidades: Leitura facilitada de notícias complexas",
+        "Aprendizado Adaptativo: Respeita o ritmo e conhecimento prévio individual",
+        "Revisão Inteligente: Identifica conteúdos que precisam ser revisados",
         "Grafo de Conhecimento: Navegação interativa entre conceitos, entidades e eventos relacionados"
       ]
     }

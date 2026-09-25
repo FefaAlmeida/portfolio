@@ -13,7 +13,7 @@ export default function About() {
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-[#d6cec0] shadow-sm">
             <img
-              src="/sua-foto.jpg" // Substitua pelo caminho da sua imagem
+              src="/foto_perfil.jpeg" // Substitua pelo caminho da sua imagem
               alt="Fernanda Monteiro"
               className="w-full h-full object-cover"
             />

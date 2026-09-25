@@ -38,7 +38,7 @@ export const EXPERIENCIAS = [
       "Produção de álbuns afetivos personalizados de recordação",
       "Organização de evento comunitário com salas de artes, mágica e espaço cultural"
     ],
-    imagemUrl: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200",
+    imagemUrl: "/nossa_casinha.jpeg",
     tags: ["Inclusão Social", "Voluntariado", "Organização de Eventos", "Empatia"]
   },
   {
@@ -59,7 +59,7 @@ export const EXPERIENCIAS = [
       "Aulas online semanais focadas em pensamento crítico e atualidades",
       "Liderança do evento 'Construindo Sonhos' focado em objetivos futuros dos alunos"
     ],
-    imagemUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200",
+    imagemUrl: "/mat_mov.jpeg",
     tags: ["Docência", "Educação Social", "Liderança", "Oratória"]
   },
   {
@@ -80,7 +80,7 @@ export const EXPERIENCIAS = [
       "Produção e apresentação de vídeos explicativos para mídias digitais",
       "Liderança na organização de workshops reunindo especialistas na área"
     ],
-    imagemUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200",
+    imagemUrl: "/logo_vaf.jpeg",
     tags: ["Pesquisa", "Redação Crítica", "Gestão de Equipe", "Jornalismo"]
   },
   {
@@ -101,7 +101,7 @@ export const EXPERIENCIAS = [
       "Design editorial organizado e limpo voltado para pais, alunos e gestão",
       "Planejamento de expansão do formato impresso para uma plataforma web autônoma"
     ],
-    imagemUrl: "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?q=80&w=1200",
+    imagemUrl: "/jornal_sesi.jpeg",
     tags: ["Design Editorial", "Liderança", "Comunicação Interna", "UI/UX"]
   }
 ]
