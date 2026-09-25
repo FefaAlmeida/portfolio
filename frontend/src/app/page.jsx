@@ -3,7 +3,8 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import About from "@/components/sobreMim";
 import ArticlePreviewCard from "@/components/card";
-import Premios from "@/components/premios"; // Importando o novo componente de Prêmios
+import Experiencias from "@/components/experiencia";
+import Premios from "@/components/premios";
 import { PROJETOS } from "@/data/projetos";
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
 
         <div className="relative max-w-7xl mx-auto space-y-12">
           
-          {/* CABEÇALHO DA SEÇÃO (Tag, Título e Subtítulo) */}
+          {/* CABEÇALHO DA SEÇÃO */}
           <div className="max-w-2xl mx-auto text-center space-y-4">
             
             {/* TAG SUPERIOR */}
@@ -51,6 +52,9 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* SEÇÃO DE EXPERIÊNCIAS EXTRACURRICULARES */}
+      <Experiencias />
 
       {/* SEÇÃO DE PRÊMIOS E CONQUISTAS */}
       <Premios />
