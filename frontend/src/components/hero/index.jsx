@@ -1,11 +1,14 @@
 import { ArrowDownRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BubbleField from "@/components/bubble-field";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="min-h-screen bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] flex flex-col justify-between px-6 pb-8 pt-28 md:px-16 md:pb-12 md:pt-32 select-none">
+    <section id="inicio" className="relative overflow-hidden min-h-screen bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] flex flex-col justify-between px-6 pb-8 pt-28 md:px-16 md:pb-12 md:pt-32 select-none">
+      <BubbleField />
+
       {/* 1. Título Principal (Serifado & Responsivo) */}
-      <div className="my-auto py-12">
+      <div className="relative z-10 my-auto py-12">
         <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.95] tracking-tight font-normal text-[#221f1e] dark:text-[#f5ede6]">
           Transformando aprendizado em <br className="hidden sm:block" />
           projetos e <span className="text-[#c85266] dark:text-[#ef8799]">conquistas.</span>
@@ -13,7 +16,7 @@ export default function Hero() {
       </div>
 
       {/* 2. Navegação para o conteúdo */}
-      <div className="flex flex-col justify-end gap-3 sm:flex-row">
+      <div className="relative z-10 flex flex-col justify-end gap-3 sm:flex-row">
         <Button
           asChild
           className="group h-13 rounded-none border border-[#c85266] dark:border-[#ef8799] bg-[#c85266] dark:bg-[#bd536b] px-6 text-[15px] font-medium text-white shadow-none hover:bg-[#b34356] dark:hover:bg-[#a94058]"
