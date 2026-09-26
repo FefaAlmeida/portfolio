@@ -169,7 +169,6 @@ section[id] {
   justify-content: space-between;
   gap: 18px;
   padding: 8px clamp(20px, 4vw, 64px);
-  border-bottom: 1px solid #e2dacb;
   transition:
     background-color 400ms ease,
     border-color 400ms ease;
@@ -203,15 +202,7 @@ section[id] {
 }
 
 .site-header-scrolled .site-logo {
-  padding: 9px 17px;
-  border-color: rgba(200, 82, 102, 0.22);
-  background: rgba(244, 238, 225, 0.9);
-  box-shadow:
-    0 14px 38px rgba(40, 29, 26, 0.16),
-    inset 0 1px rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transform: translateY(2px);
+  background: transparent;
   pointer-events: auto;
 }
 
@@ -330,13 +321,7 @@ section[id] {
 .site-header-scrolled .site-icon-button:not(.site-menu-button) {
   width: 52px;
   height: 52px;
-  border-color: rgba(200, 82, 102, 0.22);
-  background: rgba(244, 238, 225, 0.9);
-  box-shadow:
-    0 14px 38px rgba(40, 29, 26, 0.16),
-    inset 0 1px rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: transparent;
 }
 
 .site-menu-button,
@@ -346,7 +331,6 @@ section[id] {
 
 .site-nav-mobile {
   padding: 8px 16px 14px;
-  border-bottom: 1px solid #e2dacb;
   box-shadow: 0 12px 18px rgba(40, 29, 26, 0.06);
 }
 
@@ -385,15 +369,6 @@ section[id] {
     inset 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.dark .site-header-scrolled .site-logo,
-.dark .site-header-scrolled .site-icon-button:not(.site-menu-button) {
-  border-color: rgba(239, 135, 153, 0.24);
-  background: rgba(35, 28, 32, 0.9);
-  box-shadow:
-    0 14px 38px rgba(0, 0, 0, 0.28),
-    inset 0 1px rgba(255, 255, 255, 0.06);
-}
-
 .dark .site-logo-accent,
 .dark .nav-link:hover,
 .dark .site-icon-button:hover {
@@ -403,6 +378,30 @@ section[id] {
 .dark .nav-link,
 .dark .site-icon-button {
   color: #d0bfc2;
+}
+
+.site-theme-button,
+.site-theme-button:hover {
+  color: #231c20;
+  background: transparent;
+}
+
+.dark .site-theme-button,
+.dark .site-theme-button:hover {
+  color: #f4eee1;
+}
+
+:root:not(.dark) .site-header-over-projects .site-logo {
+  color: #fff;
+}
+
+:root:not(.dark) .site-header-over-projects .site-theme-button {
+  color: #F4EEE1;
+}
+
+.dark .site-header-over-projects .site-logo,
+.dark .site-header-over-projects .site-theme-button {
+  color: #231C20;
 }
 
 .dark .nav-link-active,

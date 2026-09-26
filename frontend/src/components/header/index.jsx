@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { id: "inicio", label: "Início" },
@@ -16,6 +16,8 @@ export default function Header() {
   const [isDark, setIsDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [overProjects, setOverProjects] = useState(false);
+  const headerInnerRef = useRef(null);
 
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
@@ -26,6 +28,20 @@ export default function Header() {
       frame = requestAnimationFrame(() => {
         const hasScrolled = window.scrollY > 48;
         setScrolled(hasScrolled);
+        const projects = document.getElementById("projetos");
+        const headerBounds = headerInnerRef.current?.getBoundingClientRect();
+        const projectsBounds = projects?.getBoundingClientRect();
+        const headerMidpoint = headerBounds
+          ? headerBounds.top + headerBounds.height / 2
+          : 0;
+        setOverProjects(
+          Boolean(
+            hasScrolled &&
+              projectsBounds &&
+              projectsBounds.top <= headerMidpoint &&
+              projectsBounds.bottom > headerMidpoint,
+          ),
+        );
         if (hasScrolled) setMenuOpen(false);
         const threshold = window.innerHeight * 0.38;
         let current = "inicio";
@@ -79,8 +95,10 @@ export default function Header() {
     ));
 
   return (
-    <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
-      <div className="site-header-inner">
+    <header
+      className={`site-header ${scrolled ? "site-header-scrolled" : ""} ${overProjects ? "site-header-over-projects" : ""}`}
+    >
+      <div ref={headerInnerRef} className="site-header-inner">
         <button
           type="button"
           className="site-logo font-serif"
@@ -98,14 +116,14 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="site-icon-button"
+            className="site-icon-button site-theme-button"
             aria-label={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
             title={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
           >
             {isDark ? (
-              <Sun size={19} aria-hidden="true" />
+              <Sun size={21} fill="currentColor" aria-hidden="true" />
             ) : (
-              <Moon size={19} aria-hidden="true" />
+              <Moon size={21} fill="currentColor" aria-hidden="true" />
             )}
           </button>
           <button

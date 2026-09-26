@@ -5,6 +5,7 @@ export const PROJETOS = [
     subtitulo: "Plataforma de Gestão e Acessibilidade a Energia Solar",
     pitch: "Plataforma centralizada que viabiliza a transição energética ao baratear o acesso a painéis solares e simplificar o monitoramento em tempo real do parque solar.",
     imagemUrl: "/luminar_logo.jpeg",
+    imagemBg: "#FEFEFE",
     tagEsquerda: "02 · Projeto Integrador",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#1f2937]",
@@ -43,6 +44,7 @@ export const PROJETOS = [
     subtitulo: "Sistema Inteligente de Gestão de Bibliotecas",
     pitch: "Plataforma para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa.",
     imagemUrl: "/lector_hub_logo.jpeg",
+    imagemBg: "#460D14",
     tagEsquerda: "01 · Projeto Acadêmico",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#18181b]",
@@ -77,6 +79,7 @@ export const PROJETOS = [
     subtitulo: "Plataforma Adaptativa de Conhecimento Baseada em Eventos",
     pitch: "Plataforma que utiliza notícias reais como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao nível individual de cada leitor.",
     imagemUrl: "/wisen_logo.jpeg",
+    imagemBg: "#DAD6CF",
     tagEsquerda: "03 · TCC SENAI",
     tagDireita: "EM DESENVOLVIMENTO",
     bgCor: "bg-[#0f172a]",
@@ -107,6 +110,7 @@ export const PROJETOS = [
     subtitulo: "Aplicativo Mobile para Gestão de Pedidos e Redução de Filas",
     pitch: "Aplicativo Android intuitivo desenvolvido para eliminar filas na cantina do SENAI, otimizando a escolha, personalização e realização de pedidos.",
     imagemUrl: "/snack_point.jpeg",
+    imagemBg: "#6F7B67",
     tagEsquerda: "04 · Projeto Mobile",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#27272a]",
@@ -177,4 +181,3 @@ export const premios = [
     descricao: "Certificado de leitor destaque concedido pela Biblioteca SESI 222 em reconhecimento ao engajamento com a leitura em 2025."
   }
 ]
-

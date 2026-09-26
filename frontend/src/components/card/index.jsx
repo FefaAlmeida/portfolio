@@ -27,7 +27,7 @@ const ArticlePreviewCard = ({ projeto }) => {
           className="w-full cursor-pointer"
         >
           {/* CARD EM BEGE (#f4eee1) COM BORDA SUTIL */}
-          <Card className="group relative flex flex-col justify-between overflow-hidden border border-[#e2dacb] dark:border-[#493b41] rounded-2xl bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] p-0 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-[450px]">
+          <Card className="group relative flex flex-col justify-between overflow-hidden border border-[#e2dacb] dark:border-[#493b41] rounded-2xl bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] p-0 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-[482px]">
             
             {/* HOVER OVERLAY EM ROSA TRANSLÚCIDO */}
             <div className="absolute inset-0 z-30 flex items-center justify-center bg-[#c85266]/70 dark:bg-[#ad4861]/75 opacity-0 backdrop-blur-[1px] transition-all duration-300 group-hover:opacity-100">
@@ -36,13 +36,18 @@ const ArticlePreviewCard = ({ projeto }) => {
               </span>
             </div>
 
-            {/* 1. IMAGEM DE CAPA LIMPA E NÍTIDA (SEM GRADIENTE QUE LAVA A FOTO) */}
-            <div className="relative h-44 w-full overflow-hidden bg-[#e2dacb] dark:bg-[#493b41] shrink-0 border-b border-[#e2dacb] dark:border-[#493b41]">
-              <img
-                src={projeto.imagemUrl || 'https://images.shadcnspace.com/assets/blog/blog-img12.jpg'}
-                alt={projeto.titulo || 'Imagem do projeto'}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+            {/* Fundo sólido correspondente ao fundo de cada logo. */}
+            <div
+              className="relative h-52 w-full overflow-hidden shrink-0 border-b border-[#e2dacb] dark:border-[#493b41]"
+              style={{ backgroundColor: projeto.imagemBg || '#f4eee1' }}
+            >
+              <div className="flex h-full w-full items-center justify-center px-6 py-3">
+                <img
+                  src={projeto.imagemUrl || 'https://images.shadcnspace.com/assets/blog/blog-img12.jpg'}
+                  alt={projeto.titulo || 'Imagem do projeto'}
+                  className="block max-h-full max-w-full object-contain object-center"
+                />
+              </div>
             </div>
 
             {/* 2. CONTEÚDO DO CARD */}
