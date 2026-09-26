@@ -2,13 +2,20 @@
 
 import React from 'react'
 import { Card } from '@/components/ui/card'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { motion } from 'framer-motion'
 
 const ArticlePreviewCard = ({ projeto }) => {
   if (!projeto) return null
 
   const { detalhes } = projeto
+  const secoes = [
+    { titulo: 'O problema', texto: projeto.problema },
+    { titulo: 'A solução', texto: projeto.solucao },
+    { titulo: 'Meu papel', texto: projeto.papel },
+    { titulo: 'Modelo de negócio', texto: detalhes?.modeloNegocio },
+    { titulo: 'Diferencial', texto: detalhes?.diferencial },
+  ].filter(({ texto }) => texto)
 
   return (
     <Dialog>
@@ -22,9 +29,9 @@ const ArticlePreviewCard = ({ projeto }) => {
           {/* CARD EM BEGE (#f4eee1) COM BORDA SUTIL */}
           <Card className="group relative flex flex-col justify-between overflow-hidden border border-[#e2dacb] dark:border-[#493b41] rounded-2xl bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] p-0 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-[450px]">
             
-            {/* HOVER OVERLAY EM ROSA (#c85266) QUE SÓ APARECE AO PASSAR O MOUSE */}
-            <div className="absolute inset-0 z-30 flex items-center justify-center bg-[#c85266]/90 dark:bg-[#ad4861]/90 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100">
-              <span className="rounded-full border border-[#f4eee1] bg-[#f4eee1]/20 px-6 py-2 text-sm font-medium tracking-wider text-[#f4eee1] backdrop-blur-md">
+            {/* HOVER OVERLAY EM ROSA TRANSLÚCIDO */}
+            <div className="absolute inset-0 z-30 flex items-center justify-center bg-[#c85266]/70 dark:bg-[#ad4861]/75 opacity-0 backdrop-blur-[1px] transition-all duration-300 group-hover:opacity-100">
+              <span className="rounded-lg bg-white px-9 py-3.5 font-serif text-lg font-medium leading-none tracking-normal text-[#b9435c] shadow-[0_4px_12px_rgba(76,25,39,0.12)]">
                 Saiba mais
               </span>
             </div>
@@ -77,104 +84,80 @@ const ArticlePreviewCard = ({ projeto }) => {
       </DialogTrigger>
 
       {/* MODAL DE DETALHES */}
-      <DialogContent className="sm:max-w-2xl md:max-w-3xl w-full border-[#e2dacb] dark:border-[#493b41] bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] p-6 sm:p-8 max-h-[85vh] overflow-y-auto rounded-3xl">
-        <div className="space-y-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#c85266] dark:text-[#ef8799]">
-              <span>{projeto.tagEsquerda} — {projeto.tagDireita}</span>
-              {detalhes?.periodo && <span>• {detalhes.periodo}</span>}
-            </div>
-            <h2 className="mt-1 font-serif text-2xl sm:text-4xl font-normal text-[#221f1e] dark:text-[#f5ede6]">{projeto.titulo}</h2>
-            {projeto.subtitulo && (
-              <p className="text-xs sm:text-sm text-[#73685f] dark:text-[#baaaa8] mt-1">{projeto.subtitulo}</p>
-            )}
+      <DialogContent className="project-dialog-scroll w-full max-h-[88vh] gap-0 overflow-y-auto rounded-[28px] border border-[#e4d8cf] bg-[#fbf7f0] p-0 font-[family-name:var(--font-geist-sans)] text-[#221f1e] shadow-[0_24px_70px_rgba(38,24,25,0.18)] dark:border-[#59454a] dark:bg-[#231c20] dark:text-[#f5ede6] sm:max-w-2xl md:max-w-3xl">
+        <header className="border-b border-[#eadbd8] bg-[#f7ebe8] px-6 pb-7 pt-9 dark:border-[#493b41] dark:bg-[#302329] sm:px-10 sm:pb-8 sm:pt-10">
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pr-8 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b9435c] dark:text-[#ef8799]">
+            <span>{projeto.tagEsquerda}</span>
+            <span aria-hidden="true">·</span>
+            <span>{projeto.tagDireita}</span>
+            {detalhes?.periodo && <span className="text-[#8c7775] dark:text-[#baaaa8]">/ {detalhes.periodo}</span>}
           </div>
-          
-          <div className="space-y-4">
-            {projeto.problema && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799]">O Problema</h4>
-                <p className="text-[#524b45] dark:text-[#c8b8b7] text-xs sm:text-sm leading-relaxed mt-1">{projeto.problema}</p>
-              </div>
-            )}
+          <DialogTitle className="mt-4 font-serif text-4xl font-normal leading-tight tracking-tight sm:text-5xl">
+            {projeto.titulo}
+          </DialogTitle>
+          {projeto.subtitulo && (
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#695d58] dark:text-[#c8b8b7] sm:text-base">{projeto.subtitulo}</p>
+          )}
+        </header>
 
-            {projeto.solucao && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799]">A Solução</h4>
-                <p className="text-[#524b45] dark:text-[#c8b8b7] text-xs sm:text-sm leading-relaxed mt-1">{projeto.solucao}</p>
-              </div>
-            )}
+        <div className="px-6 pb-8 pt-7 sm:px-10 sm:pb-10 sm:pt-8">
+          <div className="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+            {secoes.map(({ titulo, texto }) => (
+              <section key={titulo} className="border-l-2 border-[#c85266]/50 pl-4 dark:border-[#ef8799]/50">
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#b9435c] dark:text-[#ef8799]">{titulo}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#4f4843] dark:text-[#d4c8c3] sm:text-[15px]">{texto}</p>
+              </section>
+            ))}
+          </div>
 
-            {projeto.papel && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799]">Meu Papel</h4>
-                <p className="text-[#524b45] dark:text-[#c8b8b7] text-xs sm:text-sm leading-relaxed mt-1">{projeto.papel}</p>
-              </div>
-            )}
-
-            {detalhes?.modeloNegocio && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799]">Modelo de Negócio</h4>
-                <p className="text-[#524b45] dark:text-[#c8b8b7] text-xs sm:text-sm leading-relaxed mt-1">{detalhes.modeloNegocio}</p>
-              </div>
-            )}
-
-            {detalhes?.diferencial && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799]">Diferencial</h4>
-                <p className="text-[#524b45] dark:text-[#c8b8b7] text-xs sm:text-sm leading-relaxed mt-1">{detalhes.diferencial}</p>
-              </div>
-            )}
-
-            {(detalhes?.funcionalidadesAdmin || detalhes?.funcionalidadesUsuario) && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                {detalhes?.funcionalidadesAdmin && (
-                  <div className="p-4 rounded-2xl border border-[#e2dacb] dark:border-[#493b41] bg-[#e9e1d1]/50 dark:bg-[#493b41]/50">
-                    <h5 className="font-bold text-xs uppercase text-[#c85266] dark:text-[#ef8799] mb-2">Painel Admin</h5>
-                    <ul className="list-disc list-inside text-xs text-[#524b45] dark:text-[#c8b8b7] space-y-1">
-                      {detalhes.funcionalidadesAdmin.map((f, i) => (
-                        <li key={i}>{f}</li>
+          {(detalhes?.funcionalidadesAdmin || detalhes?.funcionalidadesUsuario) && (
+            <section className="mt-9 border-t border-[#e9ded6] pt-7 dark:border-[#493b41]">
+              <h3 className="font-serif text-2xl text-[#221f1e] dark:text-[#f5ede6]">Funcionalidades</h3>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {[
+                  { titulo: 'Painel admin', itens: detalhes?.funcionalidadesAdmin },
+                  { titulo: 'Painel usuário', itens: detalhes?.funcionalidadesUsuario },
+                ].filter(({ itens }) => itens).map(({ titulo, itens }) => (
+                  <div key={titulo} className="rounded-2xl border border-[#eadfd6] bg-white/65 p-5 dark:border-[#59454a] dark:bg-[#34272c]">
+                    <h4 className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#b9435c] dark:text-[#ef8799]">{titulo}</h4>
+                    <ul className="mt-4 space-y-3 text-sm leading-5 text-[#4f4843] dark:text-[#d4c8c3]">
+                      {itens.map((item) => (
+                        <li key={item} className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c85266] dark:bg-[#ef8799]" />{item}</li>
                       ))}
                     </ul>
                   </div>
-                )}
-                {detalhes?.funcionalidadesUsuario && (
-                  <div className="p-4 rounded-2xl border border-[#e2dacb] dark:border-[#493b41] bg-[#e9e1d1]/50 dark:bg-[#493b41]/50">
-                    <h5 className="font-bold text-xs uppercase text-[#221f1e] dark:text-[#f5ede6] mb-2">Painel Usuário</h5>
-                    <ul className="list-disc list-inside text-xs text-[#524b45] dark:text-[#c8b8b7] space-y-1">
-                      {detalhes.funcionalidadesUsuario.map((f, i) => (
-                        <li key={i}>{f}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                ))}
               </div>
-            )}
+            </section>
+          )}
 
-            {detalhes?.aplicacoes && (
-              <div>
-                <h4 className="font-bold text-xs uppercase tracking-wider text-[#c85266] dark:text-[#ef8799] mb-1">Aplicações Práticas</h4>
-                <ul className="list-disc list-inside text-xs sm:text-sm text-[#524b45] dark:text-[#c8b8b7] space-y-1">
-                  {detalhes.aplicacoes.map((app, i) => (
-                    <li key={i}>{app}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-          
-          <div className="flex gap-4 pt-4 border-t border-[#e2dacb] dark:border-[#493b41]">
-            {projeto.linkGithub && (
-              <a href={projeto.linkGithub} target="_blank" rel="noreferrer" className="text-xs sm:text-sm font-semibold text-[#c85266] dark:text-[#ef8799] hover:underline">
-                Ver Código Fonte →
-              </a>
-            )}
-            {projeto.linkDeploy && (
-              <a href={projeto.linkDeploy} target="_blank" rel="noreferrer" className="text-xs sm:text-sm font-semibold text-[#c85266] dark:text-[#ef8799] hover:underline">
-                Visitar Plataforma →
-              </a>
-            )}
-          </div>
+          {detalhes?.aplicacoes && (
+            <section className="mt-9 border-t border-[#e9ded6] pt-7 dark:border-[#493b41]">
+              <h3 className="font-serif text-2xl text-[#221f1e] dark:text-[#f5ede6]">Aplicações práticas</h3>
+              <ul className="mt-4 divide-y divide-[#e9ded6] dark:divide-[#493b41]">
+                {detalhes.aplicacoes.map((app) => (
+                  <li key={app} className="flex gap-3 py-3 text-sm leading-6 text-[#4f4843] dark:text-[#d4c8c3]">
+                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c85266] dark:bg-[#ef8799]" />{app}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {(projeto.linkGithub || projeto.linkDeploy) && (
+            <footer className="mt-8 flex flex-wrap gap-3 border-t border-[#e9ded6] pt-6 dark:border-[#493b41]">
+              {projeto.linkGithub && (
+                <a href={projeto.linkGithub} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg bg-[#c85266] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#ad4861] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c85266]">
+                  Ver código fonte ↗
+                </a>
+              )}
+              {projeto.linkDeploy && (
+                <a href={projeto.linkDeploy} target="_blank" rel="noreferrer" className="inline-flex items-center rounded-lg border border-[#c85266]/35 px-5 py-2.5 text-sm font-semibold text-[#b9435c] transition-colors hover:bg-[#c85266]/10 dark:text-[#ef8799]">
+                  Visitar plataforma ↗
+                </a>
+              )}
+            </footer>
+          )}
         </div>
       </DialogContent>
     </Dialog>
