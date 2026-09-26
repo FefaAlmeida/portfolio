@@ -42,39 +42,39 @@ export default function Premios({ premiosData }) {
 
   return (
     /* FUNDO ROSA CLARINHO (#f8e1e7) COM TEXTOS EM TOM ESCURO (#221f1e) */
-    <section id="premios" className="w-full bg-[#f8e1e7] text-[#221f1e] py-20 px-4 sm:px-8 md:px-12 select-none overflow-hidden">
+    <section id="premios" className="w-full bg-[#f8e1e7] dark:bg-[#30222a] text-[#221f1e] dark:text-[#f5ede6] py-20 px-4 sm:px-8 md:px-12 select-none overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* CABEÇALHO DA SEÇÃO */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#ebcad2] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#ebcad2] dark:border-[#674650] pb-8">
           <div className="space-y-2">
-            <span className="text-xs md:text-sm tracking-[0.25em] uppercase text-[#c85266] font-semibold block">
+            <span className="text-xs md:text-sm tracking-[0.25em] uppercase text-[#c85266] dark:text-[#ef8799] font-semibold block">
               05 · RECONHECIMENTOS
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#221f1e] tracking-tight">
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#221f1e] dark:text-[#f5ede6] tracking-tight">
               Prêmios e Conquistas
             </h2>
           </div>
         </div>
 
         {/* GRID DE CARDS COM BORDAS EM ROSA SUAVE E HOVER LEVE */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[#ebcad2]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[#ebcad2] dark:border-[#674650]">
           {listaPremios.map((item) => (
             <div
               key={item.id}
-              className="group border-b border-r border-[#ebcad2] p-8 sm:p-10 flex flex-col justify-between space-y-6 hover:bg-[#f3d3dc] transition-colors duration-300 min-h-[220px]"
+              className="group border-b border-r border-[#ebcad2] dark:border-[#674650] p-8 sm:p-10 flex flex-col justify-between space-y-6 hover:bg-[#f3d3dc] dark:hover:bg-[#432e38] transition-colors duration-300 min-h-[220px]"
             >
               {/* CATEGORIA / NÚMERO EM ROSA DESTAQUE */}
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#c85266] block">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#c85266] dark:text-[#ef8799] block">
                 {item.id} · {item.categoria}
               </span>
 
               {/* TÍTULO E DESCRIÇÃO */}
               <div className="space-y-3 my-auto">
-                <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#221f1e] group-hover:translate-x-1 group-hover:text-[#c85266] transition-all duration-300 leading-snug">
+                <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#221f1e] dark:text-[#f5ede6] group-hover:translate-x-1 group-hover:text-[#c85266] dark:group-hover:text-[#ef8799] transition-all duration-300 leading-snug">
                   {item.titulo}
                 </h3>
-                <p className="text-xs sm:text-sm font-sans leading-relaxed text-[#524b45] font-normal">
+                <p className="text-xs sm:text-sm font-sans leading-relaxed text-[#524b45] dark:text-[#c8b8b7] font-normal">
                   {item.descricao}
                 </p>
               </div>

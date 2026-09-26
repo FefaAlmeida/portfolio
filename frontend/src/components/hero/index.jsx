@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-[#f4eee1] text-[#221f1e] flex flex-col justify-between px-6 py-8 md:px-16 md:py-12 select-none">
+    <section id="inicio" className="min-h-screen bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] flex flex-col justify-between px-6 pb-8 pt-28 md:px-16 md:pb-12 md:pt-32 select-none">
       {/* 1. Título Principal (Serifado & Responsivo) */}
       <div className="my-auto py-12">
-        <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.95] tracking-tight font-normal text-[#221f1e]">
+        <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[110px] leading-[0.95] tracking-tight font-normal text-[#221f1e] dark:text-[#f5ede6]">
           Transformando aprendizado em <br className="hidden sm:block" />
-          projetos e <span className="text-[#c85266]">conquistas.</span>
+          projetos e <span className="text-[#c85266] dark:text-[#ef8799]">conquistas.</span>
         </h1>
       </div>
 
@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="flex flex-col justify-end gap-3 sm:flex-row">
         <Button
           asChild
-          className="group h-13 rounded-none border border-[#c85266] bg-[#c85266] px-6 text-[15px] font-medium text-white shadow-none hover:bg-[#b34356]"
+          className="group h-13 rounded-none border border-[#c85266] dark:border-[#ef8799] bg-[#c85266] dark:bg-[#bd536b] px-6 text-[15px] font-medium text-white shadow-none hover:bg-[#b34356] dark:hover:bg-[#a94058]"
         >
           <a href="#projetos">
             Ver projetos
@@ -27,7 +27,7 @@ export default function Hero() {
         <Button
           asChild
           variant="outline"
-          className="group h-13 rounded-none border-[#b9aa98] bg-transparent px-6 text-[15px] font-medium text-[#221f1e] shadow-none hover:border-[#c85266] hover:bg-[#c85266]/5 hover:text-[#c85266]"
+          className="group h-13 rounded-none border-[#b9aa98] dark:border-[#735962] bg-transparent px-6 text-[15px] font-medium text-[#221f1e] dark:text-[#f5ede6] shadow-none hover:border-[#c85266] dark:hover:border-[#ef8799] hover:bg-[#c85266]/5 dark:hover:bg-[#ef8799]/10 hover:text-[#c85266] dark:hover:text-[#ef8799]"
         >
           <a href="#premios">
             Ver prêmios

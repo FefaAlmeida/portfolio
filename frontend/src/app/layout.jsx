@@ -26,8 +26,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
+      <head>
+        <script src="/theme-init.js" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

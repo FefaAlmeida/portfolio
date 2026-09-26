@@ -1,62 +1,141 @@
-import * as React from "react"
-import { Moon } from "lucide-react"
-import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
+"use client";
+
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const links = [
+  { id: "inicio", label: "Início" },
+  { id: "sobre", label: "Sobre" },
+  { id: "projetos", label: "Projetos" },
+  { id: "experiencias", label: "Experiência" },
+  { id: "premios", label: "Prêmios" },
+];
 
 export default function Header() {
-  return (
-    <header className="w-full bg-[#f4eee1] px-6 py-4 flex items-center justify-between text-[#221f1e] border-b border-[#e2dacb] select-none">
-      
-      {/* Logótipo */}
-      <a href="#" className="font-serif text-2xl font-bold hover:opacity-80 transition-opacity">
-        Fernanda Monteiro.
-      </a>
+  const [activeSection, setActiveSection] = useState("inicio");
+  const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-      {/* Menu de Navegação */}
-      <Menubar className="hidden md:flex border-none bg-transparent shadow-none gap-2">
-        <MenubarMenu>
-          <MenubarTrigger className="text-[15px] text-[#524b45] hover:text-[#221f1e] cursor-pointer">
-            <a href="#projetos">Projetos</a>
-          </MenubarTrigger>
-        </MenubarMenu>
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
 
-        <MenubarMenu>
-          <MenubarTrigger className="text-[15px] text-[#524b45] hover:text-[#221f1e] cursor-pointer">
-            <a href="#experiencia">Experiência</a>
-          </MenubarTrigger>
-        </MenubarMenu>
+    let frame = 0;
+    const updateActiveSection = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 32);
+        const threshold = window.innerHeight * 0.38;
+        let current = "inicio";
 
-        <MenubarMenu>
-          <MenubarTrigger className="text-[15px] text-[#524b45] hover:text-[#221f1e] cursor-pointer">
-            <a href="#premios">Prêmios</a>
-          </MenubarTrigger>
-        </MenubarMenu>
-        
-        <MenubarMenu>
-          <MenubarTrigger className="text-[15px] text-[#524b45] hover:text-[#221f1e] cursor-pointer">
-            <a href="#sobre">Sobre</a>
-          </MenubarTrigger>
-        </MenubarMenu>
-        
-        <MenubarMenu>
-          <MenubarTrigger className="text-[15px] text-[#524b45] hover:text-[#221f1e] cursor-pointer">
-            <a href="#contato">Contato</a>
-          </MenubarTrigger>
-        </MenubarMenu>
-      </Menubar>
+        for (const link of links) {
+          const section = document.getElementById(link.id);
+          if (section && section.getBoundingClientRect().top <= threshold) {
+            current = link.id;
+          }
+        }
 
-      {/* Botão de Modo Noturno */}
-      <button 
-        aria-label="Alternar modo noturno"
-        className="flex items-center gap-2 px-3 py-1.5 text-xs text-[#524b45] border border-[#d6cec0] rounded-sm hover:bg-[#e8dece] hover:text-[#221f1e] transition-colors cursor-pointer"
+        setActiveSection(current);
+      });
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
+  const toggleTheme = () => {
+    const nextDark = !isDark;
+    document.documentElement.classList.toggle("dark", nextDark);
+    try {
+      localStorage.setItem("portfolio-theme", nextDark ? "dark" : "light");
+    } catch {
+      // The toggle still works when browser storage is unavailable.
+    }
+    setIsDark(nextDark);
+  };
+
+  const navLinks = (mobile = false) =>
+    links.map(({ id, label }) => (
+      <a
+        key={id}
+        href={`#${id}`}
+        aria-current={activeSection === id ? "location" : undefined}
+        onClick={() => {
+          setMenuOpen(false);
+        }}
+        className={`nav-link ${activeSection === id ? "nav-link-active" : ""} ${mobile ? "nav-link-mobile" : ""}`}
       >
-        <Moon className="w-3.5 h-3.5" />
-        <span>Modo Noturno</span>
-      </button>
+        {label}
+      </a>
+    ));
 
+  return (
+    <header className={`site-header ${scrolled ? "site-header-scrolled" : ""}`}>
+      <div className="site-header-inner">
+        <button
+          type="button"
+          className="site-logo font-serif"
+          onClick={() => {
+            document
+              .getElementById("inicio")
+              ?.scrollIntoView({ behavior: "smooth" });
+            setMenuOpen(false);
+          }}
+        >
+          Fernanda<span className="site-logo-accent">.</span>
+        </button>
+
+        <nav className="site-nav-desktop" aria-label="Seções do portfólio">
+          {navLinks()}
+        </nav>
+
+        <div className="site-header-actions">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="site-icon-button"
+            aria-label={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
+            title={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
+          >
+            {isDark ? (
+              <Sun size={19} aria-hidden="true" />
+            ) : (
+              <Moon size={19} aria-hidden="true" />
+            )}
+          </button>
+          <button
+            type="button"
+            className="site-icon-button site-menu-button"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? (
+              <X size={21} aria-hidden="true" />
+            ) : (
+              <Menu size={21} aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {menuOpen && (
+        <nav
+          id="mobile-navigation"
+          className="site-nav-mobile"
+          aria-label="Seções do portfólio"
+        >
+          {navLinks(true)}
+        </nav>
+      )}
     </header>
-  )
+  );
 }

@@ -98,7 +98,7 @@ export default function BubbleField({ count = 26 }) {
             }}
           >
             <span
-              className="bubble block rounded-full border border-[#C85266]/70 bg-[#C85266] shadow-[0_4px_14px_rgba(200,82,102,.22)]"
+              className="bubble block rounded-full border border-[#C85266]/70 dark:border-[#ef8799]/70 bg-[#C85266] dark:bg-[#d96b80] shadow-[0_4px_14px_rgba(200,82,102,.22)]"
               style={{
                 height: bubble.size,
                 width: bubble.size,
