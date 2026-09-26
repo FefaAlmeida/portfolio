@@ -23,10 +23,6 @@ export default function Home() {
           
           {/* CABEÇALHO NO PADRÃO MINIMALISTA (IGUAL A FOTO 2) */}
           <div className="border-b border-[#a38f7e]/20 dark:border-[#c8aeb1]/25 pb-8 space-y-3">
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#a38f7e] dark:text-[#c8aeb1] block">
-              03 · TRAJETÓRIA & PORTFÓLIO
-            </span>
-            
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal leading-tight text-[#f4eee1] tracking-tight">
               Projetos & Trabalhos Recentes
             </h2>

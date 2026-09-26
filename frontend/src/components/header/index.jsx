@@ -24,7 +24,9 @@ export default function Header() {
     const updateActiveSection = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 32);
+        const hasScrolled = window.scrollY > 48;
+        setScrolled(hasScrolled);
+        if (hasScrolled) setMenuOpen(false);
         const threshold = window.innerHeight * 0.38;
         let current = "inicio";
 
@@ -92,10 +94,6 @@ export default function Header() {
           Fernanda<span className="site-logo-accent">.</span>
         </button>
 
-        <nav className="site-nav-desktop" aria-label="Seções do portfólio">
-          {navLinks()}
-        </nav>
-
         <div className="site-header-actions">
           <button
             type="button"
@@ -127,7 +125,11 @@ export default function Header() {
         </div>
       </div>
 
-      {menuOpen && (
+      <nav className="site-nav-desktop" aria-label="Seções do portfólio">
+        {navLinks()}
+      </nav>
+
+      {menuOpen && !scrolled && (
         <nav
           id="mobile-navigation"
           className="site-nav-mobile"

@@ -1,138 +1,141 @@
-import React from 'react'
-import { EXPERIENCIAS } from '@/data/experiencias'
+import { EXPERIENCIAS } from "@/data/experiencias";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
+
+const navigationButtonClass =
+  "pointer-events-auto static h-12 w-12 cursor-pointer border border-[#dfd0c7] bg-[#fbf7f0] text-[#221f1e] shadow-md transition-colors hover:border-[#c85266] hover:bg-[#c85266] hover:text-white disabled:border-[#dfd0c7] disabled:bg-[#fbf7f0]/75 disabled:text-[#8a7c75] disabled:opacity-65 dark:border-[#6a5158] dark:bg-[#34272c] dark:text-[#f5ede6] dark:hover:border-[#ef8799] dark:hover:bg-[#bd536b] dark:hover:text-white dark:disabled:border-[#59454a] dark:disabled:bg-[#34272c] dark:disabled:text-[#a99599]";
 
 export default function Experiencias() {
   return (
-    <section id="experiencias" className="w-full bg-[#f4eee1] dark:bg-[#231c20] text-[#221f1e] dark:text-[#f5ede6] py-20 px-6 sm:px-10 md:px-14 border-t border-[#e2dacb] dark:border-[#493b41] select-none overflow-hidden">
+    <section
+      id="experiencias"
+      className="w-full overflow-hidden border-t border-[#e2dacb] bg-[#f4eee1] px-5 py-20 font-[family-name:var(--font-geist-sans)] text-[#221f1e] dark:border-[#493b41] dark:bg-[#231c20] dark:text-[#f5ede6] sm:px-10 md:px-14"
+    >
       <div className="max-w-7xl mx-auto">
-        
-        <Carousel className="w-full">
-          
-          {/* CABEÇALHO DA SEÇÃO COM NAVEGAÇÃO INTEGRADA E ESPAÇADA */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#e2dacb] dark:border-[#493b41] pb-8 mb-10">
-            <div className="space-y-2">
-              <span className="text-xs md:text-sm tracking-[0.25em] uppercase text-[#a38f7e] dark:text-[#c8aeb1] font-semibold block">
-                04 · TRAJETÓRIA & PROTAGONISMO
-              </span>
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#221f1e] dark:text-[#f5ede6]">
-                Projetos Extracurriculares
-              </h2>
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6">
-              <p className="text-sm text-[#524b45] dark:text-[#c8b8b7] max-w-md font-sans leading-relaxed">
-                Iniciativas de liderança, trabalho voluntário, docência e jornalismo jovem em que desempenhei papéis ativos de impacto social e comunitário.
-              </p>
-
-              {/* CONTROLES DE NAVEGAÇÃO COM RESPIRO ADEQUADO */}
-              <div className="flex items-center gap-2 shrink-0 pt-2 sm:pt-0">
-                <CarouselPrevious className="static translate-y-0 border border-[#e2dacb] dark:border-[#493b41] bg-[#f4eee1] dark:bg-[#231c20] hover:bg-[#c85266] dark:hover:bg-[#bd536b] hover:text-white dark:hover:text-white hover:border-[#c85266] dark:hover:border-[#ef8799] text-[#221f1e] dark:text-[#f5ede6] h-11 w-11 transition-all shadow-sm" />
-                <CarouselNext className="static translate-y-0 border border-[#e2dacb] dark:border-[#493b41] bg-[#f4eee1] dark:bg-[#231c20] hover:bg-[#c85266] dark:hover:bg-[#bd536b] hover:text-white dark:hover:text-white hover:border-[#c85266] dark:hover:border-[#ef8799] text-[#221f1e] dark:text-[#f5ede6] h-11 w-11 transition-all shadow-sm" />
-              </div>
-            </div>
+        <Carousel className="w-full" aria-label="Projetos extracurriculares">
+          <div className="mb-9 border-b border-[#e2dacb] pb-8 dark:border-[#493b41]">
+            <h2 className="break-words font-serif text-3xl font-normal leading-tight tracking-tight text-[#221f1e] dark:text-[#f5ede6] sm:text-4xl lg:text-5xl">
+              Projetos Extracurriculares
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-6 text-[#62554f] dark:text-[#c8b8b7] sm:text-base">
+              Iniciativas de liderança, trabalho voluntário, docência e
+              jornalismo jovem em que desempenhei papéis ativos de impacto
+              social e comunitário.
+            </p>
           </div>
 
-          {/* CONTEÚDO DO CARROSSEL */}
-          <CarouselContent className="-ml-4">
-            {EXPERIENCIAS.map((item) => (
-              <CarouselItem key={item.id} className="pl-4 w-full">
-                
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center py-2">
-                  
-                  {/* IMAGEM + TAGS (SEM #) */}
-                  <div className="lg:col-span-5 flex flex-col space-y-5">
-                    <div className="relative h-[320px] sm:h-[400px] lg:h-[450px] w-full rounded-2xl overflow-hidden shadow-sm bg-[#e2dacb] dark:bg-[#493b41]">
-                      <img
-                        src={item.imagemUrl}
-                        alt={item.titulo}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                      <div className="absolute top-4 left-4 bg-[#221f1e]/90 dark:bg-[#120f11]/90 backdrop-blur-md text-[#f4eee1] text-[11px] font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
-                        {item.periodo}
+          <div className="relative sm:px-12">
+            <CarouselContent className="-ml-4">
+              {EXPERIENCIAS.map((item, index) => (
+                <CarouselItem key={item.id} className="pl-4">
+                  <article className="grid items-start gap-8 pb-2 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
+                    <div>
+                      <div className="relative h-[330px] w-full overflow-hidden rounded-2xl border border-[#e2dacb] bg-[#e2dacb] shadow-[0_16px_36px_rgba(40,29,26,0.12)] dark:border-[#493b41] dark:bg-[#493b41] sm:h-[420px] lg:h-[450px]">
+                        <img
+                          src={item.imagemUrl}
+                          alt={`Imagem do projeto ${item.titulo}`}
+                          className="h-full w-full object-cover select-none"
+                          draggable="false"
+                        />
+                        <div
+                          className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#221f1e]/50 to-transparent"
+                          aria-hidden="true"
+                        />
+                        <div className="absolute left-4 top-4 rounded-full border border-white/25 bg-[#221f1e]/85 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm">
+                          {item.periodo}
+                        </div>
+                        <span
+                          className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-white/30 bg-[#221f1e]/70 px-3 py-1 font-mono text-xs tracking-widest text-white backdrop-blur-sm"
+                          aria-label={`Projeto ${index + 1} de ${EXPERIENCIAS.length}`}
+                        >
+                          {String(index + 1).padStart(2, "0")} /{" "}
+                          {String(EXPERIENCIAS.length).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {item.tags?.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full border border-[#dfd0c7] bg-[#fbf7f0]/80 px-3 py-1 text-[11px] font-medium text-[#62554f] dark:border-[#59454a] dark:bg-[#34272c] dark:text-[#d4c3c4]"
+                          >
+                            {tag.replace(/^#/, "")}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                    
-                    {/* TAGS LIMPAS SEM '#' */}
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {item.tags?.map((tag, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs font-medium px-3.5 py-1 rounded-full bg-[#e2dacb]/60 dark:bg-[#493b41]/60 text-[#524b45] dark:text-[#c8b8b7] border border-[#e2dacb] dark:border-[#493b41]"
-                        >
-                          {tag.replace(/^#/, '')}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
 
-                  {/* CONTEÚDO EDITORIAL */}
-                  <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-                    <div>
-                      <span className="text-xs font-semibold uppercase tracking-widest text-[#a38f7e] dark:text-[#c8aeb1] block mb-2">
+                    <div className="min-w-0 lg:pt-4">
+                      <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#ad5268] dark:text-[#ef8799]">
                         {item.categoria}
                       </span>
-
-                      <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#221f1e] dark:text-[#f5ede6] leading-tight mb-2">
+                      <h3 className="mt-3 font-serif text-4xl font-normal leading-tight tracking-tight text-[#221f1e] dark:text-[#f5ede6] sm:text-5xl">
                         {item.titulo}
                       </h3>
-                      
-                      <p className="text-xs sm:text-sm font-semibold text-[#c85266] dark:text-[#ef8799] uppercase tracking-wider mb-4">
+                      <p className="mt-3 inline-flex rounded-full bg-[#c85266]/10 px-3 py-1.5 text-xs font-semibold text-[#a94158] dark:bg-[#ef8799]/15 dark:text-[#ef8799]">
                         {item.papel}
                       </p>
-
-                      <p className="text-sm sm:text-base text-[#524b45] dark:text-[#c8b8b7] leading-relaxed mb-6 font-sans">
+                      <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#524b45] dark:text-[#d3c4c2]">
                         {item.descricao}
                       </p>
 
-                      {/* BLANCO DE IMPACTO & RESULTADOS COM LINHA LATERAL ÚNICA */}
-                      <div className="space-y-4 border-t border-[#e2dacb] dark:border-[#493b41] pt-6">
-                        <h4 className="text-xs font-bold uppercase tracking-widest text-[#a38f7e] dark:text-[#c8aeb1]">
-                          Impacto & Resultados
+                      <div className="mt-7 border-t border-[#e2dacb] pt-5 dark:border-[#493b41]">
+                        <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#ad5268] dark:text-[#ef8799]">
+                          Impacto & resultados
                         </h4>
-                        
-                        {/* LINHA LATERAL ÚNICA CONTÍNUA */}
-                        <div className="border-l-2 border-[#c85266]/40 dark:border-[#ef8799]/50 pl-5 space-y-4 font-sans text-sm md:text-base leading-relaxed text-[#524b45] dark:text-[#c8b8b7]">
-                          {item.impactoXYZ?.realizacao && (
-                            <div>
-                              <strong className="text-[#221f1e] dark:text-[#f5ede6] font-semibold">Realização: </strong>
-                              <span>{item.impactoXYZ.realizacao}</span>
-                            </div>
-                          )}
-                          
-                          {item.impactoXYZ?.metrica && (
-                            <div>
-                              <strong className="text-[#c85266] dark:text-[#ef8799] font-semibold">Métricas & Alcance: </strong>
-                              <span>{item.impactoXYZ.metrica}</span>
-                            </div>
-                          )}
-
-                          {item.impactoXYZ?.metodo && (
-                            <div>
-                              <strong className="text-[#221f1e] dark:text-[#f5ede6] font-semibold">Atuação & Métodos: </strong>
-                              <span>{item.impactoXYZ.metodo}</span>
-                            </div>
-                          )}
-                        </div>
+                        <dl className="mt-3 divide-y divide-[#e2dacb] dark:divide-[#493b41]">
+                          {[
+                            {
+                              label: "Realização",
+                              value: item.impactoXYZ?.realizacao,
+                            },
+                            {
+                              label: "Métricas & alcance",
+                              value: item.impactoXYZ?.metrica,
+                            },
+                            {
+                              label: "Atuação & métodos",
+                              value: item.impactoXYZ?.metodo,
+                            },
+                          ]
+                            .filter(({ value }) => value)
+                            .map(({ label, value }) => (
+                              <div
+                                key={label}
+                                className="grid gap-1 py-3.5 sm:grid-cols-[125px_minmax(0,1fr)] sm:gap-4"
+                              >
+                                <dt className="text-xs font-semibold text-[#a94158] dark:text-[#ef8799]">
+                                  {label}
+                                </dt>
+                                <dd className="text-sm leading-6 text-[#524b45] dark:text-[#d3c4c2]">
+                                  {value}
+                                </dd>
+                              </div>
+                            ))}
+                        </dl>
                       </div>
-
                     </div>
-                  </div>
-
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
+                  </article>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="pointer-events-none absolute -left-3 -right-3 top-[165px] z-10 flex -translate-y-1/2 items-center justify-between sm:top-[210px] lg:top-[225px]">
+              <CarouselPrevious
+                aria-label="Projeto anterior"
+                className={navigationButtonClass}
+              />
+              <CarouselNext
+                aria-label="Próximo projeto"
+                className={navigationButtonClass}
+              />
+            </div>
+          </div>
         </Carousel>
-
       </div>
     </section>
-  )
+  );
 }

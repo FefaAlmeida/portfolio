@@ -48,9 +48,6 @@ export default function Premios({ premiosData }) {
         {/* CABEÇALHO DA SEÇÃO */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#ebcad2] dark:border-[#674650] pb-8">
           <div className="space-y-2">
-            <span className="text-xs md:text-sm tracking-[0.25em] uppercase text-[#c85266] dark:text-[#ef8799] font-semibold block">
-              05 · RECONHECIMENTOS
-            </span>
             <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#221f1e] dark:text-[#f5ede6] tracking-tight">
               Prêmios e Conquistas
             </h2>
