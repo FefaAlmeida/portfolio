@@ -4,7 +4,7 @@ export const PROJETOS = [
     titulo: "Luminar",
     subtitulo: "Plataforma de Gestão e Acessibilidade a Energia Solar",
     pitch: "Plataforma centralizada que viabiliza a transição energética ao baratear o acesso a painéis solares e simplificar o monitoramento em tempo real do parque solar.",
-    imagemUrl: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=1200",
+    imagemUrl: "/luminar_logo.jpeg",
     tagEsquerda: "02 · Projeto Integrador",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#1f2937]",
@@ -13,9 +13,8 @@ export const PROJETOS = [
     problema: "O altíssimo custo de aquisição inicial das placas solares impede o acesso à energia limpa, além da falta de visibilidade sobre a saúde dos equipamentos e a economia real.",
     solucao: "Modelo de adesão acessível (pagamento inicial focado na instalação + parcelas contínuas para aquisição das placas) integrado a um painel inteligente de monitoramento.",
     papel: "Desenvolvedora Full-Stack",
-    linkGithub: "https://github.com/seu-usuario/luminar",
+    linkGithub: "https://github.com/FefaAlmeida/projetoIntegrador",
     
-    // INFORMAÇÕES DETALHADAS (EXIBIDAS AO CLICAR EM "SAIBA MAIS")
     detalhes: {
       periodo: "1º Semestre de 2025",
       tipo: "Projeto Integrador SENAI",
@@ -43,7 +42,7 @@ export const PROJETOS = [
     titulo: "Lector Hub",
     subtitulo: "Sistema Inteligente de Gestão de Bibliotecas",
     pitch: "Plataforma para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa.",
-    imagemUrl: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200",
+    imagemUrl: "/lector_hub_logo.jpeg",
     tagEsquerda: "01 · Projeto Acadêmico",
     tagDireita: "FINALIZADO",
     bgCor: "bg-[#18181b]",
@@ -52,7 +51,7 @@ export const PROJETOS = [
     problema: "Controle manual e burocrático de acervos, dificuldades na aprovação de empréstimos e falta de engajamento dos leitores com a biblioteca.",
     solucao: "Ecossistema digital com painel administrativo para controle do acervo e portal interativo para leitores reservarem e avaliarem obras.",
     papel: "Desenvolvedora Full-Stack (Foco em Back-end) & Gestora do Projeto",
-    linkGithub: "https://github.com/seu-usuario/lector-hub",
+    linkGithub: "https://github.com/FefaAlmeida/lectorHub",
 
     detalhes: {
       periodo: "2º Semestre de 2024",
@@ -77,7 +76,7 @@ export const PROJETOS = [
     titulo: "Wisen",
     subtitulo: "Plataforma Adaptativa de Conhecimento Baseada em Eventos",
     pitch: "Plataforma que utiliza notícias reais como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao nível individual de cada leitor.",
-    imagemUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200",
+    imagemUrl: "/wisen_logo.jpeg",
     tagEsquerda: "03 · TCC SENAI",
     tagDireita: "EM DESENVOLVIMENTO",
     bgCor: "bg-[#0f172a]",
@@ -86,7 +85,7 @@ export const PROJETOS = [
     problema: "Notícias frequentemente utilizam termos e conceitos complexos sem explicá-los, gerando lacunas de compreensão para o leitor.",
     solucao: "Mapeamento em Grafo de Conhecimento que cruza o histórico do usuário para entregar explicações sob medida, sem repetições redundantes.",
     papel: "Pesquisadora & Desenvolvedora Principal (TCC)",
-    linkGithub: "https://github.com/seu-usuario/wisen",
+    linkGithub: "https://github.com/FefaAlmeida/wisen",
 
     detalhes: {
       periodo: "2025 — TCC",
@@ -99,6 +98,36 @@ export const PROJETOS = [
         "Aprendizado Adaptativo: Respeita o ritmo e conhecimento prévio individual",
         "Revisão Inteligente: Identifica conteúdos que precisam ser revisados",
         "Grafo de Conhecimento: Navegação interativa entre conceitos, entidades e eventos relacionados"
+      ]
+    }
+  },
+  {
+    id: "snack-point",
+    titulo: "Snack Point",
+    subtitulo: "Aplicativo Mobile para Gestão de Pedidos e Redução de Filas",
+    pitch: "Aplicativo Android intuitivo desenvolvido para eliminar filas na cantina do SENAI, otimizando a escolha, personalização e realização de pedidos.",
+    imagemUrl: "/snack_point.jpeg",
+    tagEsquerda: "04 · Projeto Mobile",
+    tagDireita: "FINALIZADO",
+    bgCor: "bg-[#27272a]",
+    textCor: "text-white",
+    tecnologias: ["Java", "Android Studio", "XML", "SQLite"],
+    problema: "Filas extensas e tempo de espera elevado no intervalo das aulas, causando gargalos na cantina do SENAI.",
+    solucao: "Aplicação mobile nativa para consulta rápida do cardápio, filtragem por categoria, personalização de itens e montagem de carrinho com persistência em SQLite.",
+    papel: "Desenvolvedora Front-End & Integrações Back-End",
+    linkGithub: "https://github.com/FefaAlmeida/ProjetoCantina",
+
+    detalhes: {
+      periodo: "Agosto — Setembro de 2024",
+      tipo: "Projeto Mobile SENAI",
+      tiposUsuarios: ["Usuário Comum (Cliente / Aluno)"],
+      funcionalidadesUsuario: [
+        "Navegação e consulta do cardápio digital completo da cantina",
+        "Filtro de produtos por categoria (Salgados, Doces, Bebidas e Pratos)",
+        "Personalização de pedidos (adição/remoção de ingredientes e observações)",
+        "Gerenciamento dinâmico do carrinho com cálculo automático do valor total",
+        "Solicitação direta do pedido para otimização do atendimento no balcão",
+        "Persistência local dos dados e histórico do carrinho via SQLite"
       ]
     }
   }

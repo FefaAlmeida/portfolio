@@ -28,23 +28,18 @@ export default function About() {
           </h2>
 
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-[#38322f] dark:text-[#e2d3cf] md:text-xl">
-            Olá, sou{" "}
+            Oie, sou{" "}
             <strong className="font-semibold">Fernanda Monteiro</strong>,
-            estudante do SENAI movida pela curiosidade e pela vontade de
-            transformar problemas reais em soluções criativas.
+            estudante do SESI 222 e do SENAI São Caetano do Sul, onde curso Desenvolvimento de Sistemas. Minha curiosidade me leva a buscar novos conhecimentos e, principalmente, a entender como eles podem ser transformados em algo concreto. Gosto de pensar em soluções criativas para problemas reais, especialmente quando podem facilitar a vida, ajudar alguém ou transformar uma realidade.
           </p>
 
           <div className="mt-5 max-w-2xl space-y-5 text-lg leading-relaxed text-[#38322f] dark:text-[#e2d3cf] md:text-xl">
             <p>
-              No SENAI, transformo teoria em prática enquanto desenvolvo
-              habilidades em desenvolvimento web e sistemas. Cada projeto é uma
-              oportunidade de experimentar, aprender e dar forma a novas ideias.
+              É no SENAI que encontro espaço para colocar essa vontade em prática. Ao desenvolver projetos de sistemas e aplicações web, transformo o que aprendo em experiências concretas, testando ideias, enfrentando desafios e descobrindo novas formas de solucionar problemas.
             </p>
 
             <p>
-              Também busco ir além da sala de aula. Projetos extracurriculares e
-              conquistas escolares ampliam meu olhar e alimentam minha vontade
-              de continuar evoluindo e inovando.
+              Essa busca por aprender e criar também ultrapassa a tecnologia. Por meio de projetos extracurriculares e experiências escolares, tenho contato com diferentes pessoas, ideias e realidades, o que alimenta minha vontade de continuar aprendendo e usar aquilo que aprendo para contribuir com as pessoas ao meu redor.
             </p>
           </div>
         </div>

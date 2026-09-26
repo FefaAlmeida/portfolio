@@ -17,7 +17,7 @@ export const EXPERIENCIAS = [
       "Mediação de dinâmicas com turmas do Fundamental I e II",
       "Engajamento de toda a comunidade escolar no cuidado com o espaço"
     ],
-    imagemUrl: "https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200",
+    imagemUrl: "/juventudes.jpeg",
     tags: ["Protagonismo Jovem", "Comunicação", "Design", "Mediação"]
   },
   {
