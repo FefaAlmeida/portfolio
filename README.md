@@ -136,19 +136,25 @@ docker compose up -d --wait api web
 
 A restauração verifica banco e arquivos antes de trocar o banco ativo e invalida as sessões antigas. A API precisa permanecer parada durante todo o procedimento. O agendamento depende da API estar em execução; um horário perdido durante indisponibilidade não é reexecutado automaticamente.
 
-## Deploy manual na VPS
+## Deploy na VPS com GitHub Actions
 
 A aplicação roda em Docker na VPS `root@62.72.9.20`, em `/opt/portfolio`. O Next.js usa `127.0.0.1:7154`; a API, `127.0.0.1:7153`. MinIO e SQLite ficam em volumes exclusivos, sem portas públicas para o armazenamento. A demo anterior fica preservada em `/opt/portfolio-demo` para recuperação, com o container parado após a troca. A landing pública usa `https://fernandagabriela.com`, e o painel abre diretamente em `https://admin.fernandagabriela.com`. O antigo `/admin` redireciona para o painel.
 
 A Cloudflare mantém os registros DNS sem proxy. O Caddy do host termina HTTPS com Let's Encrypt e encaminha as requisições para os containers. A prévia é `https://previa.fernandagabriela.com`, com senha adicional e `X-Robots-Tag: noindex, nofollow, noarchive`. O painel tem autenticação própria, com cookies restritos ao seu host e validação de origem em `ADMIN_URL`. As credenciais ficam fora do Git; a chave Gemini existe somente no ambiente da API.
 
-As imagens são construídas localmente, incluindo alterações ainda não commitadas, e transferidas por SSH. Não há publicação no GHCR nem workflow de deploy no GitHub Actions. Para uma nova versão, depois das verificações:
+Cada push na `main` executa `.github/workflows/ci.yml`: verifica traduções e lint, testa o backend, constrói o Next.js e executa os testes de navegador da landing e do subdomínio administrativo. Somente depois de todas as verificações passarem, o job `deploy` constrói as imagens Docker no runner do GitHub, com cache por serviço, e as transfere por SSH para a VPS. Pull requests executam somente a verificação. Também é possível executar o workflow manualmente na `main`, em Actions → CI e deploy → Run workflow.
+
+O GitHub usa o environment `production`, com a variável `DEPLOY_HOST` e os secrets `DEPLOY_SSH_KEY` e `DEPLOY_KNOWN_HOSTS`. A chave SSH é exclusiva desse repositório e sua entrada em `/root/.ssh/authorized_keys` tem `restrict,command="/usr/local/sbin/portfolio-deploy-receive"`. O receptor instalado a partir de `scripts/deploy-receive.sh` aceita somente `deploy <SHA completo>`, recebe as imagens e baixa o Compose e o script de deploy do mesmo commit no repositório público. Mudanças no receptor precisam ser instaladas separadamente pelo administrador da VM. A confiança dessa chave inclui executar o script de deploy do repositório como root; ela não oferece shell interativo nem encaminhamento de portas. A identidade SSH da VM é fixada em `DEPLOY_KNOWN_HOSTS`, obtida por uma conexão administrativa já verificada.
+
+As imagens da aplicação recebem a tag `ci-<SHA>`. O workflow serializa os deploys sem interromper uma publicação em andamento e ignora uma versão que já tenha sido substituída na `main` antes da transferência. Um lock na VM também impede concorrência com deploys manuais. Os arquivos recebidos ficam em `/opt/portfolio/releases`; o arquivo grande de imagens é removido após a tentativa. `.last-deploy` registra a última tag saudável. Os testes finais verificam HTTPS da landing em português e inglês, a API e o painel. Caddy, DNS, volumes e `/opt/portfolio/.env` permanecem na VM; nenhuma chave Gemini ou senha administrativa é enviada ao Actions. Pode haver uma breve indisponibilidade enquanto a API para para migrar e reiniciar.
+
+O deploy manual continua disponível e inclui alterações locais ainda não commitadas. Não há publicação de imagens no GHCR. Depois das verificações:
 
 ```sh
 ./scripts/deploy-manual.sh manual-AAAAMMDD-HHMMSS
 ```
 
-O script exige `/opt/portfolio/.env` previamente configurado conforme `deploy/.env.example`. Ele constrói as três imagens, carrega-as na VPS, gera backup, interrompe a única API escritora para migrar o banco e verifica a saúde dos serviços. Em caso de falha, preserva `.env.before-deploy` e informa a versão anterior; não restaura o banco automaticamente. Antes de voltar a uma imagem anterior, confira a compatibilidade do esquema com `node src/cli.js compatible`. O MinIO usa uma versão independente da aplicação, fixada no commit `7aac2a2c5b7c882e68c1ce017d8256be2feea27f`.
+O script exige `/opt/portfolio/.env` previamente configurado conforme `deploy/.env.example`. Ele constrói as três imagens, carrega-as na VPS, gera backup, interrompe a única API escritora para migrar o banco e verifica a saúde dos serviços. Tanto o deploy automático quanto o manual preservam `.env.before-deploy` e `compose.yml.before-deploy`; não restauram o banco automaticamente em caso de falha. Antes de voltar a uma imagem anterior, confira a compatibilidade do esquema com `node src/cli.js compatible`. As imagens anteriores são mantidas para recuperação; monitore o espaço em disco e remova somente versões antigas do portfólio que já não sejam necessárias. O MinIO usa uma versão independente da aplicação, fixada no commit `7aac2a2c5b7c882e68c1ce017d8256be2feea27f`.
 
 Na primeira instalação, restaure um snapshot local verificado com a API parada, inicialize o MinIO, aplique as migrações e configure a conta administrativa. `deploy/prepare-preview.mjs` adapta exclusivamente o Luminar para mostrar sua capa existente; execute-o uma vez antes de iniciar a API e preparar as traduções. O snapshot original preserva suas mídias anteriores. Nunca execute seed para substituir um banco já migrado.
 

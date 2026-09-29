@@ -178,7 +178,7 @@ test("photos: upload, independent cover, reorder, color, undo, persistence and s
 test("video: frame cover, muted loop, photo priority, no click pause and fullscreen", async ({
   page,
 }, info) => {
-  const title = `Vídeo ${info.project.name}`;
+  const title = `Vídeo ${info.project.name} ${info.repeatEachIndex}`;
   await createProject(page, title);
   const input = page.locator("#project-media-upload");
   await input.setInputFiles([video, photos[0], photos[1]]);
@@ -240,9 +240,10 @@ test("video: frame cover, muted loop, photo priority, no click pause and fullscr
   await page.screenshot({ path: info.outputPath("video-fullscreen.png") });
   await page.keyboard.press("Escape");
   await expect(modal).not.toHaveAttribute("data-video-expanded", "true");
+  await expect(modal).toHaveAttribute("data-state", "open");
   await expect(modal).toBeVisible();
-  await page.evaluate(() => {
-    window.testVideo = document.querySelector("video");
+  await player.evaluate((element) => {
+    window.testVideo = element;
   });
   await page.keyboard.press("Escape");
   await expect(modal).toHaveCount(0);

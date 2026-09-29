@@ -14,7 +14,7 @@ MINIO_TAG=7aac2a2c5b7c882e68c1ce017d8256be2feea27f
 docker build -f deploy/minio.Dockerfile -t "portfolio-minio:$MINIO_TAG" .
 docker save "portfolio-api:$TAG" "portfolio-web:$TAG" "portfolio-minio:$MINIO_TAG" | gzip > "$TMP_DEPLOY/images.tar.gz"
 ssh "$DEPLOY_TARGET" 'mkdir -p /opt/portfolio; chmod 700 /opt/portfolio'
-scp "$TMP_DEPLOY/images.tar.gz" "$DEPLOY_TARGET:/opt/portfolio/images.tar.gz"
-scp deploy/compose.yml "$DEPLOY_TARGET:/opt/portfolio/compose.yml"
-scp scripts/deploy.sh "$DEPLOY_TARGET:/opt/portfolio/deploy.sh"
-ssh "$DEPLOY_TARGET" "docker load -i /opt/portfolio/images.tar.gz >/dev/null && rm /opt/portfolio/images.tar.gz && sh /opt/portfolio/deploy.sh '$TAG'"
+REMOTE_RELEASE="$(ssh "$DEPLOY_TARGET" 'mkdir -p /opt/portfolio/releases; mktemp -d /opt/portfolio/releases/manual.XXXXXX')"
+[[ "$REMOTE_RELEASE" =~ ^/opt/portfolio/releases/manual\.[a-zA-Z0-9]+$ ]] || exit 1
+scp "$TMP_DEPLOY/images.tar.gz" deploy/compose.yml scripts/deploy.sh "$DEPLOY_TARGET:$REMOTE_RELEASE/"
+ssh "$DEPLOY_TARGET" "sh '$REMOTE_RELEASE/deploy.sh' '$TAG' '$REMOTE_RELEASE'; result=\$?; rm -f '$REMOTE_RELEASE/images.tar.gz'; exit \$result"

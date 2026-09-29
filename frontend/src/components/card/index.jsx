@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight, X } from "lucide-react";
+import { useRef } from "react";
 import ProjectMedia from "@/components/project-media";
 import RichText, { hasText } from "@/components/rich-text";
 import { Badge } from "@/components/ui/badge";
@@ -34,6 +35,7 @@ function Technologies({ items = [], label, compact = false }) {
 
 export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
   const { ui } = useI18n();
+  const dialogRef = useRef(null);
   if (!projeto) return null;
   const m = t(locale);
   const cover = projectCover(projeto);
@@ -113,6 +115,18 @@ export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
         </button>
       </DialogTrigger>
       <DialogContent
+        ref={dialogRef}
+        onEscapeKeyDown={(event) => {
+          const dialog = dialogRef.current;
+          if (
+            dialog?.dataset.videoExpanded === "true" ||
+            (document.fullscreenElement &&
+              dialog?.contains(document.fullscreenElement))
+          ) {
+            // Let the video leave fullscreen without also dismissing its dialog.
+            event.preventDefault();
+          }
+        }}
         className="portfolio-project-modal flex h-dvh max-h-dvh w-full max-w-none flex-col gap-0 overflow-hidden rounded-none border-0 bg-card p-0 sm:h-auto sm:max-h-[calc(100dvh-4rem)] sm:w-[calc(100%-4rem)] sm:max-w-[880px] sm:rounded-[22px] sm:border data-[video-expanded=true]:inset-0 data-[video-expanded=true]:h-dvh data-[video-expanded=true]:max-h-none data-[video-expanded=true]:w-screen data-[video-expanded=true]:max-w-none data-[video-expanded=true]:translate-none data-[video-expanded=true]:rounded-none"
         overlayClassName="bg-primary/20 backdrop-blur-md"
         showCloseButton={false}
