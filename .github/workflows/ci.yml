@@ -1,0 +1,35 @@
+name: CI
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: npm ci --prefix backend
+      - run: npm ci --prefix frontend
+      - run: npm run i18n:check
+      - run: npm run lint:admin --prefix frontend
+      - run: npm run check --prefix backend
+      - run: npm test --prefix backend
+      - run: npm run build --prefix frontend
+      - run: npx --prefix frontend playwright install --with-deps chromium
+      - run: npm run test:e2e --prefix frontend
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-results
+          path: frontend/test-results/

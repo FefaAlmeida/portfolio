@@ -1,0 +1,20 @@
+fernandagabriela.com {
+    tls {
+        issuer acme
+    }
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:7152
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        X-Frame-Options SAMEORIGIN
+        -Server
+    }
+}
+
+www.fernandagabriela.com {
+    tls {
+        issuer acme
+    }
+    redir https://fernandagabriela.com{uri} permanent
+}

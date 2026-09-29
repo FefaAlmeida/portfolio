@@ -1,0 +1,1028 @@
+{
+  "projetos": [
+    {
+      "id": "luminar",
+      "titulo": "Luminar",
+      "subtitulo": "Plataforma de Gestão e Acessibilidade a Energia Solar",
+      "pitch": "Plataforma centralizada que viabiliza a transição energética ao baratear o acesso a painéis solares e simplificar o monitoramento em tempo real do parque solar.",
+      "imagemBg": "#FEFEFE",
+      "tagDireita": "FINALIZADO",
+      "tecnologias": [
+        "Next.js",
+        "Node.js",
+        "SQL"
+      ],
+      "problema": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "O altíssimo custo de aquisição inicial das placas solares impede o acesso à energia limpa, além da falta de visibilidade sobre a saúde dos equipamentos e a economia real."
+              }
+            ]
+          }
+        ]
+      },
+      "solucao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Modelo de adesão acessível (pagamento inicial focado na instalação + parcelas contínuas para aquisição das placas) integrado a um painel inteligente de monitoramento."
+              }
+            ]
+          }
+        ]
+      },
+      "linkGithub": "https://github.com/FefaAlmeida/projetoIntegrador",
+      "detalhes": {
+        "periodo": "1º Semestre de 2025",
+        "tipo": "Projeto Integrador SENAI",
+        "modeloNegocio": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Acessibilidade Financeira: O cliente paga apenas a taxa de instalação inicial, enquanto o custo das placas é dividido em parcelas acessíveis ao longo do tempo."
+                }
+              ]
+            }
+          ]
+        },
+        "diferencial": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "perfis": [
+          {
+            "categoria": "admin",
+            "funcionalidades": [
+              "Acompanhar o parque solar por painéis e tabelas.",
+              "Consultar alertas de manutenção e diagnósticos das placas.",
+              "Gerenciar clientes, usuários e permissões.",
+              "Distribuir tarefas e acompanhar chamados.",
+              "Atender clientes e trocar mensagens pela central de atendimento.",
+              "Gerenciar pedidos de placas e controlar o estoque."
+            ],
+            "nome": "A equipe de gestão pode:"
+          },
+          {
+            "categoria": "usuario",
+            "funcionalidades": [
+              "Acompanhar a geração de energia.",
+              "Analisar a economia na conta de luz.",
+              "Consultar indicadores de desempenho e eficiência.",
+              "Receber notificações sobre manutenção e outros alertas.",
+              "Abrir e acompanhar chamados de suporte."
+            ],
+            "nome": "Os clientes podem:"
+          }
+        ]
+      },
+      "imageFile": "/luminar_logo.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Como Desenvolvedora Fullstack, atuei na construção de uma plataforma centralizada criada para impulsionar a transição energética. O sistema democratiza o acesso à energia solar por meio de um modelo financeiro acessível (focado no custo de instalação com parcelamento das placas) e integra um painel inteligente para monitoramento de todo o parque solar em tempo real"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lector-hub",
+      "titulo": "Lector Hub",
+      "subtitulo": "Sistema Inteligente de Gestão de Bibliotecas",
+      "pitch": "Plataforma para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa.",
+      "imagemBg": "#460D14",
+      "tagDireita": "FINALIZADO",
+      "tecnologias": [
+        "Next.js",
+        "Node.js",
+        "SQL",
+        "Chakra UI"
+      ],
+      "problema": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Controle manual e burocrático de acervos, dificuldades na aprovação de empréstimos e falta de engajamento dos leitores com a biblioteca."
+              }
+            ]
+          }
+        ]
+      },
+      "solucao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ecossistema digital com painel administrativo para controle do acervo e portal interativo para leitores reservarem e avaliarem obras."
+              }
+            ]
+          }
+        ]
+      },
+      "linkGithub": "https://github.com/FefaAlmeida/lectorHub",
+      "detalhes": {
+        "periodo": "2º Semestre de 2024",
+        "tipo": "Projeto Acadêmico SENAI",
+        "modeloNegocio": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "diferencial": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "perfis": [
+          {
+            "categoria": "admin",
+            "funcionalidades": [
+              "Cadastrar e organizar livros e categorias.",
+              "Aprovar ou recusar solicitações de empréstimo.",
+              "Controlar devoluções, prazos e bloqueios.",
+              "Gerenciar usuários e consultar o histórico da biblioteca."
+            ],
+            "nome": "Os bibliotecários podem:"
+          },
+          {
+            "categoria": "usuario",
+            "funcionalidades": [
+              "Explorar o catálogo digital de livros.",
+              "Solicitar empréstimos e reservar livros.",
+              "Avaliar, dar notas e comentar sobre as obras.",
+              "Consultar o histórico de leitura e receber recomendações personalizadas."
+            ],
+            "nome": "Os leitores podem:"
+          }
+        ]
+      },
+      "imageFile": "/lector_hub_logo.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Como Desenvolvedora Full-Stack, com foco em Back-end, e Gestora do Projeto, atuei na construção de uma "
+              },
+              {
+                "type": "text",
+                "text": "plataforma para gestão de acervos bibliográficos, conectando leitores e bibliotecários com controle de empréstimos e comunidade interativa."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ecossistema digital com painel administrativo para controle do acervo e portal interativo para leitores reservarem e avaliarem obras."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "wisen",
+      "titulo": "Wisen",
+      "subtitulo": "Plataforma Adaptativa de Conhecimento Baseada em Eventos",
+      "pitch": "Plataforma que utiliza notícias reais como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao nível individual de cada leitor.",
+      "imagemBg": "#DAD6CF",
+      "tagDireita": "EM DESENVOLVIMENTO",
+      "tecnologias": [
+        "Next.js",
+        "Node.js",
+        "SQL",
+        "Grafo de Conhecimento"
+      ],
+      "problema": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Notícias frequentemente utilizam termos e conceitos complexos sem explicá-los, gerando lacunas de compreensão para o leitor."
+              }
+            ]
+          }
+        ]
+      },
+      "solucao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Mapeamento em Grafo de Conhecimento que cruza o histórico do usuário para entregar explicações sob medida, sem repetições redundantes."
+              }
+            ]
+          }
+        ]
+      },
+      "linkGithub": "https://github.com/FefaAlmeida/wisen",
+      "detalhes": {
+        "periodo": "2025 — TCC",
+        "tipo": "Trabalho de Conclusão de Curso (SENAI)",
+        "cicloAprendizado": "Notícias → Eventos → Conceitos → Histórico do Usuário → Conteúdo Personalizado → Aprendizado",
+        "diferencial": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "A mesma notícia gera explicações diferentes para cada pessoa. Se o usuário já domina conceitos básicos, o WiseN foca diretamente nas suas lacunas de aprendizado."
+                }
+              ]
+            }
+          ]
+        },
+        "aplicacoes": [
+          "Educação Contextual: Ensino de conceitos a partir de acontecimentos reais",
+          "Compreensão de Atualidades: Leitura facilitada de notícias complexas",
+          "Aprendizado Adaptativo: Respeita o ritmo e conhecimento prévio individual",
+          "Revisão Inteligente: Identifica conteúdos que precisam ser revisados",
+          "Grafo de Conhecimento: Navegação interativa entre conceitos, entidades e eventos relacionados"
+        ],
+        "modeloNegocio": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "perfis": [
+          {
+            "categoria": "usuario",
+            "funcionalidades": [
+              "Aprender conceitos a partir de notícias e acontecimentos reais.",
+              "Receber explicações adaptadas ao seu conhecimento prévio.",
+              "Aprofundar os conceitos que ainda precisa compreender.",
+              "Revisar conteúdos conforme suas lacunas de aprendizado.",
+              "Explorar relações entre conceitos, entidades e eventos no Grafo de Conhecimento."
+            ],
+            "nome": "O leitor pode:"
+          }
+        ]
+      },
+      "imageFile": "/wisen_logo.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Como Pesquisadora e Desenvolvedora Principal do meu TCC, atuei na construção de uma "
+              },
+              {
+                "type": "text",
+                "text": "plataforma que utiliza notícias reais como ponto de partida para ensinar conceitos complexos, adaptando o conteúdo ao nível individual de cada leitor."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Mapeamento em Grafo de Conhecimento que cruza o histórico do usuário para entregar explicações sob medida, sem repetições redundantes."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A mesma notícia gera explicações diferentes para cada pessoa. Se o usuário já domina conceitos básicos, o WiseN foca diretamente nas suas lacunas de aprendizado."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "snack-point",
+      "titulo": "Snack Point",
+      "subtitulo": "Aplicativo Mobile para Gestão de Pedidos e Redução de Filas",
+      "pitch": "Aplicativo Android intuitivo desenvolvido para eliminar filas na cantina do SENAI, otimizando a escolha, personalização e realização de pedidos.",
+      "imagemBg": "#6F7B67",
+      "tagDireita": "FINALIZADO",
+      "tecnologias": [
+        "Java",
+        "Android Studio",
+        "XML",
+        "SQLite"
+      ],
+      "problema": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Filas extensas e tempo de espera elevado no intervalo das aulas, causando gargalos na cantina do SENAI."
+              }
+            ]
+          }
+        ]
+      },
+      "solucao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Aplicação mobile nativa para consulta rápida do cardápio, filtragem por categoria, personalização de itens e montagem de carrinho com persistência em SQLite."
+              }
+            ]
+          }
+        ]
+      },
+      "linkGithub": "https://github.com/FefaAlmeida/ProjetoCantina",
+      "detalhes": {
+        "periodo": "Agosto — Setembro de 2024",
+        "tipo": "Projeto Mobile SENAI",
+        "modeloNegocio": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "diferencial": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "perfis": [
+          {
+            "categoria": "usuario",
+            "funcionalidades": [
+              "Consultar o cardápio digital completo da cantina.",
+              "Filtrar produtos por categoria: salgados, doces, bebidas e pratos.",
+              "Personalizar ingredientes e incluir observações no pedido.",
+              "Gerenciar o carrinho com cálculo automático do valor total.",
+              "Enviar o pedido para agilizar o atendimento no balcão.",
+              "Manter os dados e o histórico do carrinho salvos localmente."
+            ],
+            "nome": "O cliente pode:"
+          }
+        ]
+      },
+      "imageFile": "/snack_point.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Como Desenvolvedora Front-End e responsável pelas integrações Back-End, atuei no desenvolvimento de um "
+              },
+              {
+                "type": "text",
+                "text": "aplicativo Android intuitivo desenvolvido para eliminar filas na cantina do SENAI, otimizando a escolha, personalização e realização de pedidos."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Aplicação mobile nativa para consulta rápida do cardápio, filtragem por categoria, personalização de itens e montagem de carrinho com persistência em SQLite."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "experiencias": [
+    {
+      "id": "exp-03",
+      "titulo": "MatMov",
+      "categoria": "DOCÊNCIA VOLUNTÁRIA · ONG",
+      "periodo": "janeiro de 2026 — presente",
+      "papel": "Professora voluntária de ensino sociocultural",
+      "imageFile": "/mat_mov.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "context"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "No MatMov, uma ONG voltada a estudantes de escolas públicas, sou professora voluntária de ensino sociocultural desde janeiro de 2026. Dou aulas online quinzenais sobre atualidades, pensamento crítico e projeto de vida. Já dei aula para "
+              },
+              {
+                "type": "text",
+                "text": "+50 alunos",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", com turmas de "
+              },
+              {
+                "type": "text",
+                "text": "16–25 alunos",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "contribution"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Preparo aulas e slides, corrijo atividades e acompanho os alunos. Também colaborei no planejamento do workshop Construindo Sonhos, com cerca de "
+              },
+              {
+                "type": "text",
+                "text": "50 participantes",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", compartilho materiais com outros professores e organizei as pastas do OneDrive."
+              }
+            ]
+          }
+        ]
+      },
+      "inicio": "2026-01",
+      "fim": "present",
+      "resultados": [],
+      "imagemAjuste": "natural",
+      "imagemLegenda": "MatMov",
+      "imagemAlt": "Registro do projeto MatMov",
+      "siteUrl": "https://matmov.org.br/",
+      "instagramUrl": "https://www.instagram.com/matematicaemmovimento",
+      "imagemDupla": false,
+      "imagemSecundariaId": null,
+      "imagemSecundariaAlt": ""
+    },
+    {
+      "id": "exp-04",
+      "titulo": "Vozes Além das Fronteiras",
+      "categoria": "MÍDIA JOVEM · PESQUISA E REDAÇÃO",
+      "periodo": "outubro de 2025 — presente",
+      "papel": "Diretora de Jornalismo Correspondente e redatora",
+      "imageFile": "/logo_vaf.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "context"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "No Vozes Além das Fronteiras, um projeto de comunicação feito por jovens, atuo como diretora de Jornalismo Correspondente e redatora. Participo desde outubro de 2025 e pesquiso temas como desigualdade educacional, migração e direitos humanos para produzir textos e vídeos explicativos."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "contribution"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Distribuo pautas, acompanho prazos e reviso textos. Ao longo da minha participação, supervisionei "
+              },
+              {
+                "type": "text",
+                "text": "6 colaboradores",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " e tenho "
+              },
+              {
+                "type": "text",
+                "text": "+15 textos publicados",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " no site e no Instagram do projeto. Também produzi "
+              },
+              {
+                "type": "text",
+                "text": "2 vídeos",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", escrevi roteiros para colegas e divulguei o VAF no SESI e entre os alunos do MatMov."
+              }
+            ]
+          }
+        ]
+      },
+      "inicio": "2025-10",
+      "fim": "present",
+      "resultados": [],
+      "imagemAjuste": "contain",
+      "imagemLegenda": "Vozes Além das Fronteiras",
+      "imagemAlt": "Logo do Vozes Além das Fronteiras",
+      "siteUrl": "https://vozesalemdasfronteiras.netlify.app/",
+      "instagramUrl": "https://www.instagram.com/vozesalemdasfronteiras/",
+      "imagemDupla": false,
+      "imagemSecundariaId": null,
+      "imagemSecundariaAlt": ""
+    },
+    {
+      "id": "exp-05",
+      "titulo": "Jornal SESI 222",
+      "categoria": "PROJETO AUTORAL · COMUNICAÇÃO",
+      "periodo": "julho de 2025 — presente",
+      "papel": "Idealizadora, fundadora e designer editorial",
+      "imageFile": "/jornal_sesi.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "context"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Idealizei e fundei o Jornal SESI 222 com apoio da biblioteca para compartilhar acontecimentos e conquistas da escola com alunos, famílias e funcionários. A ideia começou em julho de 2025, e a primeira edição foi concluída e distribuída em 2026. O jornal tem "
+              },
+              {
+                "type": "text",
+                "text": "1 edição publicada",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", com "
+              },
+              {
+                "type": "text",
+                "text": "10 colaboradores",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", contando comigo."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "contribution"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Selecionei pautas com a bibliotecária, escrevi matérias, revisei textos com professoras de português e fiz o design no Canva. Também adaptei as imagens às orientações da escola e participei da organização do envio pela agenda oficial."
+              }
+            ]
+          }
+        ]
+      },
+      "inicio": "2025-07",
+      "fim": "present",
+      "resultados": [],
+      "imagemAjuste": "natural",
+      "imagemLegenda": "Jornal SESI 222",
+      "imagemAlt": "Registro do projeto Jornal SESI 222",
+      "siteUrl": "",
+      "instagramUrl": "",
+      "imagemDupla": false,
+      "imagemSecundariaId": null,
+      "imagemSecundariaAlt": ""
+    },
+    {
+      "id": "exp-02",
+      "titulo": "Nossa Casinha",
+      "categoria": "VOLUNTARIADO · UFABC",
+      "periodo": "07/2025 — 12/2025",
+      "papel": "Voluntária no berçário e apoio à organização",
+      "imageFile": "/nossa_casinha.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "context"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "No Nossa Casinha, na UFABC, fui voluntária no berçário durante "
+              },
+              {
+                "type": "text",
+                "text": "6 meses",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " de 2025. Junto a outros voluntários, cuidava de bebês enquanto seus responsáveis, imigrantes, frequentavam aulas de português. A equipe atendia cerca de "
+              },
+              {
+                "type": "text",
+                "text": "10 bebês por sábado",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "contribution"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Preparei atividades, organizei e limpei os espaços e criei álbuns de recordação para as famílias. Também ajudei na organização de atividades do Dia das Crianças. Em 2026, colaborei durante "
+              },
+              {
+                "type": "text",
+                "text": "2 semanas",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " organizando uma planilha com informações das crianças e de seus responsáveis para as inscrições."
+              }
+            ]
+          }
+        ]
+      },
+      "inicio": "",
+      "fim": "",
+      "resultados": [],
+      "imagemAjuste": "natural",
+      "imagemLegenda": "Nossa Casinha",
+      "imagemAlt": "Registro do projeto Nossa Casinha",
+      "siteUrl": "",
+      "instagramUrl": "https://www.instagram.com/cursonossacasa/",
+      "imagemDupla": false,
+      "imagemSecundariaId": null,
+      "imagemSecundariaAlt": ""
+    },
+    {
+      "id": "exp-01",
+      "titulo": "Juventudes em Diálogo",
+      "categoria": "PROJETO ESCOLAR · REDE SESI",
+      "periodo": "julho — dezembro de 2025",
+      "papel": "Integrante e facilitadora de dinâmicas",
+      "imageFile": "/juventudes.jpeg",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "context"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Participei do Juventudes em Diálogo, uma iniciativa da Rede SESI que incentiva a participação dos alunos e o cuidado com a comunidade escolar, de julho a dezembro de 2025. Trabalhei em um grupo de "
+              },
+              {
+                "type": "text",
+                "text": "5 integrantes",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", com orientação da bibliotecária, para criar ações sobre resíduos, convivência e saúde mental."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "attrs": {
+              "i18nId": "contribution"
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Produzi cartazes interativos e materiais visuais e contribuí para "
+              },
+              {
+                "type": "text",
+                "text": "4 exposições",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ": duas sobre lixo e duas sobre Setembro Amarelo. Também participei de "
+              },
+              {
+                "type": "text",
+                "text": "1 apresentação digital",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": ", de conversas com "
+              },
+              {
+                "type": "text",
+                "text": "4 turmas do Fundamental II",
+                "marks": [
+                  {
+                    "type": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": " e de dinâmicas com alunos do 1º ano do Fundamental I."
+              }
+            ]
+          }
+        ]
+      },
+      "inicio": "2025-07",
+      "fim": "2025-12",
+      "resultados": [],
+      "imagemAjuste": "natural",
+      "imagemLegenda": "Juventudes em Diálogo",
+      "imagemAlt": "Registro do projeto Juventudes em Diálogo",
+      "siteUrl": "",
+      "instagramUrl": "",
+      "imagemDupla": true,
+      "imagemSecundariaId": null,
+      "imagemSecundariaAlt": ""
+    }
+  ],
+  "premios": [
+    {
+      "id": "01",
+      "credencialUrl": "",
+      "categoria": "REDAÇÃO",
+      "titulo": "Desempenho Letrus",
+      "ano": 2025,
+      "instituicao": "Letrus",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Excelência nas produções textuais."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "04",
+      "credencialUrl": "",
+      "categoria": "ACADÊMICO",
+      "titulo": "Destaque Avalia SESI",
+      "ano": 2025,
+      "instituicao": "SESI",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Reconhecimento pelos resultados na avaliação escolar."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "05",
+      "credencialUrl": "",
+      "categoria": "OLIMPÍADA",
+      "titulo": "Medalha de Bronze OLITEF",
+      "ano": 2025,
+      "instituicao": "Olimpíada de Educação Financeira",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Premiação pelo conhecimento em educação financeira."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "06",
+      "credencialUrl": "",
+      "categoria": "CULTURA",
+      "titulo": "Leitor Destaque",
+      "ano": 2025,
+      "instituicao": "Biblioteca escolar",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Reconhecimento pela participação nas atividades de leitura."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "02",
+      "credencialUrl": "",
+      "categoria": "REDAÇÃO",
+      "titulo": "Desempenho Letrus",
+      "ano": 2024,
+      "instituicao": "Letrus",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Qualidade nas produções escritas."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "03",
+      "credencialUrl": "",
+      "categoria": "REDAÇÃO",
+      "titulo": "Destaque em Redação",
+      "ano": 2023,
+      "instituicao": "Instituição a confirmar",
+      "descricao": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Participação ativa e evolução na escrita."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

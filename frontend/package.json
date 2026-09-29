@@ -1,0 +1,39 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "test:e2e": "playwright test",
+    "lint:admin": "biome check src/app/admin src/components/admin src/components/rich-text src/app/api src/lib/api.js tests playwright.config.js"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.31.3",
+    "@tiptap/pm": "^3.31.3",
+    "@tiptap/react": "^3.31.3",
+    "@tiptap/starter-kit": "^3.31.3",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.4.0",
+    "embla-carousel-react": "^8.6.0",
+    "lucide-react": "^1.48.0",
+    "motion": "^13.4.3",
+    "next": "16.3.6",
+    "radix-ui": "^1.6.7",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "shadcn": "^4.21.0",
+    "tw-animate-css": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.29.9",
+    "@babel/traverse": "^8.0.6",
+    "@biomejs/biome": "2.4.2",
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4"
+  }
+}

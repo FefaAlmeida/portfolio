@@ -1,0 +1,84 @@
+name: portfolio-dev
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: development
+    init: true
+    user: '${LOCAL_UID:-1000}:${LOCAL_GID:-1000}'
+    stop_grace_period: 10m
+    environment:
+      NODE_ENV: development
+      PUBLIC_URL: http://localhost:3000
+      DATABASE_PATH: /data/portfolio.sqlite
+      BACKUP_DIR: /data/backups
+      S3_ENDPOINT: http://minio:9000
+      S3_BUCKET: portfolio
+      S3_ACCESS_KEY_ID: portfolio-dev
+      S3_SECRET_ACCESS_KEY: portfolio-local-only-password
+      OPERATIONS_TOKEN: local-development-operations-token-change-in-production
+      API_BASE_URL: http://api:3001
+      I18N_GATEWAY_URL: ${I18N_GATEWAY_URL:-}
+      I18N_SYNC_TOKEN: ${I18N_SYNC_TOKEN:-}
+      I18N_USD_BRL_RATE: ${I18N_USD_BRL_RATE:-7}
+    ports: ['127.0.0.1:3001:3001']
+    volumes:
+      - ./backend/data:/data
+      - ./backend/src:/app/src:ro
+      - ./packages/i18n:/packages/i18n:ro
+      - ./backend/seed:/app/seed:ro
+    depends_on:
+      minio: { condition: service_healthy }
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3001/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: development
+    init: true
+    # Poll bind-mounted files: Docker Desktop may not forward filesystem events.
+    command: ['npm', 'run', 'dev', '--', '--webpack', '--hostname', '0.0.0.0']
+    environment:
+      API_URL: http://api:3001
+      WATCHPACK_POLLING: '500'
+    ports: ['127.0.0.1:3000:3000']
+    volumes:
+      - ./frontend/src:/app/src:ro
+      - ./frontend/public:/app/public:ro
+      - ./frontend/next.config.mjs:/app/next.config.mjs:ro
+      - ./frontend/jsconfig.json:/app/jsconfig.json:ro
+      - ./frontend/postcss.config.mjs:/app/postcss.config.mjs:ro
+      - next-cache:/app/.next
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test: ['CMD', 'node', '-e', "fetch('http://127.0.0.1:3000/admin').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 30s
+  minio:
+    build:
+      context: .
+      dockerfile: deploy/minio.Dockerfile
+    environment:
+      MINIO_ROOT_USER: portfolio-dev
+      MINIO_ROOT_PASSWORD: portfolio-local-only-password
+    ports:
+      - '127.0.0.1:19000:9000'
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ['CMD', 'curl', '-fsS', 'http://localhost:9000/minio/health/ready']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+volumes:
+  minio-data:
+  next-cache:

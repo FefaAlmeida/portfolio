@@ -1,0 +1,146 @@
+/* V3 extracurricular journal; projects retain their original styles. */
+#experiencias {
+  padding-block: 72px 48px;
+  border-top: 1px solid var(--experience-line);
+}
+#experiencias .experience-eyebrow {
+  margin-bottom: 15px;
+  color: var(--experience-wine);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+#experiencias .experience-intro h2 { font-size: clamp(32px, 4vw, 50px); }
+#experiencias .experience-subtitle {
+  margin-top: 14px;
+  color: var(--experience-muted);
+  font-size: 15px;
+}
+#experiencias .experience-index {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  margin-block: 36px 18px;
+  padding: 0;
+}
+#experiencias .experience-index a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-height: 58px;
+  padding-block: 14px;
+  border-top: 1px solid var(--experience-line);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 180ms, border-color 180ms;
+}
+#experiencias .experience-index a:hover {
+  color: var(--experience-wine);
+  border-color: var(--experience-wine);
+}
+#experiencias .experience-index-number {
+  color: var(--experience-wine);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+#experiencias .experience-story {
+  --experience-gap: 88px;
+  row-gap: 16px;
+  padding-block: 32px 64px;
+}
+#experiencias .experience-story:last-child { padding-bottom: 20px; }
+#experiencias .experience-stories::before { top: 46px; bottom: 32px; }
+#experiencias .experience-date {
+  background: #fff;
+  justify-self: start;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 14px;
+  gap: 9px;
+  border: 1px solid var(--experience-line);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+#experiencias .experience-category {
+  margin-bottom: 8px;
+  font-size: 9px;
+  letter-spacing: .12em;
+  font-weight: 500;
+}
+#experiencias .experience-story h3 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: -.035em;
+  text-wrap: pretty;
+}
+#experiencias .experience-role { margin-top: 10px; font-size: 12px; font-weight: 550; }
+#experiencias .experience-copy { font-size: 14px; line-height: 1.85; }
+#experiencias .experience-figure { align-self: center; }
+#experiencias .experience-image-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: 16px;
+  background: var(--experience-soft);
+  border: 1px solid var(--experience-line);
+  border-radius: 4px;
+}
+#experiencias .experience-figure img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+#experiencias .experience-image-contain img { max-width: 70%; max-height: 240px; }
+#experiencias .experience-copy strong { color: var(--experience-wine); font-weight: 650; }
+#experiencias .experience-count { white-space: nowrap; font-variant-numeric: tabular-nums; }
+#experiencias [data-count] { display: inline-block; text-align: end; }
+#experiencias .experience-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+/* Align the timeline markers with the restored date badges. */
+#experiencias .experience-story::before { top: 46px; }
+#experiencias .experience-story::after { top: 52px; }
+#experiencias .experience-stories::before { top: 52px; }
+@media (min-width: 768px) {
+  #experiencias .experience-story:nth-child(even) .experience-date { justify-self: end; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #experiencias .experience-story { --experience-gap: 56px; }
+  #experiencias .experience-index { gap: 16px; }
+  #experiencias .experience-figure img { max-height: 280px; }
+}
+@media (max-width: 767px) {
+  #experiencias { padding-block: 48px 24px; padding-inline: 24px; }
+  #experiencias .experience-index { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; margin-block: 26px 16px; }
+  #experiencias .experience-index a { min-height: 48px; padding-block: 12px; }
+  #experiencias .experience-index a:last-child { grid-column: 1 / -1; }
+  #experiencias .experience-story { padding-block: 28px 44px; padding-left: 26px; row-gap: 16px; }
+  #experiencias .experience-stories::before { top: 42px; bottom: 28px; }
+  #experiencias .experience-date { min-height: 40px; padding: 8px 12px; font-size: 11px; }
+  #experiencias .experience-story::before { top: 42px; }
+  #experiencias .experience-stories::before { top: 48px; }
+  #experiencias .experience-category { font-size: 9px; letter-spacing: .08em; }
+  #experiencias .experience-figure { margin-block: 2px; }
+  #experiencias .experience-image-frame { aspect-ratio: auto; min-height: 220px; padding: 12px; }
+  #experiencias .experience-figure img { max-height: 300px; }
+  #experiencias .experience-image-contain img { max-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #experiencias .experience-index a { transition: none; }
+}
+#project-dialog.video-expanded{width:100vw;height:100dvh;max-height:100dvh;border-radius:0}#project-dialog.video-expanded .project-video{position:fixed;inset:0;width:100%;height:100%;z-index:10;border-radius:0}
+#project-dialog video[controls]{pointer-events:auto}
