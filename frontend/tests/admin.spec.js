@@ -350,9 +350,7 @@ test("experience formatting, ordering, awards PDF, and logout", async ({
   page,
 }, info) => {
   await login(page);
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await expect(page.locator(".admin-list .item-title")).toHaveCount(5);
   await page.locator(".admin-list .item-title").first().click();
   await expect(page.locator(".tiptap strong").first()).toBeVisible();
@@ -411,9 +409,7 @@ test("experience formatting, ordering, awards PDF, and logout", async ({
 
 test("undo restores saved state and preview never saves", async ({ page }) => {
   await login(page);
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page.locator(".admin-list .item-title").first().click();
   const originalRows = await (
     await page.request.get("/api/admin/experiencias")
@@ -962,9 +958,7 @@ test("experience month dates preserve legacy periods and persist edits", async (
   page,
 }) => {
   await login(page);
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   const session = await (await page.request.get("/api/auth/session")).json();
   const headers = {
     origin: "http://localhost:3100",
@@ -977,9 +971,7 @@ test("experience month dates preserve legacy periods and persist edits", async (
   expect(created.status()).toBe(201);
   const legacy = await created.json();
   await page.reload();
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   const title = legacy.draft.titulo;
   await page
     .locator(".admin-list .item-title")
@@ -1014,9 +1006,7 @@ test("experience month dates preserve legacy periods and persist edits", async (
   await completeReview(page);
   await expect(page.getByText("Item salvo.", { exact: true })).toBeVisible();
   await page.reload();
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
     .locator(".admin-list .item-title")
     .getByText(title, { exact: true })

@@ -43,9 +43,7 @@ test("manual English changes are preserved and stale translations keep the previ
   page,
 }, info) => {
   await login(page);
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
     .getByRole("button", { name: "Nova experiência", exact: true })
     .click();

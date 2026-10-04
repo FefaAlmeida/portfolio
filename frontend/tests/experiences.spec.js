@@ -89,9 +89,7 @@ test("editor bold persists as an inline pink highlight in previews and the publi
   await page.getByLabel("E-mail", { exact: true }).fill("editor@example.com");
   await page.getByLabel("Senha", { exact: true }).fill("browser-test-password");
   await page.getByRole("button", { name: "Entrar", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
     .locator(".admin-list .item-title")
     .getByText("Nossa Casinha", { exact: true })
@@ -112,9 +110,7 @@ test("editor bold persists as an inline pink highlight in previews and the publi
   await completeReview(page);
   await expect(page.locator(".admin-notice")).toBeVisible();
   await page.reload();
-  await page
-    .getByRole("button", { name: "Experiência", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
     .locator(".admin-list .item-title")
     .getByText("Nossa Casinha", { exact: true })
