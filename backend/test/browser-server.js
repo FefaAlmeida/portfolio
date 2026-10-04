@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import argon2 from "argon2";
+import express from "express";
 import { openDatabase } from "../src/db.js";
 import { createApp } from "../src/app.js";
 import { seed } from "../src/seed.js";
@@ -37,7 +38,22 @@ const app = createApp({
     backupDir: path.join(directory, "backups"),
   },
 });
-const server = app.listen(3101, "127.0.0.1");
+// Only the ephemeral browser fixture exposes this reset, never the production API.
+const fixture = express();
+const initialSite = db.prepare("SELECT value FROM i18n_settings WHERE key='site'").get();
+fixture.post("/__test__/reset-site", (req, res) => {
+  if (req.get("authorization") !== "Bearer browser-test-only-token-32-characters")
+    return res.sendStatus(403);
+  db.transaction(() => {
+    db.prepare("DELETE FROM translation_reviews WHERE subject='paginas:site'").run();
+    db.prepare("DELETE FROM i18n_settings WHERE key='site'").run();
+    if (initialSite)
+      db.prepare("INSERT INTO i18n_settings(key,value) VALUES('site',?)").run(initialSite.value);
+  })();
+  res.sendStatus(204);
+});
+fixture.use(app);
+const server = fixture.listen(3101, "127.0.0.1");
 for (const signal of ["SIGINT", "SIGTERM"])
   process.on(signal, () =>
     server.close(async () => {

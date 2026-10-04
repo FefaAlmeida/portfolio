@@ -1,6 +1,22 @@
 import { expect, test } from "@playwright/test";
 import { completeReview } from "./review-helper";
 
+async function resetSite({ request }) {
+  const response = await request.post(
+    "http://127.0.0.1:3101/__test__/reset-site",
+    {
+      headers: {
+        authorization: "Bearer browser-test-only-token-32-characters",
+      },
+    },
+  );
+  expect(response.status()).toBe(204);
+}
+
+test.beforeEach(resetSite);
+// Restore both languages and pending reviews even when the editor test fails.
+test.afterEach(resetSite);
+
 test("site sections share navigation, publish rich text and photos, and protect unsaved edits", async ({
   page,
 }, info) => {
