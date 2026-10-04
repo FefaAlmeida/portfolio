@@ -1,0 +1,58 @@
+/* Bubble density follows the content gutters of every section. */
+main > section { position: relative; isolation: isolate; }
+main > section > .bubble-field {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+.bubble-zone { position: absolute; overflow: hidden; }
+.bubble-zone-left { inset: 0 auto 0 0; width: var(--bubble-left); }
+.bubble-zone-right { inset: 0 0 0 auto; width: var(--bubble-right); }
+.bubble-zone-content { inset: var(--bubble-top) var(--bubble-right) var(--bubble-bottom) var(--bubble-left); }
+.bubble-zone-top { top: 0; left: var(--bubble-left); right: var(--bubble-right); height: var(--bubble-top); }
+.bubble-zone-bottom { bottom: 0; left: var(--bubble-left); right: var(--bubble-right); height: var(--bubble-bottom); }
+.bubble-field .bubble-rise {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  animation: v3-bubble-rise var(--bubble-duration) linear infinite var(--bubble-delay);
+}
+.bubble-field .bubble-sway {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: v3-bubble-sway var(--bubble-sway-duration) ease-in-out infinite alternate var(--bubble-delay);
+}
+.bubble-field .bubble {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #c85266b3;
+  background: #c85266;
+  box-shadow: 0 4px 14px rgba(200,82,102,.22);
+}
+.dark .bubble-field .bubble { border-color: #ef8799b3; background: #d96b80; }
+@keyframes v3-bubble-rise {
+  0% { transform: translateY(10%); opacity: 0; }
+  8%, 88% { opacity: var(--bubble-opacity); }
+  100% { transform: translateY(-110%); opacity: 0; }
+}
+@keyframes v3-bubble-sway {
+  from { transform: translateX(calc(var(--bubble-sway) * -1)); }
+  to { transform: translateX(var(--bubble-sway)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section > .bubble-field { display: none; }
+  .bubble-field .bubble-rise, .bubble-field .bubble-sway { animation: none; }
+}
+
+@media (max-width: 767px) {
+  .bubble-zone-left .bubble-rise:nth-child(n+4),
+  .bubble-zone-right .bubble-rise:nth-child(n+4),
+  .bubble-zone-content .bubble-rise:nth-child(n+3) { display: none; }
+  .bubble-field .bubble { width: 9px; height: 9px; }
+}

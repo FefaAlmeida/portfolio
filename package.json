@@ -1,0 +1,19 @@
+{
+ "name": "portfolio",
+ "private": true,
+ "type": "module",
+ "engines": {
+  "node": ">=24"
+ },
+ "scripts": {
+  "dev": "node --env-file-if-exists=backend/.env scripts/dev.mjs",
+  "dev:down": "docker compose down",
+  "dev:restart": "docker compose down && npm run dev",
+  "dev:logs": "docker compose logs --follow",
+  "dev:status": "docker compose ps",
+  "admin": "docker compose exec api npm run admin --",
+  "backup": "docker compose exec -T api npm run backup",
+  "i18n:check": "node scripts/i18n.mjs check",
+  "i18n:sync": "node --env-file-if-exists=backend/.env scripts/i18n.mjs sync"
+ }
+}

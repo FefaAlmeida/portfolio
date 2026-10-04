@@ -1,0 +1,437 @@
+[
+  {
+    "id": "exp-03",
+    "titulo": "MatMov",
+    "categoria": "VOLUNTEER TEACHING · NGO",
+    "periodo": "January 2026 — present",
+    "papel": "Volunteer Sociocultural Studies Teacher",
+    "imageFile": "/mat_mov.jpeg",
+    "descricao": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "context"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "At MatMov, an NGO supporting public school students, I have volunteered as a sociocultural studies teacher since January 2026. I teach online classes every other week on current affairs, critical thinking and life planning. I have taught "
+            },
+            {
+              "type": "text",
+              "text": "50+ students",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", with "
+            },
+            {
+              "type": "text",
+              "text": "16–25 students",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " per class."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "contribution"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I prepare lessons and slides, grade assignments and support students. I also helped plan the Construindo Sonhos (Building Dreams) workshop, with around "
+            },
+            {
+              "type": "text",
+              "text": "50 participants",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", share materials with fellow teachers and organized the OneDrive folders."
+            }
+          ]
+        }
+      ]
+    },
+    "inicio": "2026-01",
+    "fim": "present",
+    "resultados": [],
+    "imagemAjuste": "natural",
+    "imagemLegenda": "MatMov",
+    "imagemAlt": "Image from MatMov",
+    "siteUrl": "https://matmov.org.br/",
+    "instagramUrl": "https://www.instagram.com/matematicaemmovimento",
+    "imagemDupla": false,
+    "imagemSecundariaId": null,
+    "imagemSecundariaAlt": ""
+  },
+  {
+    "id": "exp-04",
+    "titulo": "Vozes Além das Fronteiras",
+    "categoria": "YOUTH MEDIA · RESEARCH AND WRITING",
+    "periodo": "October 2025 — present",
+    "papel": "Correspondent Journalism Director and Writer",
+    "imageFile": "/logo_vaf.jpeg",
+    "descricao": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "context"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "At Vozes Além das Fronteiras, a youth media project, I serve as Correspondent Journalism Director and a writer. I have participated since October 2025, researching topics such as educational inequality, migration and human rights to create articles and explanatory videos."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "contribution"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I assign stories, track deadlines and review drafts. Over the course of my involvement, I supervised "
+            },
+            {
+              "type": "text",
+              "text": "6 contributors",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " and have "
+            },
+            {
+              "type": "text",
+              "text": "15+ articles published",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " on the project’s website and Instagram. I also produced "
+            },
+            {
+              "type": "text",
+              "text": "2 videos",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", wrote scripts for teammates and promoted VAF at SESI and among MatMov students."
+            }
+          ]
+        }
+      ]
+    },
+    "inicio": "2025-10",
+    "fim": "present",
+    "resultados": [],
+    "imagemAjuste": "contain",
+    "imagemLegenda": "Vozes Além das Fronteiras",
+    "imagemAlt": "Vozes Além das Fronteiras logo",
+    "siteUrl": "https://vozesalemdasfronteiras.netlify.app/",
+    "instagramUrl": "https://www.instagram.com/vozesalemdasfronteiras/",
+    "imagemDupla": false,
+    "imagemSecundariaId": null,
+    "imagemSecundariaAlt": ""
+  },
+  {
+    "id": "exp-05",
+    "titulo": "Jornal SESI 222",
+    "categoria": "FOUNDER-LED PROJECT · COMMUNICATION",
+    "periodo": "July 2025 — present",
+    "papel": "Founder and Editorial Designer",
+    "imageFile": "/jornal_sesi.jpeg",
+    "descricao": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "context"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I conceived and founded Jornal SESI 222 with support from the school library to share school events and achievements with students, families and staff. The idea began in July 2025, and the first issue was completed and distributed in 2026. The newspaper has "
+            },
+            {
+              "type": "text",
+              "text": "1 published issue",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", with "
+            },
+            {
+              "type": "text",
+              "text": "10 contributors",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", including me."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "contribution"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I selected topics with the librarian, wrote articles, revised texts with Portuguese teachers and designed the issue in Canva. I also adapted images to school guidelines and helped arrange distribution through the school’s official communication platform."
+            }
+          ]
+        }
+      ]
+    },
+    "inicio": "2025-07",
+    "fim": "present",
+    "resultados": [],
+    "imagemAjuste": "natural",
+    "imagemLegenda": "Jornal SESI 222",
+    "imagemAlt": "Image from Jornal SESI 222",
+    "siteUrl": "",
+    "instagramUrl": "",
+    "imagemDupla": false,
+    "imagemSecundariaId": null,
+    "imagemSecundariaAlt": ""
+  },
+  {
+    "id": "exp-02",
+    "titulo": "Nossa Casinha",
+    "categoria": "VOLUNTEERING · UFABC",
+    "periodo": "07/2025 — 12/2025",
+    "papel": "Nursery Volunteer and Organizational Support",
+    "imageFile": "/nossa_casinha.jpeg",
+    "descricao": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "context"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "At Nossa Casinha, at UFABC, I volunteered in the nursery for "
+            },
+            {
+              "type": "text",
+              "text": "6 months",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " in 2025. Alongside other volunteers, I cared for babies while their immigrant caregivers attended Portuguese classes. The team cared for around "
+            },
+            {
+              "type": "text",
+              "text": "10 babies each Saturday",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "contribution"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I prepared activities, arranged and cleaned the rooms, and created keepsake albums for families. I also helped organize Children’s Day activities. In 2026, I spent "
+            },
+            {
+              "type": "text",
+              "text": "2 weeks",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " organizing children’s and caregivers’ registration details in a spreadsheet."
+            }
+          ]
+        }
+      ]
+    },
+    "inicio": "",
+    "fim": "",
+    "resultados": [],
+    "imagemAjuste": "natural",
+    "imagemLegenda": "Nossa Casinha",
+    "imagemAlt": "Image from Nossa Casinha",
+    "siteUrl": "",
+    "instagramUrl": "https://www.instagram.com/cursonossacasa/",
+    "imagemDupla": false,
+    "imagemSecundariaId": null,
+    "imagemSecundariaAlt": ""
+  },
+  {
+    "id": "exp-01",
+    "titulo": "Juventudes em Diálogo",
+    "categoria": "SCHOOL INITIATIVE · SESI NETWORK",
+    "periodo": "July — December 2025",
+    "papel": "Member and Activity Facilitator",
+    "imageFile": "/juventudes.jpeg",
+    "descricao": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "context"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "From July to December 2025, I participated in Juventudes em Diálogo, a SESI initiative encouraging student participation and care for the school community. I worked in a group of "
+            },
+            {
+              "type": "text",
+              "text": "5 members",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", guided by the librarian, to develop activities about waste, respectful relationships and mental health."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "contribution"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "I created interactive posters and visual materials and contributed to "
+            },
+            {
+              "type": "text",
+              "text": "4 exhibitions",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ": two about waste and two for Yellow September, a mental health awareness campaign. I also contributed to "
+            },
+            {
+              "type": "text",
+              "text": "1 digital presentation",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": ", discussions with "
+            },
+            {
+              "type": "text",
+              "text": "4 middle school classes",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": " and activities with first-grade elementary school students."
+            }
+          ]
+        }
+      ]
+    },
+    "inicio": "2025-07",
+    "fim": "2025-12",
+    "resultados": [],
+    "imagemAjuste": "natural",
+    "imagemLegenda": "Juventudes em Diálogo",
+    "imagemAlt": "Image from Juventudes em Diálogo",
+    "siteUrl": "",
+    "instagramUrl": "",
+    "imagemDupla": true,
+    "imagemSecundariaId": null,
+    "imagemSecundariaAlt": ""
+  }
+]

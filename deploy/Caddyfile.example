@@ -1,0 +1,61 @@
+# Use only after completing the private translation review.
+fernandagabriela.com {
+  tls {
+    issuer acme
+  }
+  @internal path /api/internal /api/internal/*
+  respond @internal 404
+  redir /admin https://admin.fernandagabriela.com/ permanent
+  @adminPages path /admin/*
+  redir @adminPages https://admin.fernandagabriela.com{uri} permanent
+  @privateApi path /api/admin /api/admin/* /api/auth /api/auth/*
+  respond @privateApi 404
+  handle /api/* {
+    request_body {
+      max_size 106MB
+    }
+    reverse_proxy 127.0.0.1:7153
+  }
+  handle {
+    reverse_proxy 127.0.0.1:7154
+  }
+  encode zstd gzip
+  header {
+    X-Content-Type-Options nosniff
+    Referrer-Policy strict-origin-when-cross-origin
+    X-Frame-Options SAMEORIGIN
+    -Server
+  }
+}
+
+www.fernandagabriela.com {
+  tls {
+    issuer acme
+  }
+  redir https://fernandagabriela.com{uri} permanent
+}
+
+admin.fernandagabriela.com {
+  tls {
+    issuer acme
+  }
+  @internal path /api/internal /api/internal/*
+  respond @internal 404
+  header {
+    X-Robots-Tag "noindex, nofollow, noarchive"
+    X-Content-Type-Options nosniff
+    Referrer-Policy strict-origin-when-cross-origin
+    X-Frame-Options SAMEORIGIN
+    -Server
+  }
+  handle /api/* {
+    request_body {
+      max_size 106MB
+    }
+    reverse_proxy 127.0.0.1:7153
+  }
+  handle {
+    reverse_proxy 127.0.0.1:7154
+  }
+  encode zstd gzip
+}

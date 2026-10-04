@@ -1,0 +1,26 @@
+/* Show all six awards in a three-column desktop grid. */
+.awards-section{padding-block:76px 86px;background:#eee9df}
+.dark .awards-section{background:#211a1e}
+.awards-heading{margin-bottom:34px}
+.awards-heading h2{font-size:clamp(32px,4vw,50px);line-height:1.2;letter-spacing:-.035em}
+.awards-heading p{margin-top:14px;color:var(--muted);font-size:14px;line-height:1.8}
+.awards-track{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;list-style:none;margin:0;padding:6px 0 18px}
+.awards-slider>.work-arrow{display:none}
+.award-card{display:flex;flex-direction:column;min-width:0;min-height:285px;padding:26px 25px 24px;background:#f8f5ed;border:1px solid #ded8ce;border-radius:6px;scroll-snap-align:start;transition:border-color .18s}
+.dark .award-card{background:#2b2328;border-color:#51414a}
+.award-card:hover{border-color:var(--accent)}
+.award-card:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.award-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:25px}
+.award-logo{display:flex;align-items:center;justify-content:flex-start;width:140px;height:72px;flex-shrink:0}
+.award-logo img{width:100%;height:100%;object-fit:contain;object-position:left center}
+.dark .award-logo{background:#f8f5ed;border-radius:4px;padding:8px}
+.award-date{padding-top:8px;font-size:11px;font-weight:550;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.award-copy h3{font-size:26px;line-height:1.25;letter-spacing:-.04em}
+.award-copy p{font-size:12px;line-height:1.85;color:var(--muted);margin-top:14px}
+.award-footer{margin-top:auto;padding-top:26px;display:flex;justify-content:flex-end}
+.credential-button{min-height:29px;padding:6px 8px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #c85266;border-radius:4px;background:#c85266;color:#fff;font-size:10px;font-weight:500;cursor:pointer;transition:background-color .18s,color .18s,border-color .18s}
+.credential-button .icon{width:10px;height:10px}
+.credential-button:hover,.credential-button:focus-visible{background:#fff;color:#c85266;border-color:#c85266}
+@media(min-width:1024px){.awards-track{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:767px){.awards-section{padding-block:52px 56px}.awards-heading{margin-bottom:25px}.award-card{min-height:275px;padding:24px}.award-top{margin-bottom:22px}.award-copy h3{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.award-card,.credential-button{transition:none}}

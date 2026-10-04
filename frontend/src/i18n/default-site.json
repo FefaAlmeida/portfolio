@@ -1,0 +1,136 @@
+{
+  "pt-BR": {
+    "heroTitle": "Transformando aprendizado em projetos e conquistas.",
+    "aboutTitle": "Sobre mim",
+    "aboutParagraphs": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-0"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Minha curiosidade me leva a buscar novos conhecimentos e, principalmente, a entender como eles podem ser transformados em algo concreto. Gosto de pensar em soluções criativas para problemas reais, especialmente quando podem facilitar a vida, ajudar alguém ou transformar uma realidade."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-1"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "É no SENAI que encontro espaço para colocar essa vontade em prática. Ao desenvolver projetos de sistemas e aplicações web, transformo o que aprendo em experiências concretas, testando ideias, enfrentando desafios e descobrindo novas formas de solucionar problemas."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-2"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Essa busca por aprender e criar também ultrapassa a tecnologia. Por meio de projetos extracurriculares e experiências escolares, tenho contato com diferentes pessoas, ideias e realidades, o que alimenta minha vontade de continuar aprendendo e usar aquilo que aprendo para contribuir com as pessoas ao meu redor."
+            }
+          ]
+        }
+      ]
+    },
+    "introGreeting": "Oie! Meu nome é",
+    "introName": "Fernanda",
+    "introSurname": "Gabriela.",
+    "introDescription": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Desenvolvo aplicações web e participo de projetos de educação, comunicação e voluntariado."
+            }
+          ]
+        }
+      ]
+    },
+    "githubUrl": "https://github.com/FefaAlmeida",
+    "imagemId": null,
+    "imagemSecundariaId": null,
+    "imagemAlt": "Fernanda Gabriela durante uma viagem",
+    "imagemSecundariaAlt": ""
+  },
+  "en-US": {
+    "heroTitle": "Turning what I learn into projects and achievements.",
+    "aboutTitle": "About me",
+    "aboutParagraphs": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-0"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "My curiosity drives me to learn new things and, above all, understand how to turn them into something tangible. I enjoy finding creative solutions to real problems, especially when they can make life easier, help someone, or change things for the better."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-1"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "At SENAI, I find opportunities to put that drive into practice. By developing software projects and web applications, I turn what I learn into hands-on experience: testing ideas, tackling challenges, and discovering new ways to solve problems."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "attrs": {
+            "i18nId": "about-2"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "My drive to learn and create also goes beyond technology. Through extracurricular projects and school experiences, I encounter different people, ideas, and perspectives. These experiences inspire me to keep learning and use that knowledge to contribute to the people around me."
+            }
+          ]
+        }
+      ]
+    },
+    "introGreeting": "Hi! My name is",
+    "introName": "Fernanda",
+    "introSurname": "Gabriela.",
+    "introDescription": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "I develop web applications and take part in education, communication, and volunteering projects."
+            }
+          ]
+        }
+      ]
+    },
+    "githubUrl": "https://github.com/FefaAlmeida",
+    "imagemId": null,
+    "imagemSecundariaId": null,
+    "imagemAlt": "Fernanda Gabriela on a trip",
+    "imagemSecundariaAlt": ""
+  }
+}
