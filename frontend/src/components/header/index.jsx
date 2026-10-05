@@ -368,7 +368,7 @@ export default function Header({ locale = "pt-BR" }) {
       </div>
 
       <nav
-        className="site-nav-desktop fixed top-4 left-1/2 z-[1] flex -translate-x-1/2 scale-[.98] items-center gap-[3px] rounded-[22px] border border-transparent px-1 whitespace-nowrap max-[1000px]:hidden"
+        className="site-nav-desktop fixed top-4 left-1/2 z-20 flex -translate-x-1/2 scale-[.98] items-center gap-[3px] rounded-[22px] border border-transparent px-1 whitespace-nowrap max-[1000px]:hidden"
         aria-label={ui("Seções do portfólio")}
       >
         <div className="site-nav-links flex min-w-0 items-center gap-4">
