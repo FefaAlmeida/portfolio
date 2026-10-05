@@ -28,6 +28,7 @@ export default function About({
           {content.aboutTitle}
         </h2>
         <PortraitCollage
+          content={content}
           locale={locale}
           className="hidden md:block md:col-start-1 md:row-span-2 md:row-start-1"
         />
@@ -44,7 +45,11 @@ export default function About({
   );
 }
 
-export function PortraitCollage({ locale = "pt-BR", className = "" }) {
+export function PortraitCollage({
+  content = {},
+  locale = "pt-BR",
+  className = "",
+}) {
   const ui = (text) => formatMessage(locale, text);
   return (
     <ParallaxGroup
@@ -57,8 +62,15 @@ export function PortraitCollage({ locale = "pt-BR", className = "" }) {
       >
         <div className={styles.frame}>
           <Image
-            src="/foto_perfil.jpeg"
-            alt={ui("Fernanda Gabriela durante uma viagem")}
+            src={
+              content.imagemId
+                ? `/api/media/${content.imagemId}`
+                : "/foto_perfil.jpeg"
+            }
+            unoptimized={Boolean(content.imagemId)}
+            alt={
+              content.imagemAlt ?? ui("Fernanda Gabriela durante uma viagem")
+            }
             fill
             sizes="(min-width: 768px) 332px, 72vw"
             className={styles.travel}
@@ -71,8 +83,13 @@ export function PortraitCollage({ locale = "pt-BR", className = "" }) {
       >
         <div className={styles.frame}>
           <Image
-            src="/foto_sobre_secundaria.jpeg"
-            alt="Fernanda Gabriela"
+            src={
+              content.imagemSecundariaId
+                ? `/api/media/${content.imagemSecundariaId}`
+                : "/foto_sobre_secundaria.jpeg"
+            }
+            unoptimized={Boolean(content.imagemSecundariaId)}
+            alt={content.imagemSecundariaAlt ?? "Fernanda Gabriela"}
             fill
             sizes="(min-width: 768px) 207px, 45vw"
             className={styles.portrait}

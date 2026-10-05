@@ -82,7 +82,7 @@ test("site sections share navigation, publish rich text and photos, and protect 
   }
   await page.getByRole("button", { name: "Preview", exact: true }).click();
   const preview = page.getByRole("dialog");
-  await expect(preview.locator("strong")).toHaveText(story);
+  await expect(preview.locator("strong:visible")).toHaveText(story);
   await expect(preview.locator('img[src^="/api/media/"]')).toHaveCount(2);
   await page
     .getByRole("button", { name: "Fechar prévia", exact: true })
@@ -110,11 +110,13 @@ test("site sections share navigation, publish rich text and photos, and protect 
   );
   await page.goto("/");
   await expect(page.locator("#intro-title")).toContainText(name);
-  await expect(page.locator("#sobre strong")).toHaveText(story);
-  await expect(page.locator("#sobre p").filter({ hasText: story })).toHaveCSS(
-    "text-align",
-    "center",
-  );
+  await expect(page.locator("#sobre strong:visible")).toHaveText(story);
+  await expect(
+    page.locator("#sobre p:visible").filter({ hasText: story }),
+  ).toHaveCSS("text-align", "center");
+  await expect(page.locator("#sobre img")).toHaveCount(2);
+  // The collage is desktop-only; verify image loading at a visible viewport.
+  await page.setViewportSize({ width: 1280, height: 900 });
   for (const img of await page.locator("#sobre img").all()) {
     await expect(img).toHaveAttribute("src", /^\/api\/media\//);
     await expect

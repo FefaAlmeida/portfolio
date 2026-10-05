@@ -25,7 +25,8 @@ test("photos and decorative layers respond to scrolling without horizontal overf
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   const before = await photoOffsets(page);
   await page.evaluate(() => window.scrollTo({ top: 350, behavior: "instant" }));
-  if (before.length) {
+  if (page.viewportSize().width >= 768) {
+    expect(before).toHaveLength(2);
     await expect
       .poll(async () => (await photoOffsets(page))[0])
       .toBeLessThan(before[0] - 1);
@@ -34,8 +35,9 @@ test("photos and decorative layers respond to scrolling without horizontal overf
       Math.abs(after[0] - before[0]),
     );
   } else {
-    await expect(page.locator("#inicio figure img")).toHaveCount(1);
-    await expect(page.locator("#inicio figure")).toHaveCSS("transform", "none");
+    expect(before).toEqual([]);
+    await expect(page.locator("#inicio figure")).toHaveCount(0);
+    await expect(page.locator("#sobre figure")).toBeHidden();
   }
   expect(
     await page.evaluate(

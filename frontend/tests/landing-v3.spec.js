@@ -12,7 +12,15 @@ test("editorial landing retains published copy, responsive layout and theme pers
     "Fernanda Gabriela.",
   );
   await expect(page.locator("#sobre h2")).toHaveText("Sobre mim");
-  await expect(page.getByLabel(site.heroTitle, { exact: true })).toBeVisible();
+  const statement = page.getByLabel(site.heroTitle, { exact: true });
+  if (info.project.name === "mobile") {
+    await expect(statement).toBeHidden();
+    await expect(page.locator("#inicio")).toBeVisible();
+  } else {
+    await expect(statement).toBeVisible();
+    await page.locator('.site-nav-desktop a[href="#sobre"]').click();
+    await expect(page).toHaveURL(/#sobre$/);
+  }
   await expect(page.locator("#educacao")).toContainText(
     "SENAI São Caetano do Sul",
   );

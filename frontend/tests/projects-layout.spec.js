@@ -13,7 +13,13 @@ test("published projects match the demo layout and theme controls", async ({
   expect(count).toBeGreaterThanOrEqual(4);
   const mobile = info.project.name === "mobile";
   if (mobile) {
-    await expect(section.locator(".work-mobile-action").first()).toBeVisible();
+    await expect(section.locator(".work-mobile-action").first()).toBeHidden();
+    await expect(
+      section.getByRole("button", {
+        name: "Ver detalhes de Lector Hub",
+        exact: true,
+      }),
+    ).toBeVisible();
     await expect(
       section.getByRole("button", { name: "Próximo projeto" }),
     ).toBeHidden();
