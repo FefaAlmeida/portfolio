@@ -13,33 +13,33 @@ export default function Hero({ locale = "pt-BR", content }) {
   return (
     <Section
       id="inicio"
-      className="pt-24 pb-[34px] min-[421px]:pt-[108px] md:pt-[121px] md:pb-[42px] lg:pt-32 lg:pb-[62px]"
+      className="pt-24 pb-8 min-[421px]:pt-[108px] md:pt-[121px] md:pb-[42px] lg:pt-32 lg:pb-[62px]"
       aria-labelledby="intro-title"
     >
       <Container>
-        <p className="max-w-[10ch] font-serif text-[clamp(2.875rem,11.7vw,4.5rem)] leading-[1.08] tracking-[-.06em] md:max-w-none md:text-[clamp(3.5rem,7.8vw,6.5rem)]">
-          {value.introGreeting}
-        </p>
-        <h1
-          id="intro-title"
-          className="mt-3 font-serif text-[clamp(3.375rem,13.5vw,5.2rem)] leading-[1.05] font-normal tracking-[-.06em] md:text-[clamp(4rem,8.8vw,7.5rem)] md:leading-[1.08]"
-        >
-          <span className="text-black dark:text-foreground">
-            {value.introName}
-          </span>{" "}
-          <span className="block text-primary md:inline">
-            {value.introSurname}
-          </span>
-        </h1>
-        <div className="mt-6 grid items-end gap-6 md:mt-9 md:grid-cols-[1.2fr_1fr]">
+        <div className="min-w-0">
+          <p className="whitespace-nowrap font-serif text-[clamp(2rem,11.5vw,4rem)] leading-[1.08] font-normal tracking-[-.06em] text-black dark:text-foreground md:text-foreground md:whitespace-normal md:text-[clamp(3.5rem,7.8vw,6.5rem)]">
+            {value.introGreeting}
+          </p>
+          <h1
+            id="intro-title"
+            className="mt-2 whitespace-nowrap font-serif text-[clamp(2.25rem,12.8vw,4.5rem)] leading-[1.08] font-normal tracking-[-.06em] md:mt-3 md:whitespace-normal md:text-[clamp(4rem,8.8vw,7.5rem)]"
+          >
+            <span className="text-black dark:text-foreground">
+              {value.introName}
+            </span>{" "}
+            <span className="text-primary">{value.introSurname}</span>
+          </h1>
+        </div>
+        <div className="mt-6 grid items-end gap-5 md:mt-9 md:grid-cols-[1.2fr_1fr]">
           <RichText
             value={value.introDescription}
             className="max-w-[460px] text-sm leading-[1.85] text-muted-foreground md:text-[15px]"
           />
-          <div className="flex flex-wrap items-center gap-6 md:justify-end">
+          <div className="grid grid-cols-2 items-center gap-3 md:flex md:flex-wrap md:justify-end md:gap-6">
             <Button
               asChild
-              className="landing-action h-12 gap-[31px] rounded-sm px-5 text-[13px]"
+              className="landing-action h-11 gap-3 rounded-sm px-4 text-xs md:h-12 md:gap-[31px] md:px-5 md:text-[13px]"
             >
               <a href="#projetos">
                 {m.seeProjects}
@@ -49,7 +49,7 @@ export default function Hero({ locale = "pt-BR", content }) {
             <Button
               asChild
               variant="outline"
-              className="h-12 gap-3 rounded-sm border-black bg-transparent px-5 text-[13px] text-foreground"
+              className="h-11 gap-2 rounded-sm border-transparent bg-transparent px-2 text-xs text-foreground md:border-black md:px-5 md:h-12 md:gap-3 md:px-5 md:text-[13px]"
             >
               <a
                 href={value.githubUrl}
@@ -76,11 +76,11 @@ export function Statement({ content, locale = "pt-BR" }) {
   const words = title.trim().split(/\s+/);
   return (
     <Section
-      className="pt-16 pb-8 md:pt-24 md:pb-10 lg:pt-28"
+      className="hidden md:block md:pt-24 md:pb-10 lg:pt-28"
       aria-label={title}
     >
       <Container>
-        <p className="max-w-[16ch] font-serif text-[clamp(2.25rem,7.7vw,6.875rem)] leading-[1.1] tracking-[-.045em] md:leading-[1.02]">
+        <p className="max-w-none font-serif text-[clamp(2.5rem,12.3vw,4.5rem)] leading-[1.03] tracking-[-.045em] md:max-w-[16ch] md:text-[clamp(2.25rem,7.7vw,6.875rem)] md:leading-[1.02]">
           {words.slice(0, -1).join(" ")}{" "}
           <span className="text-primary">{words.at(-1)}</span>
         </p>

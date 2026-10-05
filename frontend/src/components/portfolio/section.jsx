@@ -15,7 +15,7 @@ export function Section({ className, children, bubbles = true, ...props }) {
   return (
     <section
       className={cn(
-        "relative isolate scroll-mt-28 bg-background px-6 text-foreground md:px-8 lg:px-20",
+        "relative isolate scroll-mt-28 bg-background px-4 text-foreground md:px-8 lg:px-20",
         className,
       )}
       {...props}
@@ -31,7 +31,7 @@ export function SectionHeading({ title, description, className, id }) {
     <header className={cn("mb-9", className)}>
       <h2
         id={id}
-        className="font-serif text-[clamp(2rem,4vw,3.125rem)] leading-[1.2] font-normal tracking-[-.035em]"
+        className="font-serif text-[clamp(2.25rem,9vw,2.75rem)] md:text-[clamp(2rem,4vw,3.125rem)] leading-[1.2] font-normal tracking-[-.035em]"
       >
         {title}
       </h2>
@@ -41,5 +41,18 @@ export function SectionHeading({ title, description, className, id }) {
         </p>
       )}
     </header>
+  );
+}
+
+export function SectionSubtitle({ children, highlight, className }) {
+  return (
+    <p
+      className={cn(
+        "text-left font-serif text-xl leading-snug font-light text-muted-foreground",
+        className,
+      )}
+    >
+      {children} <span className="text-primary">{highlight}</span>
+    </p>
   );
 }

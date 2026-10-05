@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Estudos visuais
+
+Os protótipos da seção “Sobre mim” ficam em `public/demos/sobre-mim/`,
+com fotos e decorações de apoio em `assets/`. Com o frontend rodando, abra
+`/demos/sobre-mim/variantes-fotos.html` ou outro HTML dessa pasta.
+
+Para regenerar a composição de sakura, execute a partir de `frontend/`:
+
+```bash
+node public/demos/sobre-mim/build.mjs
+```
+
+As fotos usadas pelo site, como `foto_sobre_secundaria.jpeg`, continuam em
+`public/`; o gerador reutiliza essa foto diretamente.

@@ -73,7 +73,7 @@ export default function ExperienceTimeline() {
     <svg
       ref={ref}
       aria-hidden="true"
-      className="experience-timeline pointer-events-none absolute inset-0 h-full w-full overflow-visible"
+      className="experience-timeline pointer-events-none hidden md:block absolute inset-0 h-full w-full overflow-visible"
     >
       {segments.map((segment, index) => {
         const { x, y, axis, mobileDateX, fade, returnAt, next } = segment;

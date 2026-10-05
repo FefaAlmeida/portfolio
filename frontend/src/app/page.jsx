@@ -62,7 +62,7 @@ export default async function Home({ locale = "pt-BR" }) {
           <output className="block p-6 text-center">{m.unavailable}</output>
         )}
 
-        <Projects projects={projetos} locale={locale} />
+        <Projects projects={projetos} locale={locale} statement={site?.heroTitle} />
 
         <Experiencias experiencias={experiencias} locale={locale} />
         <Premios premiosData={premios} locale={locale} />

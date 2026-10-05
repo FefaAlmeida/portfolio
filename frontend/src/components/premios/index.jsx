@@ -46,7 +46,7 @@ export default function Premios({ premiosData = [], locale = "pt-BR" }) {
       <Container>
         <SectionHeading
           id="awards-title"
-          className="mb-[25px] md:mb-[34px] [&_p]:mt-3.5"
+          className="mb-[25px] md:mb-[34px] max-md:[&_h2]:text-[clamp(2.75rem,12vw,3.5rem)] max-md:[&_h2]:leading-[1.15] max-md:[&_h2]:hyphens-auto [&_p]:mt-3.5 max-md:[&_p]:font-serif max-md:[&_p]:text-xl max-md:[&_p]:leading-snug max-md:[&_p]:font-light"
           title={ui("Reconhecimentos")}
           description={ui(
             "Conquistas em leitura, escrita e formação acadêmica.",

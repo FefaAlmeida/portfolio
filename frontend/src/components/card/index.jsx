@@ -50,10 +50,10 @@ export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
       <DialogTrigger asChild>
         <button
           type="button"
-          className="work-card group relative isolate flex w-full min-w-0 cursor-pointer rounded-2xl text-left outline-none transition-transform duration-500 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-reduce:transform-none motion-reduce:transition-none"
+          className="work-card group relative isolate flex w-full min-w-0 cursor-pointer rounded-sm md:rounded-2xl text-left outline-none transition-transform duration-500 hover:-translate-y-1 focus-visible:-translate-y-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset motion-reduce:transform-none motion-reduce:transition-none"
           aria-label={ui("Ver detalhes de {0}", { 0: projeto.titulo })}
         >
-          <Card className="work-card-content w-full flex-1 gap-0 rounded-2xl border p-0 ring-0">
+          <Card className="work-card-content w-full flex-1 gap-0 rounded-sm md:rounded-2xl border p-0 ring-0">
             <Badge
               variant={development ? "development" : "completed"}
               className="absolute top-4 left-4 z-10 max-w-[calc(100%-2rem)] text-[9px]"
@@ -61,7 +61,7 @@ export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
               {ui(development ? "Em desenvolvimento" : "Concluído")}
             </Badge>
             <div
-              className="work-cover flex h-52 w-full items-center justify-center overflow-hidden"
+              className="work-cover flex h-36 md:h-52 w-full items-center justify-center overflow-hidden"
               style={{ backgroundColor: cover.color }}
             >
               {/* biome-ignore lint/performance/noImgElement: authenticated draft media uses the original session. */}
@@ -72,9 +72,9 @@ export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
                 className="max-h-full max-w-full object-contain"
               />
             </div>
-            <CardContent className="space-y-3 p-5">
+            <CardContent className="space-y-2 p-4 md:space-y-3 md:p-5">
               <div className="flex items-center justify-between gap-3">
-                <h3 className="font-serif text-[30px] leading-tight font-normal">
+                <h3 className="font-serif text-[26px] md:text-[30px] leading-tight font-normal">
                   {projeto.titulo}
                 </h3>
                 <ArrowUpRight
@@ -87,13 +87,15 @@ export default function ArticlePreviewCard({ projeto, locale = "pt-BR" }) {
                 links={false}
                 className="line-clamp-2 min-h-[3.2em] text-[13px] leading-[1.6] text-muted-foreground"
               />
-              <Technologies
-                items={projeto.tecnologias}
-                label={ui("Tecnologias")}
-                compact
-              />
+              <div className="hidden md:block">
+                <Technologies
+                  items={projeto.tecnologias}
+                  label={ui("Tecnologias")}
+                  compact
+                />
+              </div>
               <span
-                className="work-mobile-action flex items-center justify-end gap-1.5 text-xs font-medium text-primary sm:[@media(hover:hover)]:hidden"
+                className="work-mobile-action hidden md:flex items-center justify-end gap-1.5 text-xs font-medium text-primary sm:[@media(hover:hover)]:hidden"
                 aria-hidden="true"
               >
                 {m.learnMore}

@@ -1,0 +1,69 @@
+.collage {
+  --photo-accent: color-mix(in srgb, #dca4b2 75%, var(--primary));
+  aspect-ratio: var(--collage-aspect, 4 / 5);
+  isolation: isolate;
+}
+
+[class~="dark"] .collage {
+  --photo-accent: #dca4b2;
+}
+
+.photo {
+  position: absolute;
+  isolation: isolate;
+}
+
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  transform: translate(7%, 7%);
+  background: var(--photo-accent);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translate(7%, -7%);
+  border: 1px solid var(--primary);
+  pointer-events: none;
+}
+
+.large {
+  left: 17%;
+  top: 24%;
+  width: 72%;
+  height: 65%;
+}
+
+.small {
+  left: 4%;
+  top: 8%;
+  width: 45%;
+  height: 36%;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px var(--background);
+}
+
+.travel {
+  object-fit: cover;
+  object-position: 58% 78%;
+  transform-origin: 58% 82%;
+  transform: scale(1.4);
+}
+
+.portrait {
+  object-fit: cover;
+  object-position: 57% 55%;
+  transform-origin: 57% 57%;
+  transform: scale(1.3);
+}

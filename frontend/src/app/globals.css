@@ -170,3 +170,110 @@
     transform: translateX(var(--bubble-sway));
   }
 }
+
+/* On mobile, connectors live above each card and never cross its content. */
+@media (max-width: 767px) {
+  .experience-stories {
+    margin-top: 0.75rem;
+  }
+
+  .experience-story,
+  .experience-story:last-of-type {
+    gap: 0;
+    padding: 0;
+  }
+
+  .experience-date {
+    justify-self: stretch;
+    justify-content: flex-end;
+    padding: 1.5rem 0;
+  }
+
+  .experience-date::before,
+  .experience-date::after {
+    content: "";
+    position: absolute;
+    right: 19px;
+    width: 1px;
+    height: 1.5rem;
+    background: rgb(163 163 163 / 45%);
+  }
+
+  .experience-story:nth-of-type(even) .experience-date {
+    justify-content: flex-start;
+  }
+
+  .experience-story:nth-of-type(even) .experience-date::before,
+  .experience-story:nth-of-type(even) .experience-date::after {
+    right: auto;
+    left: 19px;
+  }
+
+  .experience-date::before {
+    top: 0;
+  }
+
+  .experience-date::after {
+    bottom: 0;
+  }
+
+  .experience-story:first-of-type .experience-date {
+    padding-top: 0;
+  }
+
+  .experience-story:first-of-type .experience-date::before {
+    content: none;
+  }
+
+  .experience-date-label {
+    position: relative;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--card) 90%, transparent);
+    color: var(--muted-foreground);
+    font-size: 11px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .experience-date-label svg {
+    width: 13px;
+    height: 13px;
+    color: color-mix(in srgb, var(--primary) 70%, var(--muted-foreground));
+  }
+
+  .experience-card {
+    background: rgb(255 255 255 / 35%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .experience-card {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .dark .experience-card {
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    border-color: color-mix(in srgb, var(--border) 70%, transparent);
+  }
+
+  .experience-card > * {
+    min-width: 0;
+  }
+
+  .experience-context p,
+  p.experience-context,
+  .experience-body p {
+    text-align: justify;
+  }
+
+  .bubble-field {
+    opacity: 0.5;
+  }
+}

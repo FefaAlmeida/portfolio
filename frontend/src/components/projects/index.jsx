@@ -6,6 +6,7 @@ import {
   Container,
   Section,
   SectionHeading,
+  SectionSubtitle,
 } from "@/components/portfolio/section";
 import {
   Carousel,
@@ -26,13 +27,18 @@ const options = {
   },
 };
 
-export default function Projects({ projects = [], locale = "pt-BR" }) {
+export default function Projects({
+  projects = [],
+  locale = "pt-BR",
+  statement,
+}) {
   const m = t(locale);
+  const statementWords = (statement || m.hero).trim().split(/\s+/);
   const id = useId();
   return (
     <Section
       id="projetos"
-      className="pt-8 pb-20 md:pt-10 font-[Arial,Helvetica,sans-serif]"
+      className="pt-8 pb-12 md:pb-20 md:pt-10 font-[Arial,Helvetica,sans-serif]"
       aria-labelledby={`projects-title-${id}`}
     >
       <Container>
@@ -40,12 +46,22 @@ export default function Projects({ projects = [], locale = "pt-BR" }) {
           id={`projects-title-${id}`}
           title={m.projectsTitle}
           description={m.projectsIntro}
-          className="mb-10 border-b pb-8 [&_h2]:text-[clamp(36px,4vw,60px)] [&_h2]:leading-[1.15] [&_p]:mt-5"
+          className="mb-3 font-serif text-xl text-left md:w-full md:font-[Arial,Helvetica,sans-serif] md:text-base md:border-b md:mb-10 md:pb-8 [&_h2]:text-[clamp(2.75rem,12vw,3.5rem)] md:[&_h2]:text-[clamp(36px,4vw,60px)] [&_h2]:leading-[1.15] [&_p]:hidden md:[&_p]:block [&_p]:mt-5"
         />
-        <Carousel opts={options} aria-label={m.projectsTitle}>
+        <SectionSubtitle
+          className="mb-7 md:hidden"
+          highlight={statementWords.at(-1)}
+        >
+          {statementWords.slice(0, -1).join(" ")}
+        </SectionSubtitle>
+        <Carousel
+          opts={options}
+          aria-label={m.projectsTitle}
+          className="w-full"
+        >
           <CarouselContent
             id={id}
-            className="work-track -ml-5 flex-col gap-y-5 pt-1.5 pb-[18px] lg:flex-row"
+            className="work-track -ml-5 flex-col gap-y-7 pt-1.5 pb-[18px] lg:flex-row"
           >
             {projects.map((project) => (
               <CarouselItem key={project.id} className="flex pl-5 lg:basis-1/3">

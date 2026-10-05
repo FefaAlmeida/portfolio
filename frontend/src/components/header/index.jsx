@@ -1,18 +1,17 @@
 "use client";
 
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/portfolio/section";
-import { portfolioSections as links } from "@/lib/sections";
+import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n/provider";
 import { rememberVisitorLocale } from "@/i18n/visitor-locale";
+import { portfolioSections as links } from "@/lib/sections";
 import { cn } from "@/lib/utils";
 
 const iconClass =
   "site-icon-button size-[38px] cursor-pointer rounded-full border-transparent bg-transparent p-0 text-[#524b45] shadow-none hover:bg-transparent hover:text-[#c85266] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#c85266] dark:text-[#d0bfc2] dark:hover:text-[#ef8799] motion-reduce:transition-none";
-
-
 
 export default function Header({ locale = "pt-BR" }) {
   const { ui, navigateLocale } = useI18n();
@@ -21,6 +20,53 @@ export default function Header({ locale = "pt-BR" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const scrollAnimation = useRef(0);
+  const reduceMotion = useReducedMotion();
+  const headerRef = useRef(null);
+  const menuButtonRef = useRef(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const bodyOverflow = document.body.style.overflow;
+    const main = document.querySelector("main");
+    const wasInert = main?.inert;
+    document.body.style.overflow = "hidden";
+    if (main) main.inert = true;
+
+    const handleKey = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+      if (event.key !== "Tab") return;
+      const controls = headerRef.current?.querySelectorAll("a[href], button");
+      const visible = [...(controls || [])].filter(
+        (control) =>
+          control.getClientRects().length > 0 && !control.closest("[inert]"),
+      );
+      const first = visible[0];
+      const last = visible.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 1001px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleKey);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      if (main) main.inert = wasInert;
+      document.removeEventListener("keydown", handleKey);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const cancelScroll = () => cancelAnimationFrame(scrollAnimation.current);
@@ -172,15 +218,75 @@ export default function Header({ locale = "pt-BR" }) {
           "nav-link inline-flex min-h-[38px] items-center justify-center rounded-[14px] px-2.5 py-2 text-sm font-medium text-[#524b45] transition duration-300 hover:-translate-y-px hover:text-[#c85266] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#c85266] dark:text-[#d0bfc2] dark:hover:text-[#ef8799] motion-reduce:transition-none",
           activeSection === id &&
             "nav-link-active text-[#b9435c] dark:text-[#ef8799]",
-          mobile && "nav-link-mobile w-full justify-start px-4",
+          mobile &&
+            "nav-link-mobile w-full justify-center px-4 py-3 text-center font-serif text-[clamp(2rem,5.5vw,3.5rem)] leading-tight font-normal tracking-tight",
         )}
       >
         {ui(label)}
       </a>
     ));
 
+  const preferenceControls = (
+    <>
+      <Button asChild variant="ghost" className={iconClass}>
+        <a
+          href={locale === "en-US" ? "/" : "/en"}
+          onClick={(event) => {
+            const next = locale === "en-US" ? "pt-BR" : "en-US";
+            rememberVisitorLocale(next);
+            if (
+              !event.ctrlKey &&
+              !event.metaKey &&
+              !event.shiftKey &&
+              !event.altKey
+            ) {
+              event.preventDefault();
+              navigateLocale(next);
+            }
+          }}
+          hrefLang={locale === "en-US" ? "pt-BR" : "en-US"}
+          aria-label={
+            locale === "en-US"
+              ? ui("Versão em português")
+              : ui("English version")
+          }
+        >
+          {locale === "en-US" ? "PT" : "EN"}
+        </a>
+      </Button>
+      <Button
+        type="button"
+        onClick={toggleTheme}
+        variant="ghost"
+        className={cn(
+          iconClass,
+          "site-theme-button text-[#231c20] hover:text-[#231c20] dark:text-[#f4eee1] dark:hover:text-[#f4eee1]",
+        )}
+        aria-label={isDark ? ui("Ativar modo claro") : ui("Ativar modo escuro")}
+        title={isDark ? ui("Ativar modo claro") : ui("Ativar modo escuro")}
+      >
+        {isDark ? (
+          <Sun
+            size={21}
+            className="size-[21px]"
+            fill="currentColor"
+            aria-hidden="true"
+          />
+        ) : (
+          <Moon
+            size={21}
+            className="size-[21px]"
+            fill="currentColor"
+            aria-hidden="true"
+          />
+        )}
+      </Button>
+    </>
+  );
+
   return (
     <header
+      ref={headerRef}
       className={cn(
         "site-header fixed inset-x-0 top-0 z-50 text-[#221f1e] dark:text-[#f5ede6]",
         scrolled && "site-header-scrolled",
@@ -188,9 +294,11 @@ export default function Header({ locale = "pt-BR" }) {
     >
       <div
         className={cn(
-          "site-header-inner bg-[#f4eee1] px-6 md:px-8 lg:px-20 py-2 transition-[background-color,backdrop-filter] duration-[420ms] dark:bg-[#231c20] motion-reduce:transition-none",
+          "site-header-inner relative z-10 shrink-0 bg-[#f4eee1] px-6 md:px-8 lg:px-20 py-2 transition-[background-color,backdrop-filter] duration-[420ms] dark:bg-[#231c20] motion-reduce:transition-none",
           scrolled &&
             "bg-[#f4eee1]/84 backdrop-blur-[20px] dark:bg-[#231c20]/84",
+          menuOpen &&
+            "max-[1000px]:relative max-[1000px]:z-10 max-[1000px]:bg-transparent max-[1000px]:backdrop-blur-none dark:max-[1000px]:bg-transparent",
         )}
       >
         <Container className="flex min-h-14 items-center justify-between gap-[18px] max-[420px]:min-h-11">
@@ -209,70 +317,51 @@ export default function Header({ locale = "pt-BR" }) {
           </button>
 
           <div className="site-header-actions flex items-center">
-            <Button asChild variant="ghost" className={iconClass}>
-              <a
-                href={locale === "en-US" ? "/" : "/en"}
-                onClick={event => {
-                  const next = locale === "en-US" ? "pt-BR" : "en-US";
-                  rememberVisitorLocale(next);
-                  if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
-                    event.preventDefault();
-                    navigateLocale(next);
-                  }
-                }}
-                hrefLang={locale === "en-US" ? "pt-BR" : "en-US"}
-                aria-label={
-                  locale === "en-US"
-                    ? ui("Versão em português")
-                    : ui("English version")
-                }
-              >
-                {locale === "en-US" ? "PT" : "EN"}
-              </a>
-            </Button>
+            <div
+              inert={menuOpen}
+              aria-hidden={menuOpen}
+              className={cn(
+                "flex items-center transition-opacity duration-200 motion-reduce:transition-none",
+                menuOpen
+                  ? "pointer-events-none opacity-0"
+                  : "opacity-100 delay-100",
+              )}
+            >
+              {preferenceControls}
+            </div>
             <Button
               type="button"
-              onClick={toggleTheme}
               variant="ghost"
               className={cn(
                 iconClass,
-                "site-theme-button text-[#231c20] hover:text-[#231c20] dark:text-[#f4eee1] dark:hover:text-[#f4eee1]",
+                "site-menu-button aria-expanded:bg-transparent dark:hover:bg-transparent min-[1001px]:hidden",
               )}
-              aria-label={
-                isDark ? ui("Ativar modo claro") : ui("Ativar modo escuro")
-              }
-              title={isDark ? ui("Ativar modo claro") : ui("Ativar modo escuro")}
-            >
-              {isDark ? (
-                <Sun
-                  size={21}
-                  className="size-[21px]"
-                  fill="currentColor"
-                  aria-hidden="true"
-                />
-              ) : (
-                <Moon
-                  size={21}
-                  className="size-[21px]"
-                  fill="currentColor"
-                  aria-hidden="true"
-                />
-              )}
-            </Button>
-            <Button
-              type="button"
-              variant="ghost"
-              className={cn(iconClass, "site-menu-button min-[1001px]:hidden")}
+              ref={menuButtonRef}
               aria-label={menuOpen ? ui("Fechar menu") : ui("Abrir menu")}
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
               onClick={() => setMenuOpen((open) => !open)}
             >
-              {menuOpen ? (
-                <X size={21} className="size-[21px]" aria-hidden="true" />
-              ) : (
-                <Menu size={21} className="size-[21px]" aria-hidden="true" />
-              )}
+              <span className="relative size-[21px]" aria-hidden="true">
+                <Menu
+                  strokeWidth={3.5}
+                  className={cn(
+                    "absolute inset-0 size-[21px] transition-[opacity,transform] duration-200 motion-reduce:transition-none",
+                    menuOpen
+                      ? "rotate-45 scale-75 opacity-0"
+                      : "rotate-0 scale-100 opacity-100",
+                  )}
+                />
+                <X
+                  strokeWidth={3.5}
+                  className={cn(
+                    "absolute inset-0 size-[21px] transition-[opacity,transform] duration-200 motion-reduce:transition-none",
+                    menuOpen
+                      ? "rotate-0 scale-100 opacity-100"
+                      : "-rotate-45 scale-75 opacity-0",
+                  )}
+                />
+              </span>
             </Button>
           </div>
         </Container>
@@ -287,15 +376,36 @@ export default function Header({ locale = "pt-BR" }) {
         </div>
       </nav>
 
-      {menuOpen && (
-        <nav
-          id="mobile-navigation"
-          className="site-nav-mobile flex flex-col bg-[#f4eee1] px-4 pt-2 pb-3.5 shadow-[0_12px_18px_#281d1a0f] min-[1001px]:hidden dark:bg-[#231c20]"
-          aria-label={ui("Seções do portfólio")}
-        >
-          {navLinks(true)}
-        </nav>
-      )}
+      <AnimatePresence initial={false}>
+        {menuOpen && (
+          <motion.nav
+            key="mobile-menu"
+            id="mobile-navigation"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.28,
+              ease: "easeInOut",
+            }}
+            className="site-nav-mobile fixed inset-0 flex h-dvh flex-col overflow-y-auto overscroll-contain bg-[#f4eee1]/75 px-6 py-[max(88px,env(safe-area-inset-bottom))] backdrop-blur-[20px] min-[1001px]:hidden dark:bg-[#231c20]/75"
+            aria-label={ui("Seções do portfólio")}
+          >
+            <motion.div
+              initial={{ y: reduceMotion ? 0 : 10 }}
+              animate={{ y: 0 }}
+              exit={{ y: reduceMotion ? 0 : 6 }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.28,
+                ease: "easeOut",
+              }}
+              className="my-auto flex w-full shrink-0 flex-col items-center gap-2 sm:gap-4"
+            >
+              {navLinks(true)}
+            </motion.div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

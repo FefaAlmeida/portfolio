@@ -1,4 +1,28 @@
 {
+  "Construindo uma base sólida para transformar ideias em": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "82feb0724176b65454664d96dd8e5496e5e8998ba654d32c7412f90a2386fe1c",
+    "targetHash": "e51b9680a08c02a184220aa4db9953d31cb7c2dfb307a0cff156318c21e40fb5",
+    "manual": true
+  },
+  "soluções.": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "e8aab1a6cff14e2af788d384284bfacf90e1d66277151810a2f16382519f9e9e",
+    "targetHash": "39148708bf93bf4108d4c37cfa456c9855de3240ec1ba410cc7ede309fe453b8",
+    "manual": true
+  },
+  "Experiências": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "d3c15a940a44b8f908f9d5a707be624e30cb5341a424f5f97f34e6484e91d2d7",
+    "targetHash": "ffa8bb2eb78594ef4abf18f84ddec8cc7c7a809b1dab74c61c1a0cdae0d80be3",
+    "manual": true
+  },
+  "Extracurriculares": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "6aaca780acd1db7da98652b85197fe6d81bf94e69eaa2db43ea062dca31658fd",
+    "targetHash": "f7e45fe19144e0cbfeba9868cc33e133ea8f463670666dc5d7a57f92d5d8ca2e",
+    "manual": true
+  },
   "A operação falhou.": {
     "sourceLocale": "pt-BR",
     "sourceHash": "450f605bbf9881198ad6ed5a33af96a74ace887b5d04c27e03540abcbf0838e5",
@@ -971,11 +995,11 @@
     "targetHash": "c468fb6fdc84a9a48250a35cc93cd6309f81a76b2628a6e60d7e533566203368",
     "manual": false
   },
-  "Projetos extracurriculares": {
+  "Experiências extracurriculares": {
     "sourceLocale": "pt-BR",
-    "sourceHash": "57fc552e4a0de57047c59883d991598275227c3930b8afa880268399ba3f9171",
-    "targetHash": "5c7d76c687e15dd1116a49928ab0af4e17966e9d898e9176e2a122376213fb77",
-    "manual": false
+    "sourceHash": "05865c565168d8ec673d53d41691951f0e82371d127c281e7f49d13c969d2d81",
+    "targetHash": "f16a2efce2252988767ac2f435a83361c9ee66d6d76c98fe9fe8fe72b7f2e437",
+    "manual": true
   },
   "Prêmios": {
     "sourceLocale": "pt-BR",

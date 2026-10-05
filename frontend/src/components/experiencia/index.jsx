@@ -67,17 +67,29 @@ export default function Experiencias({ experiencias = [] }) {
   return (
     <Section
       id="experiencias"
-      className="experience-journal border-t border-timeline py-12 md:pt-18 md:pb-12"
+      className="experience-journal border-t border-timeline pt-7 pb-10 md:pt-18 md:pb-12"
       aria-labelledby={`experience-title-${instance}`}
     >
       <Container>
-        <p className="mb-4 text-[10px] font-semibold tracking-[.14em] text-primary uppercase">
+        <p className="hidden md:block mb-3 text-[11px] font-semibold tracking-[.14em] text-primary uppercase">
           {ui("Além da sala de aula")}
         </p>
         <SectionHeading
           id={`experience-title-${instance}`}
-          title={ui("Projetos extracurriculares")}
-          className="mb-0 [&_h2]:font-display [&_p]:mt-3.5 [&_p]:text-[15px]"
+          title={
+            <>
+              <span className="md:hidden">
+                {ui("Experiências")}{" "}
+                <span className="mt-2 block font-sans text-xs font-medium tracking-[.12em] text-primary uppercase">
+                  {ui("Extracurriculares")}
+                </span>
+              </span>
+              <span className="hidden md:inline">
+                {ui("Experiências extracurriculares")}
+              </span>
+            </>
+          }
+          className="mb-0 [&_h2]:font-serif [&_h2]:text-[clamp(2.75rem,12vw,3.5rem)] [&_h2]:leading-[1.15] md:[&_h2]:font-display md:[&_h2]:text-[clamp(2rem,4vw,3.125rem)] md:[&_h2]:leading-[1.2] [&_p]:hidden md:[&_p]:block [&_p]:mt-3.5 md:[&_p]:font-sans md:[&_p]:text-[15px] md:[&_p]:leading-[1.85]"
           description={ui("Educação, comunicação e voluntariado")}
         />
         <div className="experience-stories relative">
@@ -94,7 +106,7 @@ export default function Experiencias({ experiencias = [] }) {
                 key={item.id}
                 id={anchor(item)}
                 className={cn(
-                  "experience-story relative grid scroll-mt-28 grid-cols-1 gap-y-4 pt-7 pb-12 pl-7 outline-none last:pb-16 md:last:pb-20 focus-visible:ring-2 focus-visible:ring-primary md:grid-cols-2 md:grid-rows-[auto_auto_auto_1fr] md:gap-x-14 md:pt-8 md:pb-16 md:pl-0 lg:gap-x-22 [&>*]:min-w-0",
+                  "experience-story relative grid scroll-mt-28 grid-cols-1 gap-y-4 pt-6 pb-10 pl-6 outline-none last:pb-10 md:last:pb-20 focus-visible:ring-2 focus-visible:ring-primary md:grid-cols-2 md:grid-rows-[auto_auto_auto_1fr] md:gap-x-14 md:pt-8 md:pb-16 md:pl-0 lg:gap-x-22 [&>*]:min-w-0",
                   !item.imagemUrl && "experience-story-no-image",
                 )}
                 tabIndex={-1}
@@ -102,101 +114,105 @@ export default function Experiencias({ experiencias = [] }) {
               >
                 <p
                   className={cn(
-                    "experience-date relative z-10 flex min-h-10 justify-self-start items-center gap-2 rounded-lg border border-timeline bg-white dark:bg-card px-3 py-2 text-[11px] text-primary tabular-nums md:row-start-1 md:px-3.5 md:text-xs",
+                    "experience-date relative z-10 flex min-h-7 justify-self-start items-center gap-2 text-xs md:min-h-10 md:rounded-lg md:border md:border-timeline md:bg-white md:dark:bg-card md:px-3 md:py-2 text-primary tabular-nums md:row-start-1 md:px-3.5 md:text-xs",
                     reversed ? "md:col-start-1" : "md:col-start-2",
                   )}
                 >
-                  <CalendarDays size={15} aria-hidden="true" />
-                  {participationPeriod(item, ui)}
+                  <span className="experience-date-label inline-flex items-center gap-2">
+                    <CalendarDays size={15} aria-hidden="true" />
+                    {participationPeriod(item, ui)}
+                  </span>
                 </p>
-                <header
-                  className={cn(
-                    "experience-story-heading md:row-start-2",
-                    reversed ? "md:col-start-1" : "md:col-start-2",
-                  )}
-                >
-                  <div className="mb-2">
-                    {item.categoria && (
-                      <p className="text-[9px] leading-relaxed font-medium tracking-[.12em] text-muted-foreground uppercase">
-                        {item.categoria}
+                <div className="experience-card md:contents">
+                  <header
+                    className={cn(
+                      "experience-story-heading md:row-start-2",
+                      reversed ? "md:col-start-1" : "md:col-start-2",
+                    )}
+                  >
+                    <div className="mb-2">
+                      {item.categoria && (
+                        <p className="text-[10px] leading-relaxed font-medium tracking-[.12em] text-muted-foreground uppercase">
+                          {item.categoria}
+                        </p>
+                      )}
+                    </div>
+                    <h3
+                      id={`${anchor(item)}-title`}
+                      className="font-serif text-[26px] font-normal md:font-display md:text-[clamp(1.75rem,3vw,2.375rem)] leading-[1.2] tracking-[-.035em] text-pretty"
+                    >
+                      {item.titulo}
+                    </h3>
+                    {item.papel && (
+                      <p className="mt-2.5 text-xs leading-relaxed font-semibold text-primary">
+                        {item.papel}
                       </p>
                     )}
-                  </div>
-                  <h3
-                    id={`${anchor(item)}-title`}
-                    className="font-display text-[clamp(1.75rem,3vw,2.375rem)] leading-[1.2] tracking-[-.035em] text-pretty"
-                  >
-                    {item.titulo}
-                  </h3>
-                  {item.papel && (
-                    <p className="mt-2.5 text-xs leading-relaxed font-semibold text-primary">
-                      {item.papel}
-                    </p>
-                  )}
-                </header>
-                <RichText
-                  value={context}
-                  className={cn(
-                    "experience-context md:row-start-3",
-                    copyClass,
-                    reversed ? "md:col-start-1" : "md:col-start-2",
-                  )}
-                />
-                {item.imagemUrl && (
-                  <figure
+                  </header>
+                  <RichText
+                    value={context}
                     className={cn(
-                      "experience-figure self-center md:row-span-4 md:row-start-1",
-                      reversed ? "md:col-start-2" : "md:col-start-1",
+                      "experience-context md:row-start-3",
+                      copyClass,
+                      reversed ? "md:col-start-1" : "md:col-start-2",
+                    )}
+                  />
+                  {item.imagemUrl && (
+                    <figure
+                      className={cn(
+                        "experience-figure self-center md:row-span-4 md:row-start-1",
+                        reversed ? "md:col-start-2" : "md:col-start-1",
+                      )}
+                    >
+                      <ExperienceGallery item={item} />
+                      {item.imagemLegenda && (
+                        <figcaption className="sr-only">
+                          {item.imagemLegenda}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
+                  <div
+                    className={cn(
+                      "experience-body md:row-start-4",
+                      reversed ? "md:col-start-1" : "md:col-start-2",
                     )}
                   >
-                    <ExperienceGallery item={item} />
-                    {item.imagemLegenda && (
-                      <figcaption className="sr-only">
-                        {item.imagemLegenda}
-                      </figcaption>
-                    )}
-                  </figure>
-                )}
-                <div
-                  className={cn(
-                    "experience-body md:row-start-4",
-                    reversed ? "md:col-start-1" : "md:col-start-2",
-                  )}
-                >
-                  <RichText value={contribution} className={copyClass} />
-                  {!!links.length && (
-                    <div className="experience-links mt-6 flex flex-wrap gap-2.5">
-                      {links.map(([url, label, Icon], linkIndex) => (
-                        <Button
-                          asChild
-                          key={label}
-                          variant={
-                            linkIndex === 0 && !Icon ? "default" : "outline"
-                          }
-                          className={cn(
-                            "h-11 gap-2 border-highlight px-4 text-xs font-semibold text-highlight hover:border-highlight hover:bg-highlight hover:text-background",
-                            linkIndex === 0 && !Icon
-                              ? "bg-highlight text-background dark:bg-highlight dark:text-background dark:hover:bg-highlight/85"
-                              : "bg-white dark:bg-card",
-                          )}
-                        >
-                          <a
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={ui("{0} de {1} (abre em nova aba)", {
-                              0: label,
-                              1: item.titulo,
-                            })}
+                    <RichText value={contribution} className={copyClass} />
+                    {!!links.length && (
+                      <div className="experience-links mt-6 flex flex-wrap gap-2.5">
+                        {links.map(([url, label, Icon], linkIndex) => (
+                          <Button
+                            asChild
+                            key={label}
+                            variant={
+                              linkIndex === 0 && !Icon ? "default" : "outline"
+                            }
+                            className={cn(
+                              "h-11 gap-2 border-highlight px-4 text-xs font-semibold text-highlight hover:border-highlight hover:bg-highlight hover:text-background",
+                              linkIndex === 0 && !Icon
+                                ? "bg-highlight text-background dark:bg-highlight dark:text-background dark:hover:bg-highlight/85"
+                                : "bg-white dark:bg-card",
+                            )}
                           >
-                            {Icon && <Icon size={17} aria-hidden="true" />}
-                            {label}
-                            <ArrowUpRight size={16} aria-hidden="true" />
-                          </a>
-                        </Button>
-                      ))}
-                    </div>
-                  )}
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={ui("{0} de {1} (abre em nova aba)", {
+                                0: label,
+                                1: item.titulo,
+                              })}
+                            >
+                              {Icon && <Icon size={17} aria-hidden="true" />}
+                              {label}
+                              <ArrowUpRight size={16} aria-hidden="true" />
+                            </a>
+                          </Button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </article>
             );
