@@ -1,0 +1,388 @@
+[
+  {
+    "kind": "experiencias",
+    "id": "exp-03",
+    "field": "descricao",
+    "blockId": "context",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "context"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "No MatMov, uma ONG voltada a estudantes de escolas públicas, sou professora voluntária de ensino sociocultural desde janeiro de 2026. Dou aulas online quinzenais sobre atualidades, pensamento crítico e projeto de vida. Já dei aula para "
+        },
+        {
+          "type": "text",
+          "text": "+50 alunos",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", com turmas de "
+        },
+        {
+          "type": "text",
+          "text": "16–25 alunos",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    "before": "At MatMov, an NGO supporting public school students, I have volunteered as a sociocultural studies teacher since January 2026. I teach online classes every other week on current affairs, critical thinking and life planning.",
+    "append": " I have taught more than 50 students, with classes of 16–25 students.",
+    "highlights": [
+      "more than 50 students",
+      "16–25 students"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-03",
+    "field": "descricao",
+    "blockId": "contribution",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "contribution"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Preparo aulas e slides, corrijo atividades e acompanho os alunos. Também colaborei no planejamento do workshop Construindo Sonhos, com cerca de "
+        },
+        {
+          "type": "text",
+          "text": "50 participantes",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", compartilho materiais com outros professores e organizei as pastas do OneDrive."
+        }
+      ]
+    },
+    "before": "I prepare lessons and slides, grade assignments and support students. I also helped plan the Construindo Sonhos (Building Dreams) workshop, share materials with fellow teachers and organized the OneDrive folders.",
+    "append": " The workshop had around 50 participants.",
+    "highlights": [
+      "50 participants"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-04",
+    "field": "descricao",
+    "blockId": "contribution",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "contribution"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Distribuo pautas, acompanho prazos e reviso textos. Ao longo da minha participação, supervisionei "
+        },
+        {
+          "type": "text",
+          "text": "6 colaboradores",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " e tenho "
+        },
+        {
+          "type": "text",
+          "text": "+15 textos publicados",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " no site e no Instagram do projeto. Também produzi "
+        },
+        {
+          "type": "text",
+          "text": "2 vídeos",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", escrevi roteiros para colegas e divulguei o VAF no SESI e entre os alunos do MatMov."
+        }
+      ]
+    },
+    "before": "I assign stories, track deadlines and review drafts. Over the course of my involvement, I supervised six contributors and published around fifteen articles on the project’s website and Instagram. I also produced two videos, wrote scripts for teammates and promoted VAF at SESI and among MatMov students.",
+    "append": "",
+    "highlights": [
+      "six contributors",
+      "fifteen articles",
+      "two videos"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-05",
+    "field": "descricao",
+    "blockId": "context",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "context"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Idealizei e fundei o Jornal SESI 222 com apoio da biblioteca para compartilhar acontecimentos e conquistas da escola com alunos, famílias e funcionários. A ideia começou em julho de 2025, e a primeira edição foi concluída e distribuída em 2026. O jornal tem "
+        },
+        {
+          "type": "text",
+          "text": "1 edição publicada",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", com "
+        },
+        {
+          "type": "text",
+          "text": "10 colaboradores",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", contando comigo."
+        }
+      ]
+    },
+    "before": "I conceived and founded Jornal SESI 222 with support from the school library to share school events and achievements with students, families and staff. The idea began in July 2025, and the first issue was completed and distributed in 2026.",
+    "append": " There were 10 contributors, including me.",
+    "highlights": [
+      "first issue",
+      "10 contributors"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-02",
+    "field": "descricao",
+    "blockId": "context",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "context"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "No Nossa Casinha, na UFABC, fui voluntária no berçário durante "
+        },
+        {
+          "type": "text",
+          "text": "6 meses",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " de 2025. Junto a outros voluntários, cuidava de bebês enquanto seus responsáveis, imigrantes, frequentavam aulas de português. A equipe atendia cerca de "
+        },
+        {
+          "type": "text",
+          "text": "10 bebês por sábado",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ]
+    },
+    "before": "At Nossa Casinha, at UFABC, I volunteered in the nursery for six months in 2025. Alongside other volunteers, I cared for babies while their immigrant caregivers attended Portuguese classes.",
+    "append": " The team cared for around 10 babies each Saturday.",
+    "highlights": [
+      "six months",
+      "10 babies each Saturday"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-02",
+    "field": "descricao",
+    "blockId": "contribution",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "contribution"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Preparei atividades, organizei e limpei os espaços e criei álbuns de recordação para as famílias. Também ajudei na organização de atividades do Dia das Crianças. Em 2026, colaborei durante "
+        },
+        {
+          "type": "text",
+          "text": "2 semanas",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " organizando uma planilha com informações das crianças e de seus responsáveis para as inscrições."
+        }
+      ]
+    },
+    "before": "I prepared activities, arranged and cleaned the rooms, and created keepsake albums for families. I also helped organize Children’s Day activities. In 2026, I spent two weeks organizing children’s and caregivers’ registration details in a spreadsheet.",
+    "append": "",
+    "highlights": [
+      "two weeks"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-01",
+    "field": "descricao",
+    "blockId": "context",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "context"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Participei do Juventudes em Diálogo, uma iniciativa da Rede SESI que incentiva a participação dos alunos e o cuidado com a comunidade escolar, de julho a dezembro de 2025. Trabalhei em um grupo de "
+        },
+        {
+          "type": "text",
+          "text": "5 integrantes",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", com orientação da bibliotecária, para criar ações sobre resíduos, convivência e saúde mental."
+        }
+      ]
+    },
+    "before": "From July to December 2025, I participated in Juventudes em Diálogo, a SESI initiative encouraging student participation and care for the school community. I worked in a five-member group, guided by the librarian, to develop activities about waste, respectful relationships and mental health.",
+    "append": "",
+    "highlights": [
+      "five-member group"
+    ]
+  },
+  {
+    "kind": "experiencias",
+    "id": "exp-01",
+    "field": "descricao",
+    "blockId": "contribution",
+    "source": {
+      "type": "paragraph",
+      "attrs": {
+        "i18nId": "contribution"
+      },
+      "content": [
+        {
+          "type": "text",
+          "text": "Produzi cartazes interativos e materiais visuais e contribuí para "
+        },
+        {
+          "type": "text",
+          "text": "4 exposições",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ": duas sobre lixo e duas sobre Setembro Amarelo. Também participei de "
+        },
+        {
+          "type": "text",
+          "text": "1 apresentação digital",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": ", de conversas com "
+        },
+        {
+          "type": "text",
+          "text": "4 turmas do Fundamental II",
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": " e de dinâmicas com alunos do 1º ano do Fundamental I."
+        }
+      ]
+    },
+    "before": "I created interactive posters and visual materials and contributed to four exhibitions: two about waste and two for Yellow September, a mental health awareness campaign. I also contributed to a digital presentation, discussions with four middle school classes and activities with first-grade elementary school students.",
+    "append": "",
+    "highlights": [
+      "four exhibitions",
+      "a digital presentation",
+      "four middle school classes"
+    ]
+  }
+]

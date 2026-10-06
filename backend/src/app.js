@@ -25,6 +25,7 @@ import { geminiTranslate, translationBudget, translateThroughGateway, identifyBl
 import { LOCALES } from "../../packages/i18n/index.js";
 import { getSite, saveSite, siteSchema } from "./site-i18n.js";
 import { stageReview, completedDrafts, readReview, storeReview, reviewKey, replaceTexts } from "./review.js";
+import { generateBoldProposal, applyBoldRanges, phraseRanges, boldLayout } from "./bold.js";
 const WEEK = 7 * 24 * 60 * 60 * 1000;
 const SESSION = "portfolio_session";
 const safeEqual = (a, b) =>
@@ -220,9 +221,9 @@ export function createApp({
     });
   app.post("/api/i18n/translate", async (req, res) => {
     if (!config.production || !config.i18nSyncToken || !safeEqual(req.headers.authorization, `Bearer ${config.i18nSyncToken}`)) return res.sendStatus(401);
-    const body = z.object({ units: z.array(z.union([z.string().max(30000), z.array(z.string().max(30000)).max(1000), z.object({ type: z.string(), content: z.array(z.unknown()).optional(), text: z.string().optional(), attrs: z.record(z.string(), z.unknown()).optional() })])).max(1000), from: z.enum(LOCALES), to: z.enum(LOCALES), instruction: z.string().max(1000).optional(), force: z.boolean().optional() }).parse(req.body);
+    const body = z.object({ units: z.array(z.union([z.string().max(30000), z.array(z.string().max(30000)).max(1000), z.object({ type: z.string(), content: z.array(z.unknown()).optional(), text: z.string().optional(), attrs: z.record(z.string(), z.unknown()).optional() })])).max(1000), from: z.enum(LOCALES), to: z.enum(LOCALES), instruction: z.string().max(1000).optional(), force: z.boolean().optional(), mode: z.enum(["translate", "align-bold"]).optional() }).parse(req.body);
     if (body.from === body.to) return res.status(400).json({ error: "Escolha idiomas diferentes." });
-    res.json({ units: await translateUnits(body.units, { from: body.from, to: body.to, instruction: body.instruction, force: body.force }) });
+    res.json({ units: await translateUnits(body.units, { from: body.from, to: body.to, instruction: body.instruction, force: body.force, mode: body.mode }) });
   });
   for (const method of ["get", "put"]) app[method]("/api/i18n/settings", write((req, res) => {
     if (!config.production || !config.i18nSyncToken || !safeEqual(req.headers.authorization, `Bearer ${config.i18nSyncToken}`)) return res.sendStatus(401);
@@ -549,9 +550,13 @@ export function createApp({
         values = [];
         for (let offset = 0; offset < units.length; offset += 8) {
           const batch = units.slice(offset, offset + 8);
-          values.push(...await translateUnits(batch.map(unit => unit.source), {
-            from: state.sourceLocale, to: state.targetLocale, force: Boolean(input.retry), instruction: input.instruction || "",
-          }));
+          const options = { from: state.sourceLocale, to: state.targetLocale, force: Boolean(input.retry), instruction: input.instruction || "" };
+          // Keep successful proposals if a later alignment fails.
+          if (batch.some(unit => unit.mode === "bold")) {
+            for (const unit of batch) values.push(unit.mode === "bold"
+              ? await generateBoldProposal(unit.source, unit.previous, translateUnits, options)
+              : (await translateUnits([unit.source], options))[0]);
+          } else values.push(...await translateUnits(batch.map(unit => unit.source), options));
         }
       } catch (error) { failure = error.publicMessage || error.message; }
       await gate(() => {
@@ -583,7 +588,11 @@ export function createApp({
         if (unit.previous === null) return res.status(409).json({ error: "Não há tradução anterior." });
         unit.proposal = unit.previous; unit.status = "approved"; unit.error = null;
       } else if (action === "edit") {
-        unit.proposal = replaceTexts(unit.source, z.array(z.string().max(30000)).max(1000).parse(req.body.texts));
+        const texts = z.array(z.string().max(30000)).max(1000).parse(req.body.texts);
+        if (unit.mode === "bold") {
+          try { unit.proposal = applyBoldRanges(unit.previous, phraseRanges(boldLayout(unit.previous).text, texts)); }
+          catch (error) { return res.status(400).json({ error: error.message }); }
+        } else unit.proposal = replaceTexts(unit.source, texts);
         unit.status = "approved"; unit.error = null;
       } else {
         if (unit.proposal === null && unit.source !== null) return res.status(409).json({ error: "Não há proposta para aprovar." });

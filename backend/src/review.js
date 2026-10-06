@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { getAt, setAt, translationUnits, translatableFields, otherLocale, localizedDates } from "../../packages/i18n/index.js";
 import { identifyBlocks } from "./translate.js";
+import { boldLayout, immediateBoldProposal } from "./bold.js";
 
 export function textParts(value, result = []) {
   if (typeof value === "string") result.push(value);
@@ -82,9 +83,19 @@ export function stageReview({ kind, sourceLocale, locale, payload, drafts, previ
     if (saved && equal(saved.source, source)) { state.units.push(saved); continue; }
     const missing = source !== null && !targets.has(key) && (!drafts[targetLocale] || !oldUnits.has(key));
     if (!missing && equal(source, old) && !saved) continue;
-    // Formatting-only source edits preserve the reviewed target without a model call.
-    if (!missing && !saved && source !== null && old !== null && textParts(source).join("") === textParts(old).join("")) continue;
     const previousTarget = targets.get(key) ?? null;
+    const beforeSource = saved?.beforeSource ?? old;
+    const formattingOnly = !missing && source?.type && beforeSource?.type && previousTarget?.type &&
+      boldLayout(source).text === boldLayout(beforeSource).text;
+    const boldChanged = formattingOnly && !equal(boldLayout(source).ranges, boldLayout(beforeSource).ranges);
+    // Other presentation changes still don't request a translation.
+    if (formattingOnly && !boldChanged && !saved) continue;
+    if (boldChanged) {
+      const proposal = immediateBoldProposal(source, previousTarget);
+      state.units.push({ key, mode: "bold", beforeSource, source, previous: previousTarget,
+        proposal, status: proposal ? "suggested" : "pending", error: null });
+      continue;
+    }
     // Empty fields still propagate, but do not require a paid translation.
     const hasText = textParts(source).some(text => text.trim());
     if (!hasText && !textParts(previousTarget).some(text => text.trim()) && !textParts(old).some(text => text.trim())) continue;

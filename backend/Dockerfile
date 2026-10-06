@@ -25,6 +25,7 @@ WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY backend/package*.json ./
 COPY backend/src ./src
+COPY backend/scripts/repair-bold.js ./scripts/repair-bold.js
 COPY packages/i18n /packages/i18n
 COPY backend/seed ./seed
 RUN mkdir /data && chown node:node /data

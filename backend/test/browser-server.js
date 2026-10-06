@@ -25,6 +25,13 @@ const storage = {
 await seed(db, storage);
 // Pretranslated fixtures keep browser tests independent of paid services.
 db.exec("UPDATE entry_i18n SET draft_en=(SELECT draft FROM entries WHERE id=entry_id), published_en=(SELECT published FROM entries WHERE id=entry_id)");
+const englishExperiences = JSON.parse(await fs.readFile(new URL("../seed/experiencias-en.json", import.meta.url), "utf8"));
+for (const item of englishExperiences) {
+  const row = db.prepare("SELECT draft_en FROM entry_i18n WHERE entry_id=?").get(item.id);
+  if (!row) continue;
+  const payload = { ...JSON.parse(row.draft_en), descricao: item.descricao };
+  db.prepare("UPDATE entry_i18n SET draft_en=?,published_en=? WHERE entry_id=?").run(JSON.stringify(payload), JSON.stringify(payload), item.id);
+}
 const app = createApp({
   db,
   storage,

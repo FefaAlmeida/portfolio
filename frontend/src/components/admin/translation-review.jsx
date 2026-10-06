@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
+import RichText from "@/components/rich-text";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,6 +9,37 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useI18n } from "@/i18n/provider";
+
+function FormattedText({ value, fallback }) {
+  if (!value) return <p>{fallback}</p>;
+  if (typeof value === "object" && !Array.isArray(value))
+    return <RichText value={value} className="break-words" links={false} />;
+  return (
+    <p className="whitespace-pre-wrap break-words">{texts(value).join("\n")}</p>
+  );
+}
+
+function boldPhrases(value) {
+  const phrases = [];
+  let current = "";
+  const flush = () => {
+    if (current) phrases.push(current);
+    current = "";
+  };
+  function walk(node) {
+    if (node?.type === "text") {
+      if (node.marks?.some((mark) => mark.type === "bold"))
+        current += node.text;
+      else flush();
+    } else {
+      for (const child of node?.content || []) walk(child);
+      flush();
+    }
+  }
+  walk(value);
+  flush();
+  return phrases;
+}
 
 function texts(value, result = []) {
   if (typeof value === "string") result.push(value);
@@ -72,7 +104,9 @@ function Proposal({ unit, index, busy, decide, generate }) {
   const { ui } = useI18n();
   const [editing, setEditing] = useState(false);
   const [values, setValues] = useState(() =>
-    texts(unit.proposal ?? unit.source),
+    unit.mode === "bold"
+      ? [boldPhrases(unit.proposal).join("\n")]
+      : texts(unit.proposal ?? unit.source),
   );
   const [instruction, setInstruction] = useState("");
   return (
@@ -103,15 +137,20 @@ function Proposal({ unit, index, busy, decide, generate }) {
           <h4 className="mb-2 text-xs uppercase tracking-wide opacity-70">
             {ui("Alterações no original")}
           </h4>
-          <ChangedText before={unit.beforeSource} after={unit.source} />
+          {unit.mode === "bold" ? (
+            <FormattedText value={unit.source} />
+          ) : (
+            <ChangedText before={unit.beforeSource} after={unit.source} />
+          )}
         </div>
         <div className="min-w-0">
           <h4 className="mb-2 text-xs uppercase tracking-wide opacity-70">
             {ui("Tradução anterior")}
           </h4>
-          <p className="whitespace-pre-wrap break-words">
-            {texts(unit.previous).join("\n") || ui("Sem tradução anterior")}
-          </p>
+          <FormattedText
+            value={unit.previous}
+            fallback={ui("Sem tradução anterior")}
+          />
         </div>
         <div className="min-w-0">
           <h4 className="mb-2 text-xs uppercase tracking-wide opacity-70">
@@ -119,6 +158,13 @@ function Proposal({ unit, index, busy, decide, generate }) {
           </h4>
           {editing ? (
             <div className="grid gap-2">
+              {unit.mode === "bold" && (
+                <p className="text-sm">
+                  {ui(
+                    "Cole os trechos exatos da tradução que devem ficar em negrito, um por linha. Deixe vazio para remover os destaques.",
+                  )}
+                </p>
+              )}
               {values.map((value, i) => (
                 <textarea
                   key={`${unit.key}-${i}`}
@@ -140,11 +186,14 @@ function Proposal({ unit, index, busy, decide, generate }) {
               ))}
             </div>
           ) : (
-            <p className="whitespace-pre-wrap break-words">
-              {unit.source === null
-                ? ui("Remover este trecho da tradução")
-                : texts(unit.proposal).join("\n") || ui("Aguardando proposta")}
-            </p>
+            <FormattedText
+              value={unit.proposal}
+              fallback={
+                unit.source === null
+                  ? ui("Remover este trecho da tradução")
+                  : ui("Aguardando proposta")
+              }
+            />
           )}
         </div>
       </div>
@@ -168,12 +217,24 @@ function Proposal({ unit, index, busy, decide, generate }) {
             disabled={busy}
             onClick={() => {
               if (editing) {
-                decide("edit", unit.key, values);
+                decide(
+                  "edit",
+                  unit.key,
+                  unit.mode === "bold"
+                    ? values[0].split("\n").filter((value) => value.trim())
+                    : values,
+                );
                 setEditing(false);
               } else setEditing(true);
             }}
           >
-            {ui(editing ? "Salvar edição e aprovar" : "Editar tradução")}
+            {ui(
+              editing
+                ? "Salvar edição e aprovar"
+                : unit.mode === "bold"
+                  ? "Editar destaques"
+                  : "Editar tradução",
+            )}
           </Button>
         )}
         {editing && (

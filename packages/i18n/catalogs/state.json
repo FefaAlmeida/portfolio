@@ -2734,5 +2734,17 @@
     "sourceHash": "002ec05b255c668ca7ced33fc5ef92c0dddcc0271dcd94d2461103084fa0795c",
     "targetHash": "2c343028d2129a3576753d5313952225930ee95fef77d592701bccc2f81c696e",
     "manual": true
+  },
+  "Editar destaques": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "ddaba8523d0f4c9096e069b9f8b40d0ef7b277588573fde5b076296d136ee804",
+    "targetHash": "8430494242be73542268a4e8fdea80a5be0dae4263eb3fa441276f71b3fad995",
+    "manual": true
+  },
+  "Cole os trechos exatos da tradução que devem ficar em negrito, um por linha. Deixe vazio para remover os destaques.": {
+    "sourceLocale": "pt-BR",
+    "sourceHash": "e1fca76ae017d9c32673264e49b3cabf4cd53d43f5a7ab490aa143e643fba0ca",
+    "targetHash": "92fefde57d1bd739555d265e14b954377687e4a92ef7d775a611a73454c8b14e",
+    "manual": true
   }
 }

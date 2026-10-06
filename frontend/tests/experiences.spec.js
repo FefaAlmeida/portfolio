@@ -9,6 +9,30 @@ const titles = [
   "Juventudes em Diálogo",
 ];
 
+test("English experiences retain their inline emphasis and highlight styling", async ({
+  page,
+}) => {
+  await page.goto("/en#experiencias");
+  const expected = {
+    "exp-01": [
+      "5 members",
+      "4 exhibitions",
+      "1 digital presentation",
+      "4 middle school classes",
+    ],
+    "exp-02": ["6 months", "10 babies each Saturday", "2 weeks"],
+    "exp-03": ["50+ students", "16–25 students", "50 participants"],
+    "exp-04": ["6 contributors", "15+ articles published", "2 videos"],
+    "exp-05": ["1 published issue", "10 contributors"],
+  };
+  for (const [id, phrases] of Object.entries(expected)) {
+    const bold = page.locator(`#experiencia-${id} strong`);
+    await expect(bold).toHaveText(phrases);
+    await expect(bold.first()).toHaveCSS("font-weight", "600");
+    await expect(bold.first()).toHaveCSS("color", "rgb(164, 62, 89)");
+  }
+});
+
 test("editorial experiences expose inline highlights, real links and the MatMov gallery", async ({
   page,
 }) => {
@@ -85,21 +109,28 @@ test("editor bold persists as an inline pink highlight in previews and the publi
   page,
 }, info) => {
   const text = `6 meses de cuidado (${info.project.name})`;
+  const title = `Bold preview ${info.project.name}`;
   await page.goto("/admin");
   await page.getByLabel("E-mail", { exact: true }).fill("editor@example.com");
   await page.getByLabel("Senha", { exact: true }).fill("browser-test-password");
   await page.getByRole("button", { name: "Entrar", exact: true }).click();
   await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
-    .locator(".admin-list .item-title")
-    .getByText("Nossa Casinha", { exact: true })
+    .getByRole("button", { name: "Nova experiência", exact: true })
     .click();
+  await page.getByRole("textbox", { name: "Título", exact: true }).fill(title);
+  await page
+    .getByRole("combobox", { name: "Visibilidade" })
+    .selectOption("publico");
   const editor = page.getByRole("textbox", { name: "Descrição", exact: true });
   await editor.click();
   await editor.press("ControlOrMeta+a");
   await editor.press("Backspace");
   await editor.pressSequentially(text);
   await expect(editor).toHaveText(text);
+  await page.getByRole("button", { name: "Salvar", exact: true }).click();
+  await completeReview(page);
+  await editor.click();
   await editor.press("ControlOrMeta+a");
   const bold = page.getByRole("button", { name: "Negrito", exact: true });
   if ((await bold.getAttribute("aria-pressed")) === "true") await bold.click();
@@ -107,13 +138,18 @@ test("editor bold persists as an inline pink highlight in previews and the publi
   await expect(editor.locator("strong")).toHaveText(text);
   await expect(editor.locator("strong")).toHaveCSS("color", "rgb(164, 62, 89)");
   await page.getByRole("button", { name: "Salvar", exact: true }).click();
+  const review = page.getByRole("dialog", {
+    name: "Revisar traduções",
+    exact: true,
+  });
+  await expect(review.locator("strong")).toHaveText([text, text]);
   await completeReview(page);
   await expect(page.locator(".admin-notice")).toBeVisible();
   await page.reload();
   await page.getByRole("button", { name: "Experiência", exact: true }).click();
   await page
     .locator(".admin-list .item-title")
-    .getByText("Nossa Casinha", { exact: true })
+    .getByText(title, { exact: true })
     .click();
   await expect(editor.locator("strong")).toHaveText(text);
   await page.getByRole("button", { name: "Preview", exact: true }).click();
@@ -128,5 +164,16 @@ test("editor bold persists as an inline pink highlight in previews and the publi
   );
   await expect(preview.locator(".experience-result")).toHaveCount(0);
   await page.goto("/");
-  await expect(page.locator("#experiencia-exp-02 strong")).toHaveText(text);
+  const rows = await (await page.request.get("/api/experiencias")).json();
+  const id = rows.find((item) => item.titulo === title).id;
+  await expect(page.locator(`#experiencia-${id} strong`)).toHaveText(text);
+  const current = await (
+    await page.request.get(`/api/admin/experiencias/${id}`)
+  ).json();
+  const session = await (await page.request.get("/api/auth/session")).json();
+  const removed = await page.request.delete(`/api/admin/experiencias/${id}`, {
+    headers: { origin: "http://localhost:3100", "x-csrf-token": session.csrf },
+    data: { revision: current.revision },
+  });
+  expect(removed.ok()).toBe(true);
 });

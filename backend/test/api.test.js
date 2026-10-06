@@ -674,16 +674,54 @@ test('English originals stay private until reviewed and become Portuguese only a
   assert.equal((await request(app).get('/api/projetos?locale=en-US')).body[0].titulo,'English original');
 });
 
-test('formatting and no-op saves do not create translation requests', async () => {
+test('bold-only edits require review without retranslating text; no-op saves stay free', async () => {
   let row=await review((await mutate('post','/api/admin/projetos',{titulo:'Original',descricao:doc('Text'),visibilidade:'publico'}).expect(201)).body);
   translationFailure=true;
   const payload=structuredClone(row.draft);
   payload.descricao.content[0].content[0].marks=[{type:'bold'}];
   row=(await mutate('put',`/api/admin/projetos/${row.id}`,{revision:row.revision,draft:payload,visibilidade:'publico'}).expect(200)).body;
+  assert.equal(row.review.units[0].mode,'bold');
+  assert.equal(row.review.units[0].status,'suggested');
+  assert.equal(row.published.descricao.content[0].content[0].marks,undefined);
+  row=await review(row);
   assert.equal(row.review,null);
   assert.equal(row.published.descricao.content[0].content[0].marks[0].type,'bold');
+  const english=(await request(app).get('/api/projetos?locale=en-US')).body.find(item=>item.id===row.id);
+  assert.equal(english.descricao.content[0].content[0].marks[0].type,'bold');
   row=(await mutate('put',`/api/admin/projetos/${row.id}`,{revision:row.revision,draft:row.draft,visibilidade:'publico'}).expect(200)).body;
   assert.equal(row.review,null);
+});
+
+test('failed bold alignment stays unpublished and manual highlights cannot rewrite English', async () => {
+  let row=await review((await mutate('post','/api/admin/projetos',{titulo:'Bold review',descricao:doc('Criei dois vídeos.'),visibilidade:'publico'}).expect(201)).body);
+  row=(await mutate('put',`/api/admin/projetos/${row.id}`,{locale:'en-US',revision:row.revision,draft:{...row.draft,descricao:doc('I made two videos.')},visibilidade:'publico'}).expect(200)).body;
+  const source=structuredClone(row.draftByLocale['pt-BR']);
+  source.descricao.content[0].content=[{type:'text',text:'Criei '},{type:'text',text:'dois vídeos',marks:[{type:'bold'}]},{type:'text',text:'.'}];
+  row=(await mutate('put',`/api/admin/projetos/${row.id}`,{locale:'pt-BR',revision:row.revision,draft:source,visibilidade:'publico'}).expect(200)).body;
+  const base=`/api/admin/reviews/projetos/${row.id}`;
+  translationFailure=true;
+  row=(await mutate('post',`${base}/generate`,{version:row.review.version}).expect(200)).body;
+  assert.equal(row.review.units[0].mode,'bold');
+  assert.equal(row.review.units[0].status,'error');
+  await mutate('post',`${base}/complete`,{version:row.review.version}).expect(409);
+  const key=row.review.units[0].key;
+  await mutate('post',`${base}/decide`,{version:row.review.version,key,action:'edit',texts:['rewritten wording']}).expect(400);
+  row=(await mutate('post',`${base}/decide`,{version:row.review.version,key,action:'edit',texts:['two videos']}).expect(200)).body;
+  await mutate('post',`${base}/complete`,{version:row.review.version}).expect(200);
+  const english=(await request(app).get('/api/projetos?locale=en-US')).body.find(item=>item.id===row.id).descricao.content[0].content;
+  assert.equal(english.map(node=>node.text).join(''),'I made two videos.');
+  assert.equal(english.find(node=>node.marks?.some(mark=>mark.type==='bold')).text,'two videos');
+});
+
+test('translation gateway forwards emphasis alignment mode', async () => {
+  const token='dedicated-i18n-test-token-32-characters';
+  let seen;
+  const gateway=createApp({db,storage,limit:false,config:{production:true,publicUrl:origin,i18nSyncToken:token},translate:async (units,options)=>{seen=options;return ['["two videos"]'];}});
+  const body={units:[JSON.stringify({sourceText:'dois vídeos',highlights:['dois vídeos'],targetText:'two videos'})],from:'pt-BR',to:'en-US',mode:'align-bold'};
+  const response=await request(gateway).post('/api/i18n/translate').set('authorization',`Bearer ${token}`).send(body).expect(200);
+  assert.equal(seen.mode,'align-bold');
+  assert.deepEqual(response.body.units,['["two videos"]']);
+  await request(gateway).post('/api/i18n/translate').set('authorization',`Bearer ${token}`).send({...body,mode:'unknown'}).expect(400);
 });
 
 test('a separate admin origin can log in and the public origin cannot perform editorial mutations', async () => {

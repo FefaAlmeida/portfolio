@@ -454,5 +454,7 @@
   "Edite sua apresentação e a frase de destaque.": "Edit your introduction and highlight statement.",
   "Edite sua história e as duas fotos de perfil.": "Edit your story and both profile photos.",
   "Sobrenome": "Last name",
-  "Alinhamento do texto": "Text alignment"
+  "Alinhamento do texto": "Text alignment",
+  "Editar destaques": "Edit highlights",
+  "Cole os trechos exatos da tradução que devem ficar em negrito, um por linha. Deixe vazio para remover os destaques.": "Paste the exact translated phrases to make bold, one per line. Leave empty to remove highlights."
 }
